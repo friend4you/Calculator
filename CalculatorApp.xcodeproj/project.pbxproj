@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		933F6CD21FA8A06D005B8305 /* CalculatorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 933F6CD11FA8A06D005B8305 /* CalculatorModel.m */; };
+		93901CC81FA8E3F200FC6FAA /* CalculatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93901CC71FA8E3F200FC6FAA /* CalculatorView.xib */; };
 		93BDBB581FA33EF900748B5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BDBB571FA33EF900748B5D /* AppDelegate.m */; };
 		93BDBB5B1FA33EF900748B5D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BDBB5A1FA33EF900748B5D /* ViewController.m */; };
 		93BDBB5E1FA33EF900748B5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93BDBB5C1FA33EF900748B5D /* Main.storyboard */; };
@@ -16,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		933F6CD01FA8A06D005B8305 /* CalculatorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorModel.h; sourceTree = "<group>"; };
+		933F6CD11FA8A06D005B8305 /* CalculatorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorModel.m; sourceTree = "<group>"; };
+		93901CC71FA8E3F200FC6FAA /* CalculatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalculatorView.xib; sourceTree = "<group>"; };
 		93BDBB531FA33EF900748B5D /* CalculatorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalculatorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93BDBB561FA33EF900748B5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		93BDBB571FA33EF900748B5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -39,6 +44,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		933F6CD31FA8A078005B8305 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				933F6CD01FA8A06D005B8305 /* CalculatorModel.h */,
+				933F6CD11FA8A06D005B8305 /* CalculatorModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		93BDBB4A1FA33EF700748B5D = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +81,8 @@
 				93BDBB611FA33EFA00748B5D /* LaunchScreen.storyboard */,
 				93BDBB641FA33EFA00748B5D /* Info.plist */,
 				93BDBB651FA33EFA00748B5D /* main.m */,
+				933F6CD31FA8A078005B8305 /* Model */,
+				93901CC71FA8E3F200FC6FAA /* CalculatorView.xib */,
 			);
 			path = CalculatorApp;
 			sourceTree = "<group>";
@@ -129,6 +145,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93901CC81FA8E3F200FC6FAA /* CalculatorView.xib in Resources */,
 				93BDBB631FA33EFA00748B5D /* LaunchScreen.storyboard in Resources */,
 				93BDBB601FA33EFA00748B5D /* Assets.xcassets in Resources */,
 				93BDBB5E1FA33EF900748B5D /* Main.storyboard in Resources */,
@@ -145,6 +162,7 @@
 				93BDBB5B1FA33EF900748B5D /* ViewController.m in Sources */,
 				93BDBB661FA33EFA00748B5D /* main.m in Sources */,
 				93BDBB581FA33EF900748B5D /* AppDelegate.m in Sources */,
+				933F6CD21FA8A06D005B8305 /* CalculatorModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

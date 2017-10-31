@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "CalculatorModel.h"
 
 @interface ViewController ()
 
@@ -15,10 +16,20 @@
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (assign, nonatomic) BOOL isUserInTheMiddleOfNumber;
 @property (assign, nonatomic) double displayValue;
+@property (strong, nonatomic) CalculatorModel *model;
+@property (strong, nonatomic) IBOutlet UIView *currentView;
+@property (strong, nonatomic) IBOutlet UIView *landscapeView;
+@property (strong, nonatomic) IBOutlet UIView *portraitView;
+
 
 @end
 
 @implementation ViewController
+
+-(CalculatorModel *)model{
+    if(!_model) _model = [CalculatorModel new];
+    return _model;
+}
 
 -(double)displayValue{
     return self.resultLabel.text.doubleValue;
@@ -31,9 +42,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isUserInTheMiddleOfNumber = NO;
+    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    [self setUpViewForOrientation:interfaceOrientation];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self setUpViewForOrientation:toInterfaceOrientation];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -51,6 +68,9 @@
 }
 
 - (IBAction)pressOperationButton:(UIButton *)sender {
+    self.model.operand = sender.titleLabel.text;
+    
+    
     if([sender.titleLabel.text isEqualToString:@"√"]){
         self.displayValue = sqrt(self.displayValue);
     }else if ([sender.titleLabel.text isEqualToString:@"𝞹"]){
@@ -62,4 +82,20 @@
     }
     self.isUserInTheMiddleOfNumber = NO;
 }
+
+-(void)setUpViewForOrientation:(UIInterfaceOrientation)orientation
+{
+    [_currentView removeFromSuperview];
+    if(UIInterfaceOrientationIsLandscape(orientation))
+    {
+        [self.view addSubview:_landscapeView];
+        _currentView = _landscapeView;
+    }
+    else
+    {
+        [self.view addSubview:_portraitView];
+        _currentView = _portraitView;
+    }
+}
+
 @end
