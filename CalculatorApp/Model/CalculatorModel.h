@@ -10,7 +10,10 @@
 
 @interface CalculatorModel : NSObject
 
-@property (assign, nonatomic) NSString *operand;
-@property (assign, nonatomic) double firstNumberInExpression;
+- (void)performOperation:(NSString *)mathematicalSymbol;
+
+@property (assign, nonatomic) double operand;
 @property (assign, nonatomic, readonly) double result;
+
+
 @end

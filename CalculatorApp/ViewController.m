@@ -33,6 +33,7 @@
 
 -(double)displayValue{
     return self.resultLabel.text.doubleValue;
+    
 }
 
 -(void)setDisplayValue:(double)displayValue{
@@ -42,14 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isUserInTheMiddleOfNumber = NO;
-    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-    [self setUpViewForOrientation:interfaceOrientation];
     // Do any additional setup after loading the view, typically from a nib.
-}
-
--(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    [self setUpViewForOrientation:toInterfaceOrientation];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,34 +62,13 @@
 }
 
 - (IBAction)pressOperationButton:(UIButton *)sender {
-    self.model.operand = sender.titleLabel.text;
     
+    self.model.operand = self.displayValue;
+    [self.model performOperation:sender.titleLabel.text];
+    self.displayValue = self.model.result;
     
-    if([sender.titleLabel.text isEqualToString:@"√"]){
-        self.displayValue = sqrt(self.displayValue);
-    }else if ([sender.titleLabel.text isEqualToString:@"𝞹"]){
-        self.displayValue = M_PI;
-    }else if ([sender.titleLabel.text isEqualToString:@"x²"]){
-        self.displayValue = pow(self.displayValue, 2);
-    }else if ([sender.titleLabel.text isEqualToString:@"log₂"]){
-        self.displayValue = log2(self.displayValue);
-    }
     self.isUserInTheMiddleOfNumber = NO;
 }
 
--(void)setUpViewForOrientation:(UIInterfaceOrientation)orientation
-{
-    [_currentView removeFromSuperview];
-    if(UIInterfaceOrientationIsLandscape(orientation))
-    {
-        [self.view addSubview:_landscapeView];
-        _currentView = _landscapeView;
-    }
-    else
-    {
-        [self.view addSubview:_portraitView];
-        _currentView = _portraitView;
-    }
-}
 
 @end
