@@ -39,8 +39,8 @@ typedef double(^Binary)(double, double);
 
 - (Operator)operationType:(NSString *)mathematicalSymbol {
     NSArray *constants = @[@"𝞹"];
-    NSArray *unaryOperations = @[@"√", @"x²", @"log₂", @"sin"];
-    NSArray *binaryOperations = @[@"+", @"-", @"×", @"÷"];
+    NSArray *unaryOperations = @[@"√", @"x²", @"log₂", @"±", @"C"];
+    NSArray *binaryOperations = @[@"+", @"-", @"×", @"÷", @"^", @"%"];
     NSArray *equalOperation = @[@"="];
     
     if ([constants containsObject:mathematicalSymbol]) {
@@ -82,7 +82,7 @@ typedef double(^Binary)(double, double);
     }
 }
 
-- (void)calculateOperation{
+- (void)calculateOperation {
     if (self.pendingBinaryOperation) {
         self.accumulate = self.pendingBinaryOperation(self.firstNumberInExpression, self.accumulate);
         self.pendingBinaryOperation = nil;
@@ -109,13 +109,20 @@ typedef double(^Binary)(double, double);
                             },
                             @"log₂": ^(double value) {
                                 return log2(value);
+                            },
+                            @"±": ^(double value) {
+                                return value * -1;
+                            },
+                            @"C": ^(double value) {
+                                self.firstNumberInExpression = 0;
+                                return 0;
                             }
                             };
     }
     return _unaryOperations;
 }
 
-- (NSDictionary<NSString *, Binary> *)binaryOperations{
+- (NSDictionary<NSString *, Binary> *)binaryOperations {
     if (!_binaryOperations) {
         _binaryOperations = @{
                               @"+": ^(double value1, double value2) {
@@ -129,6 +136,12 @@ typedef double(^Binary)(double, double);
                               },
                               @"×": ^(double value1, double value2) {
                                   return value1 * value2;
+                              },
+                              @"^": ^(double value1, double value2) {
+                                  return pow(value1, value2);
+                              },
+                              @"%": ^(double value1, double value2) {
+                                  return (double)((int)value1 % (int)value2);
                               }
                               };
     }
