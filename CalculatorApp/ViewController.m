@@ -57,7 +57,7 @@
             return;
         } else {
             _isPointInTheNumber = YES;
-        }        
+        }
     }
     if (self.isUserInTheMiddleOfNumber) {
         self.resultLabel.text = [self.resultLabel.text stringByAppendingString:sender.titleLabel.text];

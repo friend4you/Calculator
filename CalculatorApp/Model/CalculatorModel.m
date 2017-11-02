@@ -64,6 +64,7 @@ typedef double(^Binary)(double, double);
     
     switch (op) {
         case OperatorUnary:
+            [self calculateOperation];
             self.accumulate = [self unaryOperation:mathematicalSymbol operand:self.accumulate];
             break;
         case OperatorBinary:
