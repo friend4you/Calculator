@@ -25,17 +25,19 @@
 
 @implementation ViewController
 
--(CalculatorModel *)model{
-    if(!_model) _model = [CalculatorModel new];
+- (CalculatorModel *)model {
+    if (!_model) {
+      _model = [CalculatorModel new];
+    }
     return _model;
 }
 
--(double)displayValue{
+- (double)displayValue {
     return self.resultLabel.text.doubleValue;
     
 }
 
--(void)setDisplayValue:(double)displayValue{
+- (void)setDisplayValue:(double)displayValue {
     self.resultLabel.text = @(displayValue).stringValue;
 }
 
@@ -51,7 +53,9 @@
 }
 
 - (IBAction)pressDigitButton:(UIButton *)sender {
-    if ([self.resultLabel.text length] == 16) return;
+    if ([self.resultLabel.text length] == 16){
+        return;
+    }
     if ([sender.titleLabel.text isEqualToString:@"."]) {
         if (_isPointInTheNumber) {
             return;
@@ -76,6 +80,5 @@
     self.isUserInTheMiddleOfNumber = NO;
     self.isPointInTheNumber = NO;
 }
-
 
 @end

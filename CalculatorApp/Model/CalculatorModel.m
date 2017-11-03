@@ -8,13 +8,13 @@
 
 #import "CalculatorModel.h"
 
-typedef enum: NSUInteger {
+typedef NS_ENUM(NSUInteger, Operator) {
     OperatorUndefined,
     OperatorUnary,
     OperatorBinary,
     OperatorEqual,
     OperatorConst
-} Operator;
+};
 
 typedef double(^Unary)(double);
 typedef double(^Binary)(double, double);
@@ -63,22 +63,25 @@ typedef double(^Binary)(double, double);
     Operator op = [self operationType:mathematicalSymbol];
     
     switch (op) {
-        case OperatorUnary:
+        case OperatorUnary: {
             [self calculateOperation];
             self.accumulate = [self unaryOperation:mathematicalSymbol operand:self.accumulate];
             break;
-        case OperatorBinary:
+        }
+        case OperatorBinary: {
             [self calculateOperation];
             self.firstNumberInExpression = self.accumulate;
             self.pendingBinaryOperation = self.binaryOperations[mathematicalSymbol];            
             break;
+        }
         case OperatorConst:
             self.accumulate = [self.constanseOperations[mathematicalSymbol] doubleValue];
             break;
         case OperatorEqual:
             [self calculateOperation];
             break;
-        default:
+        case OperatorUndefined:
+            self.accumulate = 0;
             break;
     }
 }
