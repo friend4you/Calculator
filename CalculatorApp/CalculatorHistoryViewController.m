@@ -16,6 +16,13 @@
 
 @implementation CalculatorHistoryViewController
 
+- (NSMutableDictionary *)expressionHistory {
+    if (!_expressionHistory) {
+        _expressionHistory = [NSMutableDictionary new];
+    }
+    return _expressionHistory;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -33,19 +40,20 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//warning Incomplete implementation, return the number of sections
-    return 0;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+////warning Incomplete implementation, return the number of sections
+//    return 0;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //warning Incomplete implementation, return the number of rows
-    return 0;
+    return self.expressionHistory.count;
 }
 
+
 /*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+ - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExpressionCell" forIndexPath:indexPath];
     
     // Configure the cell...
     

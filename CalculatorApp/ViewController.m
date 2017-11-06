@@ -28,7 +28,7 @@
 
 - (CalculatorModel *)model {
     if (!_model) {
-      _model = [CalculatorModel new];
+        _model = [CalculatorModel new];
     }
     return _model;
 }
@@ -73,7 +73,6 @@
 }
 
 - (IBAction)pressOperationButton:(UIButton *)sender {
-    
     self.model.operand = self.displayValue;
     [self.model performOperation:sender.titleLabel.text];
     self.displayValue = self.model.result;
@@ -84,9 +83,15 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showHistory"]) {
-        CalculatorHistoryViewController *history  = (CalculatorHistoryViewController *)segue.destinationViewController;
-        history.expressionHistory = self.model.expressionHistory;        
+        CalculatorHistoryViewController *history = (CalculatorHistoryViewController *)segue.destinationViewController;
+        history.expressionHistory = self.model.expressionHistory;
     }
 }
+
+- (IBAction)showExpressionsHistory:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"showHistory" sender:self];
+}
+
+
 
 @end

@@ -10,6 +10,6 @@
 
 @interface CalculatorHistoryViewController : UITableViewController
 
-@property (weak, nonatomic) NSMutableDictionary *expressionHistory;
+@property (strong, nonatomic) NSMutableDictionary *expressionHistory;
 
 @end

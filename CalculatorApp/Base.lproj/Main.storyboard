@@ -481,14 +481,15 @@
                                 <rect key="frame" x="309" y="7" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="History"/>
+                                <connections>
+                                    <action selector="showExpressionsHistory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8ny-VD-NKw"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="hV6-vz-Gmg" kind="show" identifier="showHistory" id="zUk-h8-rIC"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="resultLabel" destination="czf-Xi-12D" id="XpN-WN-Hfw"/>
+                        <segue destination="hV6-vz-Gmg" kind="show" identifier="showHistory" id="rOx-4i-Ueq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
