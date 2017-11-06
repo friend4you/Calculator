@@ -82,10 +82,10 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showHistory"]) {
-        CalculatorHistoryViewController *history = (CalculatorHistoryViewController *)segue.destinationViewController;
-        history.expressionHistory = self.model.expressionHistory;
-    }
+//    if ([segue.identifier isEqualToString:@"showHistory"]) {
+//        CalculatorHistoryViewController *history = (CalculatorHistoryViewController *)segue.destinationViewController;
+//        history.expressionHistory = self.model.expressionHistory;
+//    }
 }
 
 - (IBAction)showExpressionsHistory:(UIButton *)sender {
