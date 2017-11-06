@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "CalculatorModel.h"
+#import "CalculatorHistoryViewController.h"
 
 @interface ViewController ()
 
@@ -79,6 +80,13 @@
     
     self.isUserInTheMiddleOfNumber = NO;
     self.isPointInTheNumber = NO;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showHistory"]) {
+        CalculatorHistoryViewController *history  = (CalculatorHistoryViewController *)segue.destinationViewController;
+        history.expressionHistory = self.model.expressionHistory;        
+    }
 }
 
 @end

@@ -28,6 +28,7 @@ typedef double(^Binary)(double, double);
 @property (strong, nonatomic) NSDictionary<NSString *, Unary> *unaryOperations;
 @property (strong, nonatomic) NSDictionary *binaryOperations;
 @property (copy, nonatomic) Binary pendingBinaryOperation;
+@property (strong, nonatomic) NSString *operation;
 
 @end
 
@@ -61,7 +62,9 @@ typedef double(^Binary)(double, double);
     }
     
     Operator op = [self operationType:mathematicalSymbol];
-    
+    if(op != OperatorUndefined){
+        self.operation = mathematicalSymbol;
+    }
     switch (op) {
         case OperatorUnary: {
             [self calculateOperation];
@@ -88,9 +91,19 @@ typedef double(^Binary)(double, double);
 
 - (void)calculateOperation {
     if (self.pendingBinaryOperation) {
+        double secondValue = (double)self.accumulate;
         self.accumulate = self.pendingBinaryOperation(self.firstNumberInExpression, self.accumulate);
+        [self.expressionHistory setValue:@(self.accumulate) forKey:[NSString stringWithFormat:@"%f %@ %f", _firstNumberInExpression, _operation, secondValue]];
         self.pendingBinaryOperation = nil;
     }
+}
+
+
+- (NSMutableDictionary<NSString *, NSString *> *)expressionHistory {
+    if (!_expressionHistory) {
+        _expressionHistory = [NSMutableDictionary new];
+    }
+    return _expressionHistory;
 }
 
 - (NSDictionary<NSString*, NSNumber *> *)constanseOperations {

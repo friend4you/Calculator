@@ -14,6 +14,7 @@
 
 @property (assign, nonatomic) double operand;
 @property (assign, nonatomic, readonly) double result;
+@property (strong, nonatomic) NSMutableDictionary *expressionHistory;
 
 
 @end
