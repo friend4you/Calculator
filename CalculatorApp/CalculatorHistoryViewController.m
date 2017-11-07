@@ -10,17 +10,31 @@
 
 @interface CalculatorHistoryViewController ()
 
-
+@property (strong, nonatomic) NSString *resultString;
 
 @end
 
 @implementation CalculatorHistoryViewController
 
-- (NSMutableDictionary *)expressionHistory {
-    if (!_expressionHistory) {
-        _expressionHistory = [NSMutableDictionary new];
+- (NSMutableArray *)expressionsForHistory {
+    if (!_expressionsForHistory) {
+        _expressionsForHistory = [NSMutableArray new];
     }
-    return _expressionHistory;
+    return _expressionsForHistory;
+}
+
+- (NSMutableArray *)resultsForHistory {
+    if (!_resultsForHistory) {
+        _resultsForHistory = [[NSMutableArray alloc]  initWithArray:@[@100]];
+    }
+    return _resultsForHistory;
+}
+
+- (NSString *)resultString {
+    if (_resultString == nil) {
+        _resultString = [NSString stringWithFormat:@"%f", 20.0];
+    }
+    return _resultString;
 }
 
 - (void)viewDidLoad {
@@ -40,26 +54,36 @@
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-////warning Incomplete implementation, return the number of sections
-//    return 0;
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//warning Incomplete implementation, return the number of sections
+    return 1;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //warning Incomplete implementation, return the number of rows
-    return self.expressionHistory.count;
+    return self.expressionsForHistory.count;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExpressionCell" forIndexPath:indexPath];
+    UILabel *result = [cell viewWithTag:10];
+    NSString *res = result.text;
+    [self.delegate addItemViewController:self didFinishEnteringItem:res];
 }
 
 
-/*
+
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExpressionCell" forIndexPath:indexPath];
     
-    // Configure the cell...
-    
+     UILabel *exp = [cell viewWithTag:5];
+     UILabel *result = [cell viewWithTag:10];
+     exp.text = [self.expressionsForHistory objectAtIndex:indexPath.row];
+     result.text = [self.resultsForHistory objectAtIndex:0]; //[self.resultsForHistory objectAtIndex:indexPath.row];
+     NSLog(@"%@", result.text);
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CalculatorHistoryViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <CalculatorHistoryDelegate>
 
 
 @end

@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "CalculatorModel.h"
-#import "CalculatorHistoryViewController.h"
 
 @interface ViewController ()
 
@@ -25,6 +24,8 @@
 @end
 
 @implementation ViewController
+
+
 
 - (CalculatorModel *)model {
     if (!_model) {
@@ -82,16 +83,24 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([segue.identifier isEqualToString:@"showHistory"]) {
-//        CalculatorHistoryViewController *history = (CalculatorHistoryViewController *)segue.destinationViewController;
-//        history.expressionHistory = self.model.expressionHistory;
-//    }
+    if ([segue.identifier isEqualToString:@"showHistory"]) {
+        CalculatorHistoryViewController *history = segue.destinationViewController;
+        history.delegate = self;
+        history.expressionsForHistory = self.model.expressionsForHistory;
+        //history.resultsForHistory = self.model.resultsForHistory;
+    }
 }
 
 - (IBAction)showExpressionsHistory:(UIButton *)sender {
     [self performSegueWithIdentifier:@"showHistory" sender:self];
 }
 
+
+
+- (void)addItemViewController:(CalculatorHistoryViewController *)controller didFinishEnteringItem:(NSString *)item {
+    self.displayValue = [item doubleValue];
+    self.isUserInTheMiddleOfNumber = NO;
+}
 
 
 @end

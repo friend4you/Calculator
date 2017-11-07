@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class CalculatorHistoryViewController;
+@protocol CalculatorHistoryDelegate <NSObject>
+- (void)addItemViewController:(CalculatorHistoryViewController *)controller didFinishEnteringItem:(NSString *)item;
+@end
+
 @interface CalculatorHistoryViewController : UITableViewController
 
-@property (retain, nonatomic) NSMutableDictionary *expressionHistory;
+@property (nonatomic, weak) id <CalculatorHistoryDelegate> delegate;
 
+@property (retain, nonatomic) NSMutableArray *expressionsForHistory;
+@property (retain, nonatomic) NSMutableArray *resultsForHistory;
 @end

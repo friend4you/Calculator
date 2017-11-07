@@ -62,17 +62,18 @@ typedef double(^Binary)(double, double);
     }
     
     Operator op = [self operationType:mathematicalSymbol];
-    if(op != OperatorUndefined){
-        self.operation = mathematicalSymbol;
-    }
+    
     switch (op) {
         case OperatorUnary: {
             [self calculateOperation];
+            [self.expressionsForHistory addObject:[NSString stringWithFormat:@"%@ %@", mathematicalSymbol, @(self.accumulate)]];
             self.accumulate = [self unaryOperation:mathematicalSymbol operand:self.accumulate];
+            [self.resultsForHistory addObject:@(self.accumulate)];
             break;
         }
         case OperatorBinary: {
             [self calculateOperation];
+            self.operation = mathematicalSymbol;
             self.firstNumberInExpression = self.accumulate;
             self.pendingBinaryOperation = self.binaryOperations[mathematicalSymbol];            
             break;
@@ -92,18 +93,27 @@ typedef double(^Binary)(double, double);
 - (void)calculateOperation {
     if (self.pendingBinaryOperation) {
         double secondValue = (double)self.accumulate;
-        self.accumulate = self.pendingBinaryOperation(self.firstNumberInExpression, self.accumulate);
-        [self.expressionHistory setValue:@(self.accumulate) forKey:[NSString stringWithFormat:@"%f %@ %f", _firstNumberInExpression, _operation, secondValue]];
+        [self.expressionsForHistory addObject:[NSString stringWithFormat:@"%@ %@ %@", @(_firstNumberInExpression), _operation, @(secondValue)]];
+        self.accumulate = self.pendingBinaryOperation(self.firstNumberInExpression, secondValue);
+        [self.resultsForHistory addObject:@(self.accumulate)];
         self.pendingBinaryOperation = nil;
     }
 }
 
 
-- (NSMutableDictionary<NSString *, NSString *> *)expressionHistory {
-    if (!_expressionHistory) {
-        _expressionHistory = [NSMutableDictionary new];
+
+- (NSMutableArray *)expressionsForHistory {
+    if (!_expressionsForHistory) {
+        _expressionsForHistory = [NSMutableArray new];
     }
-    return _expressionHistory;
+    return _expressionsForHistory;
+}
+
+- (NSMutableArray *)resultsForHistory {
+    if (!_resultsForHistory) {
+        _resultsForHistory = [NSMutableArray new];
+    }
+    return _resultsForHistory;
 }
 
 - (NSDictionary<NSString*, NSNumber *> *)constanseOperations {
