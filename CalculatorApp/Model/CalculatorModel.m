@@ -68,7 +68,7 @@ typedef double(^Binary)(double, double);
             [self calculateOperation];
             [self.expressionsForHistory addObject:[NSString stringWithFormat:@"%@ %@", mathematicalSymbol, @(self.accumulate)]];
             self.accumulate = [self unaryOperation:mathematicalSymbol operand:self.accumulate];
-            [self.resultsForHistory addObject:@(self.accumulate)];
+            [self.resultsForHistory addObject:[NSString stringWithFormat:@"%@", @(self.accumulate)]];
             break;
         }
         case OperatorBinary: {
