@@ -25,16 +25,9 @@
 
 - (NSMutableArray *)resultsForHistory {
     if (!_resultsForHistory) {
-        _resultsForHistory = [[NSMutableArray alloc]  initWithArray:@[@100]];
+        _resultsForHistory = [NSMutableArray new];
     }
     return _resultsForHistory;
-}
-
-- (NSString *)resultString {
-    if (_resultString == nil) {
-        _resultString = [NSString stringWithFormat:@"%f", 20.0];
-    }
-    return _resultString;
 }
 
 - (void)viewDidLoad {
@@ -65,10 +58,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExpressionCell" forIndexPath:indexPath];
-    UILabel *result = [cell viewWithTag:10];
-    NSString *res = result.text;
-    [self.delegate addItemViewController:self didFinishEnteringItem:res];
+    [self.delegate addItemViewController:self didFinishEnteringItem:[self.resultsForHistory objectAtIndex:indexPath.row]];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -79,7 +70,7 @@
      UILabel *exp = [cell viewWithTag:5];
      UILabel *result = [cell viewWithTag:10];
      exp.text = [self.expressionsForHistory objectAtIndex:indexPath.row];
-     result.text = [self.resultsForHistory objectAtIndex:0]; //[self.resultsForHistory objectAtIndex:indexPath.row];
+     result.text = [self.resultsForHistory objectAtIndex:indexPath.row]; //[self.resultsForHistory objectAtIndex:indexPath.row];
      NSLog(@"%@", result.text);
     return cell;
 }

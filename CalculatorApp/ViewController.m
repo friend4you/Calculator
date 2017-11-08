@@ -87,7 +87,7 @@
         CalculatorHistoryViewController *history = segue.destinationViewController;
         history.delegate = self;
         history.expressionsForHistory = self.model.expressionsForHistory;
-        //history.resultsForHistory = self.model.resultsForHistory;
+        history.resultsForHistory = self.model.resultsForHistory;
     }
 }
 

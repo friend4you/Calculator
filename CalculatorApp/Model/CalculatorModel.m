@@ -95,7 +95,7 @@ typedef double(^Binary)(double, double);
         double secondValue = (double)self.accumulate;
         [self.expressionsForHistory addObject:[NSString stringWithFormat:@"%@ %@ %@", @(_firstNumberInExpression), _operation, @(secondValue)]];
         self.accumulate = self.pendingBinaryOperation(self.firstNumberInExpression, secondValue);
-        [self.resultsForHistory addObject:@(self.accumulate)];
+        [self.resultsForHistory addObject:[NSString stringWithFormat:@"%@", @(self.accumulate)]];
         self.pendingBinaryOperation = nil;
     }
 }
