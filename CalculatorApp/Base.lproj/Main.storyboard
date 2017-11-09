@@ -490,7 +490,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="resultLabel" destination="czf-Xi-12D" id="XpN-WN-Hfw"/>
-                        <segue destination="hV6-vz-Gmg" kind="show" identifier="showHistory" id="rOx-4i-Ueq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -500,7 +499,7 @@
         <!--Calculator History View Controller-->
         <scene sceneID="tnL-pa-d3H">
             <objects>
-                <tableViewController id="hV6-vz-Gmg" customClass="CalculatorHistoryViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="historyViewController" id="hV6-vz-Gmg" customClass="CalculatorHistoryViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XyV-Tz-It1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

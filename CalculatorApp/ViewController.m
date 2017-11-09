@@ -12,14 +12,12 @@
 @interface ViewController ()
 
 - (IBAction)pressDigitButton:(UIButton *)sender;
+- (void)deleteNumeralFromResult:(UISwipeGestureRecognizer *)gestureRecognizer;
 
-@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (assign, nonatomic) BOOL isUserInTheMiddleOfNumber;
 @property (assign, nonatomic) double displayValue;
 @property (strong, nonatomic) CalculatorModel *model;
 @property (assign, nonatomic) BOOL isPointInTheNumber;
-
-
 
 @end
 
@@ -46,6 +44,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isUserInTheMiddleOfNumber = NO;
+    
+    UISwipeGestureRecognizer *deleteNumeralRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(deleteNumeralFromResult:)];
+    deleteNumeralRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.resultLabel setUserInteractionEnabled:YES];
+    deleteNumeralRecognizer.delegate = self;
+    [self.resultLabel addGestureRecognizer:deleteNumeralRecognizer];    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -82,24 +86,31 @@
     self.isPointInTheNumber = NO;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showHistory"]) {
-        CalculatorHistoryViewController *history = segue.destinationViewController;
-        history.delegate = self;
-        history.expressionsForHistory = self.model.expressionsForHistory;
-        history.resultsForHistory = self.model.resultsForHistory;
-    }
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([segue.identifier isEqualToString:@"showHistory"]) {
+//        CalculatorHistoryViewController *history = segue.destinationViewController;
+//        history.delegate = self;
+//        history.expressionsForHistory = self.model.expressionsForHistory;
+//        history.resultsForHistory = self.model.resultsForHistory;
+//    }
+//}
 
 - (IBAction)showExpressionsHistory:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"showHistory" sender:self];
+    CalculatorHistoryViewController *history = [self.storyboard instantiateViewControllerWithIdentifier:@"historyViewController"];
+    history.delegate = self;
+    history.expressionsForHistory = self.model.expressionsForHistory;
+    history.resultsForHistory = self.model.resultsForHistory;
+    [self.navigationController pushViewController:history animated:YES];
 }
-
 
 
 - (void)addItemViewController:(CalculatorHistoryViewController *)controller didFinishEnteringItem:(NSString *)item {
     self.displayValue = [item doubleValue];
     self.isUserInTheMiddleOfNumber = NO;
+}
+
+- (void)deleteNumeralFromResult:(UISwipeGestureRecognizer *)gestureRecognizer {
+    self.displayValue = [[self.resultLabel.text substringWithRange:NSMakeRange(0, self.resultLabel.text.length - 1)] doubleValue];
 }
 
 
