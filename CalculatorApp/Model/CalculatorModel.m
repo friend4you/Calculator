@@ -29,6 +29,8 @@ typedef double(^Binary)(double, double);
 @property (strong, nonatomic) NSDictionary *binaryOperations;
 @property (copy, nonatomic) Binary pendingBinaryOperation;
 @property (strong, nonatomic) NSString *operation;
+@property (strong, nonatomic) NSMutableArray *expressionsForHistory;
+@property (strong, nonatomic) NSMutableArray *resultsForHistory;
 
 @end
 
@@ -53,6 +55,7 @@ typedef double(^Binary)(double, double);
     } else if ([equalOperation containsObject:mathematicalSymbol]) {
         return OperatorEqual;
     }
+    
     return OperatorUndefined;
 }
 
@@ -66,9 +69,12 @@ typedef double(^Binary)(double, double);
     switch (op) {
         case OperatorUnary: {
             [self calculateOperation];
-            [self.expressionsForHistory addObject:[NSString stringWithFormat:@"%@ %@", mathematicalSymbol, @(self.accumulate)]];
+            [self.expressionsForHistory addObject:[NSString stringWithFormat:@"%@ %@",
+                                                   mathematicalSymbol,
+                                                   @(self.accumulate)]];
             self.accumulate = [self unaryOperation:mathematicalSymbol operand:self.accumulate];
-            [self.resultsForHistory addObject:[NSString stringWithFormat:@"%@", @(self.accumulate)]];
+            [self.resultsForHistory addObject:[NSString stringWithFormat:@"%@",
+                                               @(self.accumulate)]];
             break;
         }
         case OperatorBinary: {
@@ -93,9 +99,12 @@ typedef double(^Binary)(double, double);
 - (void)calculateOperation {
     if (self.pendingBinaryOperation) {
         double secondValue = (double)self.accumulate;
-        [self.expressionsForHistory addObject:[NSString stringWithFormat:@"%@ %@ %@", @(_firstNumberInExpression), _operation, @(secondValue)]];
+        [self.expressionsForHistory addObject:[NSString stringWithFormat:@"%@ %@ %@",
+                                               @(_firstNumberInExpression), _operation,
+                                               @(secondValue)]];
         self.accumulate = self.pendingBinaryOperation(self.firstNumberInExpression, secondValue);
-        [self.resultsForHistory addObject:[NSString stringWithFormat:@"%@", @(self.accumulate)]];
+        [self.resultsForHistory addObject:[NSString stringWithFormat:@"%@",
+                                           @(self.accumulate)]];
         self.pendingBinaryOperation = nil;
     }
 }
@@ -104,15 +113,17 @@ typedef double(^Binary)(double, double);
 
 - (NSMutableArray *)expressionsForHistory {
     if (!_expressionsForHistory) {
-        _expressionsForHistory = [NSMutableArray new];
+        _expressionsForHistory = [[NSMutableArray alloc] init];
     }
+    
     return _expressionsForHistory;
 }
 
 - (NSMutableArray *)resultsForHistory {
     if (!_resultsForHistory) {
-        _resultsForHistory = [NSMutableArray new];
+        _resultsForHistory = [[NSMutableArray alloc] init];
     }
+    
     return _resultsForHistory;
 }
 
@@ -122,6 +133,7 @@ typedef double(^Binary)(double, double);
                                 @"𝞹": @(M_PI)
                                 };
     }
+    
     return _constanseOperations;
 }
 
@@ -146,6 +158,7 @@ typedef double(^Binary)(double, double);
                             }
                             };
     }
+    
     return _unaryOperations;
 }
 
@@ -172,6 +185,7 @@ typedef double(^Binary)(double, double);
                               }
                               };
     }
+    
     return _binaryOperations;
 }
 

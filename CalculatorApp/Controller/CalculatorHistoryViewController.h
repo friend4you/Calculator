@@ -17,6 +17,6 @@
 
 @property (nonatomic, weak) id <CalculatorHistoryDelegate> delegate;
 
-@property (retain, nonatomic) NSMutableArray *expressionsForHistory;
-@property (retain, nonatomic) NSMutableArray *resultsForHistory;
+@property (strong, nonatomic) NSMutableArray *expressionsForHistory;
+@property (strong, nonatomic) NSMutableArray *resultsForHistory;
 @end

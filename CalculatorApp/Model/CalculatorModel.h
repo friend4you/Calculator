@@ -15,8 +15,8 @@
 @property (assign, nonatomic) double operand;
 @property (assign, nonatomic, readonly) double result;
 
-@property (strong, nonatomic) NSMutableArray *expressionsForHistory;
-@property (strong, nonatomic) NSMutableArray *resultsForHistory;
+@property (strong, nonatomic, readonly) NSMutableArray *expressionsForHistory;
+@property (strong, nonatomic, readonly) NSMutableArray *resultsForHistory;
 
 
 @end

@@ -11,13 +11,11 @@
 
 @interface ViewController ()
 
-- (IBAction)pressDigitButton:(UIButton *)sender;
-- (void)deleteNumeralFromResult:(UISwipeGestureRecognizer *)gestureRecognizer;
-
 @property (assign, nonatomic) BOOL isUserInTheMiddleOfNumber;
 @property (assign, nonatomic) double displayValue;
 @property (strong, nonatomic) CalculatorModel *model;
 @property (assign, nonatomic) BOOL isPointInTheNumber;
+@property (weak, nonatomic) IBOutlet UIButton *dotButton;
 
 @end
 
@@ -26,9 +24,11 @@
 
 
 - (CalculatorModel *)model {
+    
     if (!_model) {
         _model = [CalculatorModel new];
     }
+    
     return _model;
 }
 
@@ -36,6 +36,7 @@
     return self.resultLabel.text.doubleValue;
     
 }
+
 
 - (void)setDisplayValue:(double)displayValue {
     self.resultLabel.text = @(displayValue).stringValue;
@@ -50,25 +51,23 @@
     [self.resultLabel setUserInteractionEnabled:YES];
     deleteNumeralRecognizer.delegate = self;
     [self.resultLabel addGestureRecognizer:deleteNumeralRecognizer];    
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)pressDigitButton:(UIButton *)sender {
-    if ([self.resultLabel.text length] == 16){
+    if ([self.resultLabel.text length] >= 16){
         return;
     }
-    if ([sender.titleLabel.text isEqualToString:@"."]) {
-        if (_isPointInTheNumber) {
+    
+    if(sender == self.dotButton)
+    //if ([sender.titleLabel.text isEqualToString:@"."])
+    {
+        if (self.isPointInTheNumber) {
             return;
         } else {
-            _isPointInTheNumber = YES;
+            self.isPointInTheNumber = YES;
         }
     }
+    
     if (self.isUserInTheMiddleOfNumber) {
         self.resultLabel.text = [self.resultLabel.text stringByAppendingString:sender.titleLabel.text];
     } else {
@@ -85,15 +84,6 @@
     self.isUserInTheMiddleOfNumber = NO;
     self.isPointInTheNumber = NO;
 }
-
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([segue.identifier isEqualToString:@"showHistory"]) {
-//        CalculatorHistoryViewController *history = segue.destinationViewController;
-//        history.delegate = self;
-//        history.expressionsForHistory = self.model.expressionsForHistory;
-//        history.resultsForHistory = self.model.resultsForHistory;
-//    }
-//}
 
 - (IBAction)showExpressionsHistory:(UIButton *)sender {
     CalculatorHistoryViewController *history = [self.storyboard instantiateViewControllerWithIdentifier:@"historyViewController"];
@@ -112,6 +102,5 @@
 - (void)deleteNumeralFromResult:(UISwipeGestureRecognizer *)gestureRecognizer {
     self.displayValue = [[self.resultLabel.text substringWithRange:NSMakeRange(0, self.resultLabel.text.length - 1)] doubleValue];
 }
-
 
 @end

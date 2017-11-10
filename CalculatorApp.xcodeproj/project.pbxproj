@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		933F6CD21FA8A06D005B8305 /* CalculatorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 933F6CD11FA8A06D005B8305 /* CalculatorModel.m */; };
+		935664901FB5A1320037F4B3 /* Graphics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9356648F1FB5A1320037F4B3 /* Graphics.storyboard */; };
+		9356FBBC1FB5D3FE0028C782 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */; };
+		9356FBBF1FB5E7280028C782 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBBE1FB5E7280028C782 /* MainTabBarController.m */; };
+		9356FBC21FB5EA340028C782 /* GraphicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBC11FB5EA340028C782 /* GraphicsViewController.m */; };
 		938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */; };
 		93BDBB581FA33EF900748B5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BDBB571FA33EF900748B5D /* AppDelegate.m */; };
 		93BDBB5B1FA33EF900748B5D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BDBB5A1FA33EF900748B5D /* ViewController.m */; };
@@ -20,6 +24,13 @@
 /* Begin PBXFileReference section */
 		933F6CD01FA8A06D005B8305 /* CalculatorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorModel.h; sourceTree = "<group>"; };
 		933F6CD11FA8A06D005B8305 /* CalculatorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorModel.m; sourceTree = "<group>"; };
+		9356648F1FB5A1320037F4B3 /* Graphics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graphics.storyboard; sourceTree = "<group>"; };
+		9356FBBA1FB5D3FE0028C782 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
+		9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
+		9356FBBD1FB5E7280028C782 /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		9356FBBE1FB5E7280028C782 /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
+		9356FBC01FB5EA340028C782 /* GraphicsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicsViewController.h; sourceTree = "<group>"; };
+		9356FBC11FB5EA340028C782 /* GraphicsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphicsViewController.m; sourceTree = "<group>"; };
 		9388726E1FB071F300B632EB /* CalculatorHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorHistoryViewController.h; sourceTree = "<group>"; };
 		9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorHistoryViewController.m; sourceTree = "<group>"; };
 		93BDBB531FA33EF900748B5D /* CalculatorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalculatorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +65,30 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		935664911FB5A1630037F4B3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93BDBB5C1FA33EF900748B5D /* Main.storyboard */,
+				9356648F1FB5A1320037F4B3 /* Graphics.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		935664921FB5A1750037F4B3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9356FBC01FB5EA340028C782 /* GraphicsViewController.h */,
+				9356FBC11FB5EA340028C782 /* GraphicsViewController.m */,
+				9388726E1FB071F300B632EB /* CalculatorHistoryViewController.h */,
+				9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */,
+				93BDBB591FA33EF900748B5D /* ViewController.h */,
+				93BDBB5A1FA33EF900748B5D /* ViewController.m */,
+				9356FBBD1FB5E7280028C782 /* MainTabBarController.h */,
+				9356FBBE1FB5E7280028C782 /* MainTabBarController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		93BDBB4A1FA33EF700748B5D = {
 			isa = PBXGroup;
 			children = (
@@ -75,16 +110,15 @@
 			children = (
 				93BDBB561FA33EF900748B5D /* AppDelegate.h */,
 				93BDBB571FA33EF900748B5D /* AppDelegate.m */,
-				93BDBB591FA33EF900748B5D /* ViewController.h */,
-				93BDBB5A1FA33EF900748B5D /* ViewController.m */,
-				93BDBB5C1FA33EF900748B5D /* Main.storyboard */,
+				935664921FB5A1750037F4B3 /* Controller */,
+				935664911FB5A1630037F4B3 /* View */,
+				933F6CD31FA8A078005B8305 /* Model */,
 				93BDBB5F1FA33EFA00748B5D /* Assets.xcassets */,
 				93BDBB611FA33EFA00748B5D /* LaunchScreen.storyboard */,
 				93BDBB641FA33EFA00748B5D /* Info.plist */,
 				93BDBB651FA33EFA00748B5D /* main.m */,
-				933F6CD31FA8A078005B8305 /* Model */,
-				9388726E1FB071F300B632EB /* CalculatorHistoryViewController.h */,
-				9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */,
+				9356FBBA1FB5D3FE0028C782 /* HistoryTableViewCell.h */,
+				9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */,
 			);
 			path = CalculatorApp;
 			sourceTree = "<group>";
@@ -150,6 +184,7 @@
 				93BDBB631FA33EFA00748B5D /* LaunchScreen.storyboard in Resources */,
 				93BDBB601FA33EFA00748B5D /* Assets.xcassets in Resources */,
 				93BDBB5E1FA33EF900748B5D /* Main.storyboard in Resources */,
+				935664901FB5A1320037F4B3 /* Graphics.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +196,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */,
+				9356FBBF1FB5E7280028C782 /* MainTabBarController.m in Sources */,
 				93BDBB5B1FA33EF900748B5D /* ViewController.m in Sources */,
+				9356FBC21FB5EA340028C782 /* GraphicsViewController.m in Sources */,
+				9356FBBC1FB5D3FE0028C782 /* HistoryTableViewCell.m in Sources */,
 				93BDBB661FA33EFA00748B5D /* main.m in Sources */,
 				93BDBB581FA33EF900748B5D /* AppDelegate.m in Sources */,
 				933F6CD21FA8A06D005B8305 /* CalculatorModel.m in Sources */,

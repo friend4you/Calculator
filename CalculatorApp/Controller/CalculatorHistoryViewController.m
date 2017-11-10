@@ -7,38 +7,22 @@
 //
 
 #import "CalculatorHistoryViewController.h"
-
-@interface CalculatorHistoryViewController ()
-
-@end
+#import "HistoryTableViewCell.h"
 
 @implementation CalculatorHistoryViewController
 
 - (NSMutableArray *)expressionsForHistory {
     if (!_expressionsForHistory) {
-        _expressionsForHistory = [NSMutableArray new];
+        _expressionsForHistory = [[NSMutableArray alloc] init];
     }
     return _expressionsForHistory;
 }
 
 - (NSMutableArray *)resultsForHistory {
     if (!_resultsForHistory) {
-        _resultsForHistory = [NSMutableArray new];
-    }
+        _resultsForHistory = [[NSMutableArray alloc] init];
+    }    
     return _resultsForHistory;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -46,18 +30,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.delegate addItemViewController:self didFinishEnteringItem:[self.resultsForHistory objectAtIndex:indexPath.row]];
+    NSString *item = [self.resultsForHistory objectAtIndex:indexPath.row];
+    [self.delegate addItemViewController:self didFinishEnteringItem:item];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExpressionCell" forIndexPath:indexPath];
+    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExpressionCell" forIndexPath:indexPath];
     
-    UILabel *exp = [cell viewWithTag:5];
-    UILabel *result = [cell viewWithTag:10];
-    
-    exp.text = [self.expressionsForHistory objectAtIndex:indexPath.row];
-    result.text = [self.resultsForHistory objectAtIndex:indexPath.row];
+    cell.expressionLabel.text = [self.expressionsForHistory objectAtIndex:indexPath.row];
+    cell.resultLabel.text = [self.resultsForHistory objectAtIndex:indexPath.row];
     
     return cell;
 }
