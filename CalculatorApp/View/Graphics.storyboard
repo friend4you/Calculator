@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,19 +12,39 @@
         <scene sceneID="W7m-JR-Ajd">
             <objects>
                 <viewController storyboardIdentifier="graphics" id="1rQ-dr-qWb" customClass="GraphicsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rVW-d8-F8z"/>
+                        <viewControllerLayoutGuide type="bottom" id="IOh-nA-yW1"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BHg-AG-Dud">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVE-iH-yCK">
-                                <rect key="frame" x="16" y="20" width="343" height="325"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVE-iH-yCK">
+                                <rect key="frame" x="16" y="36" width="343" height="343"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="343" id="7Hq-eh-Mtv"/>
+                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3w-wf-Mls">
+                                <rect key="frame" x="16" y="403" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="SinX">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.33884037230000003" green="0.50298697349999999" blue="0.29487621250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="4ap-uM-IwE"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="XVE-iH-yCK" secondAttribute="trailing" constant="16" id="OQK-M9-B9B"/>
+                            <constraint firstItem="XVE-iH-yCK" firstAttribute="top" secondItem="rVW-d8-F8z" secondAttribute="bottom" constant="16" id="aMh-wW-wjM"/>
+                            <constraint firstItem="XVE-iH-yCK" firstAttribute="leading" secondItem="BHg-AG-Dud" secondAttribute="leading" constant="16" id="kpd-rp-Ntd"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="chartView" destination="XVE-iH-yCK" id="DUb-tm-azp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mRt-Ba-KHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

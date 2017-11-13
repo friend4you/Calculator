@@ -8,6 +8,7 @@
 
 #import "MainTabBarController.h"
 #import "GraphicsViewController.h"
+#import "ViewController.h"
 
 @interface MainTabBarController ()
 
@@ -17,26 +18,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard *graphicsStoryboard = [UIStoryboard storyboardWithName:@"Graphics" bundle:nil];
+    NSMutableArray *tabs = [[NSMutableArray alloc] init];
     
-    GraphicsViewController *graphics = [[GraphicsViewController alloc] init];
-    [self addChildViewController:graphics];
     
-    // Do any additional setup after loading the view.
+    ViewController *calculator = [mainStoryboard instantiateViewControllerWithIdentifier:@"calculator"];
+    calculator.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Calculator" image:[UIImage imageNamed:@"calculatorIcon"] tag:1];
+    GraphicsViewController *graphics = [graphicsStoryboard instantiateViewControllerWithIdentifier:@"graphics"];
+    graphics.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Graphics" image:[UIImage imageNamed:@"graphicsIcon"] tag:2];
+    [tabs addObject:calculator];
+    [tabs addObject:graphics];
+    [self setViewControllers:tabs];
+    
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
