@@ -12,7 +12,7 @@
         <!--Calculator-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CalculatorViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="calculator" id="BYZ-38-t0r" customClass="CalculatorViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p5X-Sm-qYo"/>
                         <viewControllerLayoutGuide type="bottom" id="pvB-3O-dvb"/>
@@ -572,7 +572,7 @@
         <!--Item-->
         <scene sceneID="0yH-Y9-xh0">
             <objects>
-                <navigationController storyboardIdentifier="calculator" automaticallyAdjustsScrollViewInsets="NO" id="FwU-Lo-vsi" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigationCalculator" automaticallyAdjustsScrollViewInsets="NO" id="FwU-Lo-vsi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="kBo-yU-V4v"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Kny-jq-5Be">

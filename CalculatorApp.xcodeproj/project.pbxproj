@@ -11,6 +11,7 @@
 		935664901FB5A1320037F4B3 /* Graphics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9356648F1FB5A1320037F4B3 /* Graphics.storyboard */; };
 		9356FBBC1FB5D3FE0028C782 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */; };
 		9356FBBF1FB5E7280028C782 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBBE1FB5E7280028C782 /* MainTabBarController.m */; };
+		937F4ED71FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */; };
 		938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */; };
 		93A9CBB91FBB17D400AEBF4B /* RDLChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A9CBB51FBB17D200AEBF4B /* RDLChartViewController.m */; };
 		93A9CBBA1FBB17D400AEBF4B /* RDLPushUpsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A9CBB61FBB17D300AEBF4B /* RDLPushUpsModel.m */; };
@@ -35,6 +36,8 @@
 		9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
 		9356FBBD1FB5E7280028C782 /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		9356FBBE1FB5E7280028C782 /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
+		937F4ED51FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIStoryboardSegue+ContentViewController.h"; sourceTree = "<group>"; };
+		937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboardSegue+ContentViewController.m"; sourceTree = "<group>"; };
 		9388726E1FB071F300B632EB /* CalculatorHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorHistoryViewController.h; sourceTree = "<group>"; };
 		9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorHistoryViewController.m; sourceTree = "<group>"; };
 		93A9CBB21FBB17D000AEBF4B /* RDLChartPointProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDLChartPointProtocol.h; sourceTree = "<group>"; };
@@ -159,6 +162,8 @@
 				9356FBBA1FB5D3FE0028C782 /* HistoryTableViewCell.h */,
 				9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */,
 				93A9CBBF1FBB192600AEBF4B /* Graphics */,
+				937F4ED51FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.h */,
+				937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */,
 			);
 			path = CalculatorApp;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 				9356FBBF1FB5E7280028C782 /* MainTabBarController.m in Sources */,
 				93BDBB5B1FA33EF900748B5D /* CalculatorViewController.m in Sources */,
 				93A9CBBE1FBB17DF00AEBF4B /* RDLViewControllerLogLifecycleViewController.m in Sources */,
+				937F4ED71FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m in Sources */,
 				93A9CBC21FBB21C600AEBF4B /* RDLSplitGraphicsViewController.m in Sources */,
 				9356FBBC1FB5D3FE0028C782 /* HistoryTableViewCell.m in Sources */,
 				93BDBB661FA33EFA00748B5D /* main.m in Sources */,

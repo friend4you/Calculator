@@ -11,8 +11,6 @@
 
 @interface Graphics : NSObject
 
-@property (nonatomic, strong) NSArray<RDLChartPointProtocol> *chart1;
-@property (nonatomic, strong) NSArray<RDLChartPointProtocol> *chart2;
-@property (nonatomic, strong) NSArray<RDLChartPointProtocol> *chart3;
+- (NSArray<RDLChartPointProtocol> *)getChartById:(NSString *)identifier;
 
 @end

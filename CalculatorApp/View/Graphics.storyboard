@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,7 +25,7 @@
         <!--Chart View Controller-->
         <scene sceneID="W7m-JR-Ajd">
             <objects>
-                <viewController id="1rQ-dr-qWb" customClass="RDLChartViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chartView" id="1rQ-dr-qWb" customClass="RDLChartViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rVW-d8-F8z"/>
                         <viewControllerLayoutGuide type="bottom" id="IOh-nA-yW1"/>
@@ -34,11 +35,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVE-iH-yCK" customClass="RDLChartView">
-                                <rect key="frame" x="16" y="80" width="343" height="343"/>
+                                <rect key="frame" x="16" y="36" width="343" height="343"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="343" id="7Hq-eh-Mtv"/>
+                                    <constraint firstAttribute="width" secondItem="XVE-iH-yCK" secondAttribute="height" multiplier="1:1" id="rdp-Z5-7XV"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="rdp-Z5-7XV"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="rdp-Z5-7XV"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="rdp-Z5-7XV"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.33884037230000003" green="0.50298697349999999" blue="0.29487621250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -57,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="-319" y="242"/>
         </scene>
-        <!--Select Chart View Controller-->
+        <!--Select Chart-->
         <scene sceneID="DuZ-Kj-XgT">
             <objects>
                 <viewController id="QbW-YZ-AfU" customClass="RDLSelectChartViewController" sceneMemberID="viewController">
@@ -70,22 +87,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1Qb-Hj-of8">
-                                <rect key="frame" x="151" y="267" width="73" height="133"/>
+                                <rect key="frame" x="148.5" y="267" width="78" height="133"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOb-P4-Uvd">
-                                        <rect key="frame" x="0.0" y="0.0" width="73" height="41"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="78" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="Chart1"/>
+                                        <state key="normal" title="Chart 1"/>
+                                        <connections>
+                                            <segue destination="1rQ-dr-qWb" kind="showDetail" identifier="chart1" id="uUR-Ge-6kV"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De6-PU-OXk">
-                                        <rect key="frame" x="0.0" y="46" width="73" height="41"/>
+                                        <rect key="frame" x="0.0" y="46" width="78" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="Chart2"/>
+                                        <state key="normal" title="Chart 2"/>
+                                        <connections>
+                                            <segue destination="1rQ-dr-qWb" kind="showDetail" identifier="chart2" id="qdH-Q2-i6k"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3Y-Qs-wjB">
-                                        <rect key="frame" x="0.0" y="92" width="73" height="41"/>
+                                        <rect key="frame" x="0.0" y="92" width="78" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="Chart3"/>
+                                        <state key="normal" title="Chart 3"/>
+                                        <connections>
+                                            <segue destination="1rQ-dr-qWb" kind="showDetail" identifier="chart3" id="3Qf-IC-hw6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -96,7 +122,7 @@
                             <constraint firstItem="1Qb-Hj-of8" firstAttribute="centerY" secondItem="X60-BT-Sch" secondAttribute="centerY" id="Pb4-rM-8qk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7hN-3N-gbt"/>
+                    <navigationItem key="navigationItem" title="Select Chart" id="7hN-3N-gbt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9GX-om-wzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,4 +165,7 @@
             <point key="canvasLocation" x="-1314" y="-644"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="3Qf-IC-hw6"/>
+    </inferredMetricsTieBreakers>
 </document>

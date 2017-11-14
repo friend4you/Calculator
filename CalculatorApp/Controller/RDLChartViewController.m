@@ -9,6 +9,7 @@
 #import "RDLChartViewController.h"
 #import "RDLPushUpsModel.h"
 #import "RDLChartView.h"
+#import "Graphics.h"
 
 @interface RDLChartViewController ()
 
