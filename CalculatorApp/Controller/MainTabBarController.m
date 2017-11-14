@@ -7,8 +7,9 @@
 //
 
 #import "MainTabBarController.h"
-#import "GraphicsViewController.h"
-#import "ViewController.h"
+#import "RDLChartViewController.h"
+#import "CalculatorViewController.h"
+#import "RDLSplitGraphicsViewController.h"
 
 @interface MainTabBarController ()
 
@@ -23,9 +24,9 @@
     NSMutableArray *tabs = [[NSMutableArray alloc] init];
     
     
-    ViewController *calculator = [mainStoryboard instantiateViewControllerWithIdentifier:@"calculator"];
+    CalculatorViewController *calculator = [mainStoryboard instantiateViewControllerWithIdentifier:@"calculator"];
     calculator.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Calculator" image:[UIImage imageNamed:@"calculatorIcon"] tag:1];
-    GraphicsViewController *graphics = [graphicsStoryboard instantiateViewControllerWithIdentifier:@"graphics"];
+    RDLSplitGraphicsViewController *graphics = [graphicsStoryboard instantiateViewControllerWithIdentifier:@"graphics"];
     graphics.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Graphics" image:[UIImage imageNamed:@"graphicsIcon"] tag:2];
     [tabs addObject:calculator];
     [tabs addObject:graphics];

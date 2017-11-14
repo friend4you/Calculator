@@ -6,27 +6,27 @@
 //  Copyright © 2017 Vladyslav Arseniuk. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "CalculatorModel.h"
+#import "CalculatorViewController.h"
+#import "Calculator.h"
 
-@interface ViewController ()
+@interface CalculatorViewController ()
 
 @property (assign, nonatomic) BOOL isUserInTheMiddleOfNumber;
 @property (assign, nonatomic) double displayValue;
-@property (strong, nonatomic) CalculatorModel *model;
+@property (strong, nonatomic) Calculator *model;
 @property (assign, nonatomic) BOOL isPointInTheNumber;
 @property (weak, nonatomic) IBOutlet UIButton *dotButton;
 
 @end
 
-@implementation ViewController
+@implementation CalculatorViewController
 
 
 
-- (CalculatorModel *)model {
+- (Calculator *)model {
     
     if (!_model) {
-        _model = [CalculatorModel new];
+        _model = [Calculator new];
     }
     
     return _model;

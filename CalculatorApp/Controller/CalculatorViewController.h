@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CalculatorHistoryViewController.h"
 
-@interface ViewController : UIViewController <CalculatorHistoryDelegate, UIGestureRecognizerDelegate>
+@interface CalculatorViewController : UIViewController <CalculatorHistoryDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 

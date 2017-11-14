@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		933F6CD21FA8A06D005B8305 /* CalculatorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 933F6CD11FA8A06D005B8305 /* CalculatorModel.m */; };
+		933F6CD21FA8A06D005B8305 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 933F6CD11FA8A06D005B8305 /* Calculator.m */; };
 		935664901FB5A1320037F4B3 /* Graphics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9356648F1FB5A1320037F4B3 /* Graphics.storyboard */; };
 		9356FBBC1FB5D3FE0028C782 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */; };
 		9356FBBF1FB5E7280028C782 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBBE1FB5E7280028C782 /* MainTabBarController.m */; };
-		9356FBC21FB5EA340028C782 /* GraphicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBC11FB5EA340028C782 /* GraphicsViewController.m */; };
 		938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */; };
+		93A9CBB91FBB17D400AEBF4B /* RDLChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A9CBB51FBB17D200AEBF4B /* RDLChartViewController.m */; };
+		93A9CBBA1FBB17D400AEBF4B /* RDLPushUpsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A9CBB61FBB17D300AEBF4B /* RDLPushUpsModel.m */; };
+		93A9CBBB1FBB17D400AEBF4B /* RDLChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A9CBB81FBB17D300AEBF4B /* RDLChartView.m */; };
+		93A9CBBE1FBB17DF00AEBF4B /* RDLViewControllerLogLifecycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A9CBBC1FBB17DE00AEBF4B /* RDLViewControllerLogLifecycleViewController.m */; };
+		93A9CBC21FBB21C600AEBF4B /* RDLSplitGraphicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A9CBC11FBB21C600AEBF4B /* RDLSplitGraphicsViewController.m */; };
+		93A9CBC51FBB2DA000AEBF4B /* Graphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A9CBC41FBB2DA000AEBF4B /* Graphics.m */; };
+		93A9CBC81FBB334000AEBF4B /* RDLSelectChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A9CBC71FBB334000AEBF4B /* RDLSelectChartViewController.m */; };
 		93BDBB581FA33EF900748B5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BDBB571FA33EF900748B5D /* AppDelegate.m */; };
-		93BDBB5B1FA33EF900748B5D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BDBB5A1FA33EF900748B5D /* ViewController.m */; };
+		93BDBB5B1FA33EF900748B5D /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BDBB5A1FA33EF900748B5D /* CalculatorViewController.m */; };
 		93BDBB5E1FA33EF900748B5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93BDBB5C1FA33EF900748B5D /* Main.storyboard */; };
 		93BDBB601FA33EFA00748B5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93BDBB5F1FA33EFA00748B5D /* Assets.xcassets */; };
 		93BDBB631FA33EFA00748B5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93BDBB611FA33EFA00748B5D /* LaunchScreen.storyboard */; };
@@ -22,22 +28,35 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		933F6CD01FA8A06D005B8305 /* CalculatorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorModel.h; sourceTree = "<group>"; };
-		933F6CD11FA8A06D005B8305 /* CalculatorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorModel.m; sourceTree = "<group>"; };
+		933F6CD01FA8A06D005B8305 /* Calculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
+		933F6CD11FA8A06D005B8305 /* Calculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
 		9356648F1FB5A1320037F4B3 /* Graphics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graphics.storyboard; sourceTree = "<group>"; };
 		9356FBBA1FB5D3FE0028C782 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
 		9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
 		9356FBBD1FB5E7280028C782 /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		9356FBBE1FB5E7280028C782 /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
-		9356FBC01FB5EA340028C782 /* GraphicsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicsViewController.h; sourceTree = "<group>"; };
-		9356FBC11FB5EA340028C782 /* GraphicsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphicsViewController.m; sourceTree = "<group>"; };
 		9388726E1FB071F300B632EB /* CalculatorHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorHistoryViewController.h; sourceTree = "<group>"; };
 		9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorHistoryViewController.m; sourceTree = "<group>"; };
+		93A9CBB21FBB17D000AEBF4B /* RDLChartPointProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDLChartPointProtocol.h; sourceTree = "<group>"; };
+		93A9CBB31FBB17D000AEBF4B /* RDLPushUpsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDLPushUpsModel.h; sourceTree = "<group>"; };
+		93A9CBB41FBB17D100AEBF4B /* RDLChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDLChartViewController.h; sourceTree = "<group>"; };
+		93A9CBB51FBB17D200AEBF4B /* RDLChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDLChartViewController.m; sourceTree = "<group>"; };
+		93A9CBB61FBB17D300AEBF4B /* RDLPushUpsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDLPushUpsModel.m; sourceTree = "<group>"; };
+		93A9CBB71FBB17D300AEBF4B /* RDLChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDLChartView.h; sourceTree = "<group>"; };
+		93A9CBB81FBB17D300AEBF4B /* RDLChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDLChartView.m; sourceTree = "<group>"; };
+		93A9CBBC1FBB17DE00AEBF4B /* RDLViewControllerLogLifecycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDLViewControllerLogLifecycleViewController.m; sourceTree = "<group>"; };
+		93A9CBBD1FBB17DE00AEBF4B /* RDLViewControllerLogLifecycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDLViewControllerLogLifecycleViewController.h; sourceTree = "<group>"; };
+		93A9CBC01FBB21C600AEBF4B /* RDLSplitGraphicsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDLSplitGraphicsViewController.h; sourceTree = "<group>"; };
+		93A9CBC11FBB21C600AEBF4B /* RDLSplitGraphicsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDLSplitGraphicsViewController.m; sourceTree = "<group>"; };
+		93A9CBC31FBB2DA000AEBF4B /* Graphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
+		93A9CBC41FBB2DA000AEBF4B /* Graphics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Graphics.m; sourceTree = "<group>"; };
+		93A9CBC61FBB334000AEBF4B /* RDLSelectChartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDLSelectChartViewController.h; sourceTree = "<group>"; };
+		93A9CBC71FBB334000AEBF4B /* RDLSelectChartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDLSelectChartViewController.m; sourceTree = "<group>"; };
 		93BDBB531FA33EF900748B5D /* CalculatorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalculatorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93BDBB561FA33EF900748B5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		93BDBB571FA33EF900748B5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		93BDBB591FA33EF900748B5D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		93BDBB5A1FA33EF900748B5D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		93BDBB591FA33EF900748B5D /* CalculatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
+		93BDBB5A1FA33EF900748B5D /* CalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		93BDBB5D1FA33EF900748B5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93BDBB5F1FA33EFA00748B5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93BDBB621FA33EFA00748B5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,8 +78,10 @@
 		933F6CD31FA8A078005B8305 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				933F6CD01FA8A06D005B8305 /* CalculatorModel.h */,
-				933F6CD11FA8A06D005B8305 /* CalculatorModel.m */,
+				933F6CD01FA8A06D005B8305 /* Calculator.h */,
+				933F6CD11FA8A06D005B8305 /* Calculator.m */,
+				93A9CBC31FBB2DA000AEBF4B /* Graphics.h */,
+				93A9CBC41FBB2DA000AEBF4B /* Graphics.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -77,16 +98,34 @@
 		935664921FB5A1750037F4B3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9356FBC01FB5EA340028C782 /* GraphicsViewController.h */,
-				9356FBC11FB5EA340028C782 /* GraphicsViewController.m */,
 				9388726E1FB071F300B632EB /* CalculatorHistoryViewController.h */,
 				9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */,
-				93BDBB591FA33EF900748B5D /* ViewController.h */,
-				93BDBB5A1FA33EF900748B5D /* ViewController.m */,
+				93BDBB591FA33EF900748B5D /* CalculatorViewController.h */,
+				93BDBB5A1FA33EF900748B5D /* CalculatorViewController.m */,
 				9356FBBD1FB5E7280028C782 /* MainTabBarController.h */,
 				9356FBBE1FB5E7280028C782 /* MainTabBarController.m */,
+				93A9CBB41FBB17D100AEBF4B /* RDLChartViewController.h */,
+				93A9CBB51FBB17D200AEBF4B /* RDLChartViewController.m */,
+				93A9CBC01FBB21C600AEBF4B /* RDLSplitGraphicsViewController.h */,
+				93A9CBC11FBB21C600AEBF4B /* RDLSplitGraphicsViewController.m */,
+				93A9CBC61FBB334000AEBF4B /* RDLSelectChartViewController.h */,
+				93A9CBC71FBB334000AEBF4B /* RDLSelectChartViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		93A9CBBF1FBB192600AEBF4B /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				93A9CBB21FBB17D000AEBF4B /* RDLChartPointProtocol.h */,
+				93A9CBB71FBB17D300AEBF4B /* RDLChartView.h */,
+				93A9CBB81FBB17D300AEBF4B /* RDLChartView.m */,
+				93A9CBB31FBB17D000AEBF4B /* RDLPushUpsModel.h */,
+				93A9CBB61FBB17D300AEBF4B /* RDLPushUpsModel.m */,
+				93A9CBBD1FBB17DE00AEBF4B /* RDLViewControllerLogLifecycleViewController.h */,
+				93A9CBBC1FBB17DE00AEBF4B /* RDLViewControllerLogLifecycleViewController.m */,
+			);
+			path = Graphics;
 			sourceTree = "<group>";
 		};
 		93BDBB4A1FA33EF700748B5D = {
@@ -119,6 +158,7 @@
 				93BDBB651FA33EFA00748B5D /* main.m */,
 				9356FBBA1FB5D3FE0028C782 /* HistoryTableViewCell.h */,
 				9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */,
+				93A9CBBF1FBB192600AEBF4B /* Graphics */,
 			);
 			path = CalculatorApp;
 			sourceTree = "<group>";
@@ -195,14 +235,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93A9CBB91FBB17D400AEBF4B /* RDLChartViewController.m in Sources */,
+				93A9CBC51FBB2DA000AEBF4B /* Graphics.m in Sources */,
+				93A9CBC81FBB334000AEBF4B /* RDLSelectChartViewController.m in Sources */,
+				93A9CBBA1FBB17D400AEBF4B /* RDLPushUpsModel.m in Sources */,
 				938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */,
 				9356FBBF1FB5E7280028C782 /* MainTabBarController.m in Sources */,
-				93BDBB5B1FA33EF900748B5D /* ViewController.m in Sources */,
-				9356FBC21FB5EA340028C782 /* GraphicsViewController.m in Sources */,
+				93BDBB5B1FA33EF900748B5D /* CalculatorViewController.m in Sources */,
+				93A9CBBE1FBB17DF00AEBF4B /* RDLViewControllerLogLifecycleViewController.m in Sources */,
+				93A9CBC21FBB21C600AEBF4B /* RDLSplitGraphicsViewController.m in Sources */,
 				9356FBBC1FB5D3FE0028C782 /* HistoryTableViewCell.m in Sources */,
 				93BDBB661FA33EFA00748B5D /* main.m in Sources */,
+				93A9CBBB1FBB17D400AEBF4B /* RDLChartView.m in Sources */,
 				93BDBB581FA33EF900748B5D /* AppDelegate.m in Sources */,
-				933F6CD21FA8A06D005B8305 /* CalculatorModel.m in Sources */,
+				933F6CD21FA8A06D005B8305 /* Calculator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

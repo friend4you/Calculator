@@ -6,7 +6,7 @@
 //  Copyright © 2017 Vladyslav Arseniuk. All rights reserved.
 //
 
-#import "CalculatorModel.h"
+#import "Calculator.h"
 
 typedef NS_ENUM(NSUInteger, Operator) {
     OperatorUndefined,
@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, Operator) {
 typedef double(^Unary)(double);
 typedef double(^Binary)(double, double);
 
-@interface CalculatorModel()
+@interface Calculator()
 
 @property (assign, nonatomic) double result;
 @property (assign, nonatomic) double firstNumberInExpression;
@@ -34,7 +34,7 @@ typedef double(^Binary)(double, double);
 
 @end
 
-@implementation CalculatorModel
+@implementation Calculator
 
 - (double)result {
     return self.accumulate;

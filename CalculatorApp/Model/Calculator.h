@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CalculatorModel : NSObject
+@interface Calculator : NSObject
 
 - (void)performOperation:(NSString *)mathematicalSymbol;
 
