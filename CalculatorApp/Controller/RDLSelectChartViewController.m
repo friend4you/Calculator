@@ -29,9 +29,7 @@
             chartViewController.navigationItem.title = chartButton.currentTitle;
         }
         chartViewController.model = [graphics getChartById:segue.identifier];
-        
-    }
-    
+    }    
 }
 
 @end

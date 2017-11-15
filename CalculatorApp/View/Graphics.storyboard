@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVE-iH-yCK" customClass="RDLChartView">
-                                <rect key="frame" x="16" y="36" width="343" height="343"/>
+                                <rect key="frame" x="16" y="80" width="343" height="343"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="343" id="7Hq-eh-Mtv"/>
@@ -94,7 +94,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="Chart 1"/>
                                         <connections>
-                                            <segue destination="1rQ-dr-qWb" kind="showDetail" identifier="chart1" id="uUR-Ge-6kV"/>
+                                            <segue destination="ZGg-pi-5Mq" kind="showDetail" identifier="chart1" id="QeK-Co-Y8t"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De6-PU-OXk">
@@ -102,7 +102,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="Chart 2"/>
                                         <connections>
-                                            <segue destination="1rQ-dr-qWb" kind="showDetail" identifier="chart2" id="qdH-Q2-i6k"/>
+                                            <segue destination="ZGg-pi-5Mq" kind="showDetail" identifier="chart2" id="jE1-CD-X7l"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3Y-Qs-wjB">
@@ -110,7 +110,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="Chart 3"/>
                                         <connections>
-                                            <segue destination="1rQ-dr-qWb" kind="showDetail" identifier="chart3" id="3Qf-IC-hw6"/>
+                                            <segue destination="ZGg-pi-5Mq" kind="showDetail" identifier="chart3" id="H3X-MT-Be7"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -166,6 +166,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3Qf-IC-hw6"/>
+        <segue reference="jE1-CD-X7l"/>
     </inferredMetricsTieBreakers>
 </document>
