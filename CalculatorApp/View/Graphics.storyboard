@@ -12,7 +12,7 @@
         <!--Split Graphics View Controller-->
         <scene sceneID="E2Q-lt-cwv">
             <objects>
-                <splitViewController storyboardIdentifier="graphics" id="Zy1-1M-WX5" customClass="RDLSplitGraphicsViewController" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="RDLSplitGraphicsViewController" id="Zy1-1M-WX5" customClass="RDLSplitGraphicsViewController" sceneMemberID="viewController">
                     <connections>
                         <segue destination="haZ-cf-wQv" kind="relationship" relationship="masterViewController" id="HO6-G0-LDg"/>
                         <segue destination="ZGg-pi-5Mq" kind="relationship" relationship="detailViewController" id="DGz-IS-2yY"/>
@@ -25,7 +25,7 @@
         <!--Chart View Controller-->
         <scene sceneID="W7m-JR-Ajd">
             <objects>
-                <viewController storyboardIdentifier="chartView" id="1rQ-dr-qWb" customClass="RDLChartViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RDLChartViewController" id="1rQ-dr-qWb" customClass="RDLChartViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rVW-d8-F8z"/>
                         <viewControllerLayoutGuide type="bottom" id="IOh-nA-yW1"/>
@@ -77,7 +77,7 @@
         <!--Select Chart-->
         <scene sceneID="DuZ-Kj-XgT">
             <objects>
-                <viewController id="QbW-YZ-AfU" customClass="RDLSelectChartViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RDLSelectChartViewController" id="QbW-YZ-AfU" customClass="RDLSelectChartViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BXd-Lb-Hus"/>
                         <viewControllerLayoutGuide type="bottom" id="3fX-P1-9UB"/>

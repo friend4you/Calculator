@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		933F6CD21FA8A06D005B8305 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 933F6CD11FA8A06D005B8305 /* Calculator.m */; };
 		935664901FB5A1320037F4B3 /* Graphics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9356648F1FB5A1320037F4B3 /* Graphics.storyboard */; };
+		9356A0851FBD95C700C4DEDC /* Colors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9356A0841FBD95C600C4DEDC /* Colors.storyboard */; };
+		9356A0881FBD9F5400C4DEDC /* GreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A0871FBD9F5400C4DEDC /* GreenViewController.m */; };
+		9356A08B1FBD9F9000C4DEDC /* RedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A08A1FBD9F9000C4DEDC /* RedViewController.m */; };
+		9356A08E1FBD9FA200C4DEDC /* BlueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A08D1FBD9FA200C4DEDC /* BlueViewController.m */; };
 		9356FBBC1FB5D3FE0028C782 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */; };
 		9356FBBF1FB5E7280028C782 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBBE1FB5E7280028C782 /* MainTabBarController.m */; };
 		937F4ED71FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */; };
@@ -32,6 +36,13 @@
 		933F6CD01FA8A06D005B8305 /* Calculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		933F6CD11FA8A06D005B8305 /* Calculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
 		9356648F1FB5A1320037F4B3 /* Graphics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graphics.storyboard; sourceTree = "<group>"; };
+		9356A0841FBD95C600C4DEDC /* Colors.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Colors.storyboard; sourceTree = "<group>"; };
+		9356A0861FBD9F5400C4DEDC /* GreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GreenViewController.h; sourceTree = "<group>"; };
+		9356A0871FBD9F5400C4DEDC /* GreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GreenViewController.m; sourceTree = "<group>"; };
+		9356A0891FBD9F8F00C4DEDC /* RedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedViewController.h; sourceTree = "<group>"; };
+		9356A08A1FBD9F9000C4DEDC /* RedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedViewController.m; sourceTree = "<group>"; };
+		9356A08C1FBD9FA200C4DEDC /* BlueViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueViewController.h; sourceTree = "<group>"; };
+		9356A08D1FBD9FA200C4DEDC /* BlueViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlueViewController.m; sourceTree = "<group>"; };
 		9356FBBA1FB5D3FE0028C782 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
 		9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
 		9356FBBD1FB5E7280028C782 /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
@@ -94,6 +105,7 @@
 			children = (
 				93BDBB5C1FA33EF900748B5D /* Main.storyboard */,
 				9356648F1FB5A1320037F4B3 /* Graphics.storyboard */,
+				9356A0841FBD95C600C4DEDC /* Colors.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -101,12 +113,31 @@
 		935664921FB5A1750037F4B3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9388726E1FB071F300B632EB /* CalculatorHistoryViewController.h */,
-				9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */,
-				93BDBB591FA33EF900748B5D /* CalculatorViewController.h */,
-				93BDBB5A1FA33EF900748B5D /* CalculatorViewController.m */,
+				9356A0911FBDA01B00C4DEDC /* CalculatorContollers */,
 				9356FBBD1FB5E7280028C782 /* MainTabBarController.h */,
 				9356FBBE1FB5E7280028C782 /* MainTabBarController.m */,
+				9356A0901FBDA00300C4DEDC /* RDLGraphicsControllers */,
+				9356A08F1FBD9FE500C4DEDC /* ColorsControllers */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9356A08F1FBD9FE500C4DEDC /* ColorsControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9356A0861FBD9F5400C4DEDC /* GreenViewController.h */,
+				9356A0871FBD9F5400C4DEDC /* GreenViewController.m */,
+				9356A0891FBD9F8F00C4DEDC /* RedViewController.h */,
+				9356A08A1FBD9F9000C4DEDC /* RedViewController.m */,
+				9356A08C1FBD9FA200C4DEDC /* BlueViewController.h */,
+				9356A08D1FBD9FA200C4DEDC /* BlueViewController.m */,
+			);
+			path = ColorsControllers;
+			sourceTree = "<group>";
+		};
+		9356A0901FBDA00300C4DEDC /* RDLGraphicsControllers */ = {
+			isa = PBXGroup;
+			children = (
 				93A9CBB41FBB17D100AEBF4B /* RDLChartViewController.h */,
 				93A9CBB51FBB17D200AEBF4B /* RDLChartViewController.m */,
 				93A9CBC01FBB21C600AEBF4B /* RDLSplitGraphicsViewController.h */,
@@ -114,7 +145,27 @@
 				93A9CBC61FBB334000AEBF4B /* RDLSelectChartViewController.h */,
 				93A9CBC71FBB334000AEBF4B /* RDLSelectChartViewController.m */,
 			);
-			path = Controller;
+			path = RDLGraphicsControllers;
+			sourceTree = "<group>";
+		};
+		9356A0911FBDA01B00C4DEDC /* CalculatorContollers */ = {
+			isa = PBXGroup;
+			children = (
+				9388726E1FB071F300B632EB /* CalculatorHistoryViewController.h */,
+				9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */,
+				93BDBB591FA33EF900748B5D /* CalculatorViewController.h */,
+				93BDBB5A1FA33EF900748B5D /* CalculatorViewController.m */,
+			);
+			path = CalculatorContollers;
+			sourceTree = "<group>";
+		};
+		9356A0921FBDA04800C4DEDC /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				937F4ED51FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.h */,
+				937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		93A9CBBF1FBB192600AEBF4B /* Graphics */ = {
@@ -162,8 +213,7 @@
 				9356FBBA1FB5D3FE0028C782 /* HistoryTableViewCell.h */,
 				9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */,
 				93A9CBBF1FBB192600AEBF4B /* Graphics */,
-				937F4ED51FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.h */,
-				937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */,
+				9356A0921FBDA04800C4DEDC /* Categories */,
 			);
 			path = CalculatorApp;
 			sourceTree = "<group>";
@@ -227,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93BDBB631FA33EFA00748B5D /* LaunchScreen.storyboard in Resources */,
+				9356A0851FBD95C700C4DEDC /* Colors.storyboard in Resources */,
 				93BDBB601FA33EFA00748B5D /* Assets.xcassets in Resources */,
 				93BDBB5E1FA33EF900748B5D /* Main.storyboard in Resources */,
 				935664901FB5A1320037F4B3 /* Graphics.storyboard in Resources */,
@@ -240,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9356A0881FBD9F5400C4DEDC /* GreenViewController.m in Sources */,
 				93A9CBB91FBB17D400AEBF4B /* RDLChartViewController.m in Sources */,
 				93A9CBC51FBB2DA000AEBF4B /* Graphics.m in Sources */,
 				93A9CBC81FBB334000AEBF4B /* RDLSelectChartViewController.m in Sources */,
@@ -247,6 +299,8 @@
 				938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */,
 				9356FBBF1FB5E7280028C782 /* MainTabBarController.m in Sources */,
 				93BDBB5B1FA33EF900748B5D /* CalculatorViewController.m in Sources */,
+				9356A08E1FBD9FA200C4DEDC /* BlueViewController.m in Sources */,
+				9356A08B1FBD9F9000C4DEDC /* RedViewController.m in Sources */,
 				93A9CBBE1FBB17DF00AEBF4B /* RDLViewControllerLogLifecycleViewController.m in Sources */,
 				937F4ED71FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m in Sources */,
 				93A9CBC21FBB21C600AEBF4B /* RDLSplitGraphicsViewController.m in Sources */,

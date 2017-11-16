@@ -36,7 +36,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExpressionCell" forIndexPath:indexPath];
+    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCell" forIndexPath:indexPath];
     
     cell.expressionLabel.text = [self.expressionsForHistory objectAtIndex:indexPath.row];
     cell.resultLabel.text = [self.resultsForHistory objectAtIndex:indexPath.row];

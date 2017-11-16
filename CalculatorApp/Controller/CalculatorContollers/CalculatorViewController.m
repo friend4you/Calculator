@@ -86,7 +86,7 @@
 }
 
 - (IBAction)showExpressionsHistory:(UIButton *)sender {
-    CalculatorHistoryViewController *history = [self.storyboard instantiateViewControllerWithIdentifier:@"historyViewController"];
+    CalculatorHistoryViewController *history = [self.storyboard instantiateViewControllerWithIdentifier:@"CalculatorHistoryViewController"];
     history.delegate = self;
     history.expressionsForHistory = self.model.expressionsForHistory;
     history.resultsForHistory = self.model.resultsForHistory;
