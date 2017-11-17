@@ -1,0 +1,1 @@
+../../../ElasticTransitionObjC/ElasticTransition/Utils/HelperFunctions.h
