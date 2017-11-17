@@ -10,4 +10,6 @@
 
 @interface RDLSplitGraphicsViewController : UISplitViewController<UISplitViewControllerDelegate>
 
++ (RDLSplitGraphicsViewController *)instantiateFromStoryboard;
+
 @end

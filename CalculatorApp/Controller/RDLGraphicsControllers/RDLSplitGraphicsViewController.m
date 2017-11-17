@@ -14,6 +14,12 @@
 
 @implementation RDLSplitGraphicsViewController
 
++ (RDLSplitGraphicsViewController *)instantiateFromStoryboard {
+    UIStoryboard *graphicsStoryboard = [UIStoryboard storyboardWithName:@"Graphics" bundle:nil];
+    RDLSplitGraphicsViewController *controller = [graphicsStoryboard instantiateViewControllerWithIdentifier:NSStringFromClass([RDLSplitGraphicsViewController class])];
+    return controller;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.delegate = self;

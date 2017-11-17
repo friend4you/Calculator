@@ -13,5 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 
++ (CalculatorViewController *)instantiateFromStoryboard;
+
 @end
 

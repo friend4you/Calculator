@@ -8,28 +8,16 @@
 
 #import "RedViewController.h"
 
-@interface RedViewController ()
-
-@end
-
 @implementation RedViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
++ (RedViewController *)instantiateFromStoryboard {
+    UIStoryboard *colorsStoryboard = [UIStoryboard storyboardWithName:@"Colors" bundle:nil];
+    RedViewController *controller = [colorsStoryboard instantiateViewControllerWithIdentifier:NSStringFromClass([RedViewController class])];
+    return controller;
 }
 
 - (IBAction)unwintToRedViewController:(UIStoryboardSegue *)unwindSegue {
     
 }
-
 
 @end

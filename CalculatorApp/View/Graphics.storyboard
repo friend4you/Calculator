@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -94,7 +95,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="Chart 1"/>
                                         <connections>
-                                            <segue destination="ZGg-pi-5Mq" kind="showDetail" identifier="chart1" id="QeK-Co-Y8t"/>
+                                            <segue destination="ZGg-pi-5Mq" kind="showDetail" identifier="chart1" id="QeK-Co-Y8t">
+                                                <segue key="commit" inheritsFrom="parent" id="44y-HN-LCf"/>
+                                                <segue key="preview" inheritsFrom="commit" id="BcD-lq-1TW"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De6-PU-OXk">
@@ -102,7 +106,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="Chart 2"/>
                                         <connections>
-                                            <segue destination="ZGg-pi-5Mq" kind="showDetail" identifier="chart2" id="jE1-CD-X7l"/>
+                                            <segue destination="ZGg-pi-5Mq" kind="showDetail" identifier="chart2" id="jE1-CD-X7l">
+                                                <segue key="commit" inheritsFrom="parent" id="3u6-un-49b"/>
+                                                <segue key="preview" inheritsFrom="commit" id="brP-wH-SHo"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3Y-Qs-wjB">
@@ -110,7 +117,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="Chart 3"/>
                                         <connections>
-                                            <segue destination="ZGg-pi-5Mq" kind="showDetail" identifier="chart3" id="H3X-MT-Be7"/>
+                                            <segue destination="ZGg-pi-5Mq" kind="showDetail" identifier="chart3" id="H3X-MT-Be7">
+                                                <segue key="commit" inheritsFrom="parent" id="kwz-Kp-quT"/>
+                                                <segue key="preview" inheritsFrom="commit" id="o1d-mR-kDK"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -166,6 +176,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jE1-CD-X7l"/>
+        <segue reference="QeK-Co-Y8t"/>
     </inferredMetricsTieBreakers>
 </document>

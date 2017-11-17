@@ -21,7 +21,11 @@
 
 @implementation CalculatorViewController
 
-
++ (CalculatorViewController *)instantiateFromStoryboard {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    CalculatorViewController *controller = [mainStoryboard instantiateViewControllerWithIdentifier:NSStringFromClass([CalculatorViewController class])];
+    return controller;
+}
 
 - (Calculator *)model {
     
@@ -59,7 +63,6 @@
     }
     
     if(sender == self.dotButton)
-    //if ([sender.titleLabel.text isEqualToString:@"."])
     {
         if (self.isPointInTheNumber) {
             return;
@@ -90,6 +93,7 @@
     history.delegate = self;
     history.expressionsForHistory = self.model.expressionsForHistory;
     history.resultsForHistory = self.model.resultsForHistory;
+    
     [self.navigationController pushViewController:history animated:YES];
 }
 

@@ -20,23 +20,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIStoryboard *graphicsStoryboard = [UIStoryboard storyboardWithName:@"Graphics" bundle:nil];
-    UIStoryboard *colorsStroyboard = [UIStoryboard storyboardWithName:@"Colors" bundle:nil];
-    NSMutableArray *tabs = [[NSMutableArray alloc] init];
+    NSMutableArray *tabs = [[NSMutableArray alloc] initWithArray:[self viewControllers]];
     
-    
-    CalculatorViewController *calculator = [mainStoryboard instantiateViewControllerWithIdentifier:@"CalculatorViewController"];
+    CalculatorViewController *calculator = [CalculatorViewController instantiateFromStoryboard];
     calculator.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Calculator" image:[UIImage imageNamed:@"calculatorIcon"] tag:1];
-    RDLSplitGraphicsViewController *graphics = [graphicsStoryboard instantiateViewControllerWithIdentifier:@"RDLSplitGraphicsViewController"];
+    RDLSplitGraphicsViewController *graphics = [RDLSplitGraphicsViewController instantiateFromStoryboard];
     graphics.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Graphics" image:[UIImage imageNamed:@"graphicsIcon"] tag:2];
-    RedViewController *red = [colorsStroyboard instantiateViewControllerWithIdentifier:@"RedViewController"];
-    red.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Colors" image:[UIImage imageNamed:@"graphicsIcon"] tag:3];
+    RedViewController *red = [RedViewController instantiateFromStoryboard];
+    red.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Colors" image:[UIImage imageNamed:@"colorIcon"] tag:3];
+    
     [tabs addObject:calculator];
     [tabs addObject:graphics];
     [tabs addObject:red];
-    [self setViewControllers:tabs];
-    
+    [self setViewControllers:tabs];    
 }
 
 @end
