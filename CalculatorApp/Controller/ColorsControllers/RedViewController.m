@@ -7,8 +7,20 @@
 //
 
 #import "RedViewController.h"
+#import "Animator.h"
 
 @implementation RedViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+}
+
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    Animator *animator = [[Animator alloc] initWithFrame:self.view.frame];
+    return animator;
+}
 
 + (RedViewController *)instantiateFromStoryboard {
     UIStoryboard *colorsStoryboard = [UIStoryboard storyboardWithName:@"Colors" bundle:nil];
@@ -18,6 +30,10 @@
 
 - (IBAction)unwintToRedViewController:(UIStoryboardSegue *)unwindSegue {
     
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    segue.destinationViewController.transitioningDelegate = self;
 }
 
 @end

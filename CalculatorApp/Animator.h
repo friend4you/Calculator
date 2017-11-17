@@ -11,4 +11,6 @@
 
 @interface Animator : NSObject <UIViewControllerAnimatedTransitioning>
 
+- (instancetype)initWithFrame:(CGRect)originFrame;
+
 @end

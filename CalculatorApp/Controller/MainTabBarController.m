@@ -11,6 +11,7 @@
 #import "CalculatorViewController.h"
 #import "RDLSplitGraphicsViewController.h"
 #import "RedViewController.h"
+#import "AuthController.h"
 
 @interface MainTabBarController ()
 
@@ -28,10 +29,13 @@
     graphics.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Graphics" image:[UIImage imageNamed:@"graphicsIcon"] tag:2];
     RedViewController *red = [RedViewController instantiateFromStoryboard];
     red.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Colors" image:[UIImage imageNamed:@"colorIcon"] tag:3];
+    AuthController *auth = [AuthController instantiateFromStoryboard];
+    auth.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"profileIcon"] tag:4];
     
     [tabs addObject:calculator];
     [tabs addObject:graphics];
     [tabs addObject:red];
+    [tabs addObject:auth];
     [self setViewControllers:tabs];    
 }
 

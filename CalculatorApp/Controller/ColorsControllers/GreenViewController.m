@@ -7,6 +7,7 @@
 //
 
 #import "GreenViewController.h"
+#import "Animator.h"
 
 @implementation GreenViewController
 

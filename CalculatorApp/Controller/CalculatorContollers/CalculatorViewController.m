@@ -8,6 +8,7 @@
 
 #import "CalculatorViewController.h"
 #import "Calculator.h"
+#import <ElasticTransition.h>
 
 @interface CalculatorViewController ()
 
@@ -38,7 +39,6 @@
 
 - (double)displayValue {
     return self.resultLabel.text.doubleValue;
-    
 }
 
 
@@ -54,7 +54,9 @@
     deleteNumeralRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
     [self.resultLabel setUserInteractionEnabled:YES];
     deleteNumeralRecognizer.delegate = self;
-    [self.resultLabel addGestureRecognizer:deleteNumeralRecognizer];    
+    [self.resultLabel addGestureRecognizer:deleteNumeralRecognizer];
+    
+    
 }
 
 - (IBAction)pressDigitButton:(UIButton *)sender {
@@ -93,6 +95,14 @@
     history.delegate = self;
     history.expressionsForHistory = self.model.expressionsForHistory;
     history.resultsForHistory = self.model.resultsForHistory;
+    
+    ElasticTransition *transition = [[ElasticTransition alloc]init];
+    transition.sticky = YES;
+    transition.showShadow = YES;
+    transition.panThreshold = 0.4;
+    transition.radiusFactor = 0.1;
+    transition.transformType = TRANSLATEMID;
+    self.navigationController.delegate = transition;
     
     [self.navigationController pushViewController:history animated:YES];
 }
