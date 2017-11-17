@@ -7,6 +7,7 @@
 //
 
 #import "RedViewController.h"
+#import "GreenViewController.h"
 #import "Animator.h"
 
 @implementation RedViewController
@@ -32,7 +33,17 @@
     
 }
 
+- (IBAction)goToGreenViewControllerButton:(UIButton *)sender {
+    GreenViewController *greenController = [self.storyboard instantiateViewControllerWithIdentifier:@"GreenViewController"];
+    greenController.modalPresentationStyle = UIModalPresentationCustom;
+    greenController.transitioningDelegate = self;
+    [self presentViewController:greenController animated:YES completion:nil];
+}
+
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    segue.destinationViewController.modalPresentationStyle = UIModalPresentationCustom;
     segue.destinationViewController.transitioningDelegate = self;
 }
 

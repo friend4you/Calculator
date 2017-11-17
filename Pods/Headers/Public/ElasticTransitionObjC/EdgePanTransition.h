@@ -1,1 +1,0 @@
-../../../ElasticTransitionObjC/ElasticTransition/EdgePanTransition.h

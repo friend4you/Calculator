@@ -40,7 +40,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ff9-rs-L1X" kind="show" id="kY9-AE-3yH"/>
+                                    <action selector="goToGreenViewControllerButton:" destination="7aV-mI-Qo7" eventType="touchUpInside" id="Zfp-wy-QJf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -68,13 +68,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pC7-aZ-eBq">
-                                <rect key="frame" x="102" y="289" width="171" height="89"/>
+                                <rect key="frame" x="102" y="245" width="171" height="177"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="kgc-rQ-euM" kind="presentation" identifier="segueBlueViewController" id="4G2-8y-2BF"/>
+                                    <segue destination="kgc-rQ-euM" kind="presentation" identifier="segueBlueViewController" id="ZpR-eY-Me5"/>
                                 </connections>
                             </button>
                         </subviews>
