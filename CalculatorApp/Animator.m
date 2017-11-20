@@ -19,7 +19,6 @@
 @implementation Animator
 
 - (CATransform3D)yRotation:(double)angle {
-    
     return CATransform3DMakeRotation(angle, 0.0, 1.0, 0.0);
 }
 
@@ -41,60 +40,66 @@
 - (void)animateTransition:(nonnull id<UIViewControllerContextTransitioning>)transitionContext {
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UIView *snapshot = [toViewController.view snapshotViewAfterScreenUpdates:YES];
-    
-    if (!snapshot) {
+    UIView *snapshotTo = [toViewController.view snapshotViewAfterScreenUpdates:YES];
+
+    if (!snapshotTo) {
         return;
     }
-    
+
     UIView *containerView = transitionContext.containerView;
     CGRect finalFrame = [transitionContext finalFrameForViewController:toViewController];
-    
-    snapshot.frame = self.originFrame;
-    snapshot.layer.cornerRadius = 20;
-    snapshot.layer.masksToBounds = YES;
-    
-    
+
+    snapshotTo.frame = self.originFrame;
+    snapshotTo.layer.cornerRadius = 20;
+    snapshotTo.layer.masksToBounds = YES;
+
+
     [containerView addSubview:toViewController.view];
-    [containerView addSubview:snapshot];
+    [containerView addSubview:snapshotTo];
     [toViewController.view setHidden:YES];
-    
+
     containerView = [self perspectiveTransformFor:containerView];
-    
+
     double angle = M_PI / 2;
-    snapshot.layer.transform = [self yRotation:angle];
-    
+    snapshotTo.layer.transform = [self yRotation:angle];
+
     NSTimeInterval duration = [self transitionDuration:transitionContext];
-    
+
     [UIView animateKeyframesWithDuration:duration
                                    delay:0
                                  options:UIViewKeyframeAnimationOptionCalculationModeCubic
                               animations:^{
-                                  
-                                  [UIView addKeyframeWithRelativeStartTime:0.0
-                                                          relativeDuration:1/3
+//                                  [UIView addKeyframeWithRelativeStartTime:0.0
+//                                                          relativeDuration:0.25
+//                                                                animations:^{
+//                                                                    fromViewController.view.transform = CGAffineTransformMakeScale(0.8, 0.5);
+//                                                                }];
+                                  [UIView addKeyframeWithRelativeStartTime:0.25
+                                                          relativeDuration:0.25
                                                                 animations:^{
-                                                                    fromViewController.view.layer.transform = [self yRotation:(-angle)];
+                                                                    fromViewController.view.layer.transform = [self yRotation:-(angle)];
                                                                 }];
-                                  [UIView addKeyframeWithRelativeStartTime:1/3
-                                                          relativeDuration:1/3
+                                  [UIView addKeyframeWithRelativeStartTime:0.50
+                                                          relativeDuration:0.25
                                                                 animations:^{
-                                                                    snapshot.layer.transform = [self yRotation:0.0];
+                                                                    snapshotTo.layer.transform = [self yRotation:0.0];
                                                                 }];
-                                  [UIView addKeyframeWithRelativeStartTime:2/3
-                                                          relativeDuration:1/3
+                                  [UIView addKeyframeWithRelativeStartTime:0.75
+                                                          relativeDuration:0.25
                                                                 animations:^{
-                                                                    snapshot.frame = finalFrame;
-                                                                    snapshot.layer.cornerRadius = 0;
+                                                                    snapshotTo.frame = finalFrame;
+                                                                    snapshotTo.layer.cornerRadius = 0;
                                                                 }];
                                  }
                               completion:^(BOOL finished){
                                   [toViewController.view setHidden:NO];
-                                  [snapshot removeFromSuperview];
+                                  [snapshotTo removeFromSuperview];
+                                  fromViewController.view.transform = CGAffineTransformIdentity;
                                   fromViewController.view.layer.transform = CATransform3DIdentity;
                                   [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
-                              }];    
+                              }];
 
+  
 }
 
 - (NSTimeInterval)transitionDuration:(nullable id<UIViewControllerContextTransitioning>)transitionContext {

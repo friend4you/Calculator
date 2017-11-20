@@ -54,7 +54,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="8Fv-9B-MYi"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Checkout"/>
+                                <connections>
+                                    <action selector="checkEnteredNameButton:" destination="Ek8-oz-DeC" eventType="touchUpInside" id="6K9-Mn-pGG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvb-2T-YgC">
                                 <rect key="frame" x="289" y="101" width="60" height="60"/>

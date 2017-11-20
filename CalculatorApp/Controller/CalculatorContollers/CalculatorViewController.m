@@ -58,7 +58,40 @@
     
 }
 
+- (void)pushupsButtons:(UIButton *)sender {
+    
+    [UIView animateWithDuration:0.1 animations:^ {
+        sender.layer.cornerRadius = 20;
+        sender.layer.masksToBounds = YES;
+        sender.layer.zPosition = 100;
+        CGAffineTransform transform = CGAffineTransformMakeScale(1.3, 1.3);
+        sender.transform = transform;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.05 animations:^{
+            sender.transform = CGAffineTransformIdentity;
+            sender.layer.zPosition = 0;
+            sender.layer.cornerRadius = 0;
+            sender.layer.masksToBounds = NO;
+        }];
+    }];
+    
+}
+
+- (void)addItemViewController:(CalculatorHistoryViewController *)controller didFinishEnteringItem:(NSString *)item {
+    self.displayValue = [item doubleValue];
+    self.isUserInTheMiddleOfNumber = NO;
+}
+
+- (void)deleteNumeralFromResult:(UISwipeGestureRecognizer *)gestureRecognizer {
+    self.displayValue = [[self.resultLabel.text substringWithRange:NSMakeRange(0, self.resultLabel.text.length - 1)] doubleValue];
+}
+
+#pragma mark - Actions
+
 - (IBAction)pressDigitButton:(UIButton *)sender {
+    
+    [self pushupsButtons:sender];
+    
     if ([self.resultLabel.text length] >= 16){
         return;
     }
@@ -81,6 +114,9 @@
 }
 
 - (IBAction)pressOperationButton:(UIButton *)sender {
+    
+    [self pushupsButtons:sender];
+    
     self.model.operand = self.displayValue;
     [self.model performOperation:sender.titleLabel.text];
     self.displayValue = self.model.result;
@@ -99,14 +135,5 @@
     [self.navigationController pushViewController:history animated:YES];
 }
 
-
-- (void)addItemViewController:(CalculatorHistoryViewController *)controller didFinishEnteringItem:(NSString *)item {
-    self.displayValue = [item doubleValue];
-    self.isUserInTheMiddleOfNumber = NO;
-}
-
-- (void)deleteNumeralFromResult:(UISwipeGestureRecognizer *)gestureRecognizer {
-    self.displayValue = [[self.resultLabel.text substringWithRange:NSMakeRange(0, self.resultLabel.text.length - 1)] doubleValue];
-}
 
 @end
