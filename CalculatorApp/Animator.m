@@ -19,13 +19,15 @@
 @implementation Animator
 
 - (CATransform3D)yRotation:(double)angle {
+    
     return CATransform3DMakeRotation(angle, 0.0, 1.0, 0.0);
 }
 
-- (void)perspectiveTransformFor:(UIView *)containerView {
+- (UIView *)perspectiveTransformFor:(UIView *)containerView {
     CATransform3D transform = CATransform3DIdentity;
     transform.m34 = -0.002;
     containerView.layer.sublayerTransform = transform;
+    return containerView;
 }
 
 - (instancetype)initWithFrame:(CGRect)originFrame {
@@ -49,7 +51,7 @@
     CGRect finalFrame = [transitionContext finalFrameForViewController:toViewController];
     
     snapshot.frame = self.originFrame;
-    snapshot.layer.cornerRadius = 25;
+    snapshot.layer.cornerRadius = 20;
     snapshot.layer.masksToBounds = YES;
     
     
@@ -57,8 +59,10 @@
     [containerView addSubview:snapshot];
     [toViewController.view setHidden:YES];
     
-    [self perspectiveTransformFor:containerView];
-    snapshot.layer.transform = [self yRotation:(M_PI / 2)];
+    containerView = [self perspectiveTransformFor:containerView];
+    
+    double angle = M_PI / 2;
+    snapshot.layer.transform = [self yRotation:angle];
     
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     
@@ -70,7 +74,7 @@
                                   [UIView addKeyframeWithRelativeStartTime:0.0
                                                           relativeDuration:1/3
                                                                 animations:^{
-                                                                    fromViewController.view.layer.transform = [self yRotation:(-M_PI/2)];
+                                                                    fromViewController.view.layer.transform = [self yRotation:(-angle)];
                                                                 }];
                                   [UIView addKeyframeWithRelativeStartTime:1/3
                                                           relativeDuration:1/3

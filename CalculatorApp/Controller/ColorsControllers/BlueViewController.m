@@ -8,6 +8,21 @@
 
 #import "BlueViewController.h"
 
+@interface BlueViewController()
+
+@property (weak, nonatomic) IBOutlet UIView *cardView;
+
+
+@end
+
 @implementation BlueViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.cardView.layer.cornerRadius = 20;
+    self.cardView.layer.masksToBounds = YES;
+    
+}
 
 @end

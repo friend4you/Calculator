@@ -10,16 +10,26 @@
 #import "GreenViewController.h"
 #import "Animator.h"
 
+@interface RedViewController()
+
+@property (weak, nonatomic) IBOutlet UIView *cardView;
+
+
+@end
+
 @implementation RedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.cardView.layer.cornerRadius = 20;
+    self.cardView.layer.masksToBounds = YES;
+    
 }
 
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    Animator *animator = [[Animator alloc] initWithFrame:self.view.frame];
+    Animator *animator = [[Animator alloc] initWithFrame:_cardView.frame];
     return animator;
 }
 

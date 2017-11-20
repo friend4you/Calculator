@@ -8,7 +8,6 @@
 
 #import "CalculatorViewController.h"
 #import "Calculator.h"
-#import <ElasticTransition.h>
 
 @interface CalculatorViewController ()
 
@@ -96,13 +95,6 @@
     history.expressionsForHistory = self.model.expressionsForHistory;
     history.resultsForHistory = self.model.resultsForHistory;
     
-    ElasticTransition *transition = [[ElasticTransition alloc]init];
-    transition.sticky = YES;
-    transition.showShadow = YES;
-    transition.panThreshold = 0.4;
-    transition.radiusFactor = 0.1;
-    transition.transformType = TRANSLATEMID;
-    self.navigationController.delegate = transition;
     
     [self.navigationController pushViewController:history animated:YES];
 }

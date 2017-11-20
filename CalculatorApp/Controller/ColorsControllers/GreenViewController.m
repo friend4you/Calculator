@@ -9,6 +9,20 @@
 #import "GreenViewController.h"
 #import "Animator.h"
 
+@interface GreenViewController()
+
+@property (weak, nonatomic) IBOutlet UIView *cardView;
+
+
+@end
+
 @implementation GreenViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.cardView.layer.cornerRadius = 20;
+    self.cardView.layer.masksToBounds = YES;    
+}
 
 @end
