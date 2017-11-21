@@ -20,6 +20,9 @@
 		9356A0B01FBF015C00C4DEDC /* ProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A0AC1FBF015A00C4DEDC /* ProfileModel.m */; };
 		9356FBBC1FB5D3FE0028C782 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */; };
 		9356FBBF1FB5E7280028C782 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBBE1FB5E7280028C782 /* MainTabBarController.m */; };
+		935A08361FC443EB004B0E74 /* Galaxy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935A08351FC443EB004B0E74 /* Galaxy.storyboard */; };
+		935A08391FC4442C004B0E74 /* GalaxyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 935A08381FC4442C004B0E74 /* GalaxyViewController.m */; };
+		935A083D1FC44761004B0E74 /* GalaxyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 935A083C1FC44761004B0E74 /* GalaxyModel.m */; };
 		937F4ED71FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */; };
 		938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */; };
 		93A9CBB91FBB17D400AEBF4B /* RDLChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A9CBB51FBB17D200AEBF4B /* RDLChartViewController.m */; };
@@ -62,6 +65,11 @@
 		9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
 		9356FBBD1FB5E7280028C782 /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		9356FBBE1FB5E7280028C782 /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
+		935A08351FC443EB004B0E74 /* Galaxy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Galaxy.storyboard; sourceTree = "<group>"; };
+		935A08371FC4442C004B0E74 /* GalaxyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalaxyViewController.h; sourceTree = "<group>"; };
+		935A08381FC4442C004B0E74 /* GalaxyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalaxyViewController.m; sourceTree = "<group>"; };
+		935A083B1FC44761004B0E74 /* GalaxyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalaxyModel.h; sourceTree = "<group>"; };
+		935A083C1FC44761004B0E74 /* GalaxyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalaxyModel.m; sourceTree = "<group>"; };
 		937F4ED51FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIStoryboardSegue+ContentViewController.h"; sourceTree = "<group>"; };
 		937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboardSegue+ContentViewController.m"; sourceTree = "<group>"; };
 		9388726E1FB071F300B632EB /* CalculatorHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorHistoryViewController.h; sourceTree = "<group>"; };
@@ -107,14 +115,16 @@
 		933F6CD31FA8A078005B8305 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				93A9CBBF1FBB192600AEBF4B /* Graphics */,
+				935A08341FC41D69004B0E74 /* Profile */,
 				9356A09D1FBE04D200C4DEDC /* FlipAnimatorTransitioning.h */,
 				9356A09E1FBE04D200C4DEDC /* FlipAnimatorTransitioning.m */,
 				933F6CD01FA8A06D005B8305 /* Calculator.h */,
 				933F6CD11FA8A06D005B8305 /* Calculator.m */,
 				93A9CBC31FBB2DA000AEBF4B /* Graphics.h */,
 				93A9CBC41FBB2DA000AEBF4B /* Graphics.m */,
-				93A9CBBF1FBB192600AEBF4B /* Graphics */,
-				935A08341FC41D69004B0E74 /* Profile */,
+				935A083B1FC44761004B0E74 /* GalaxyModel.h */,
+				935A083C1FC44761004B0E74 /* GalaxyModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -126,6 +136,7 @@
 				9356648F1FB5A1320037F4B3 /* Graphics.storyboard */,
 				9356A0841FBD95C600C4DEDC /* Colors.storyboard */,
 				9356A0A51FBEFF8A00C4DEDC /* Profile.storyboard */,
+				935A08351FC443EB004B0E74 /* Galaxy.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,6 +150,7 @@
 				9356FBBE1FB5E7280028C782 /* MainTabBarController.m */,
 				9356A0901FBDA00300C4DEDC /* RDLGraphicsControllers */,
 				9356A08F1FBD9FE500C4DEDC /* ColorsControllers */,
+				935A083A1FC4443A004B0E74 /* GalaxyControllers */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -207,6 +219,15 @@
 				9356A0AB1FBF015900C4DEDC /* ProfilesDataSource.m */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		935A083A1FC4443A004B0E74 /* GalaxyControllers */ = {
+			isa = PBXGroup;
+			children = (
+				935A08371FC4442C004B0E74 /* GalaxyViewController.h */,
+				935A08381FC4442C004B0E74 /* GalaxyViewController.m */,
+			);
+			path = GalaxyControllers;
 			sourceTree = "<group>";
 		};
 		93A9CBBF1FBB192600AEBF4B /* Graphics */ = {
@@ -331,6 +352,7 @@
 				9356A0851FBD95C700C4DEDC /* Colors.storyboard in Resources */,
 				93BDBB601FA33EFA00748B5D /* Assets.xcassets in Resources */,
 				93BDBB5E1FA33EF900748B5D /* Main.storyboard in Resources */,
+				935A08361FC443EB004B0E74 /* Galaxy.storyboard in Resources */,
 				935664901FB5A1320037F4B3 /* Graphics.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,10 +379,12 @@
 				93A9CBBE1FBB17DF00AEBF4B /* RDLViewControllerLogLifecycleViewController.m in Sources */,
 				937F4ED71FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m in Sources */,
 				93A9CBC21FBB21C600AEBF4B /* RDLSplitGraphicsViewController.m in Sources */,
+				935A083D1FC44761004B0E74 /* GalaxyModel.m in Sources */,
 				9356FBBC1FB5D3FE0028C782 /* HistoryTableViewCell.m in Sources */,
 				93BDBB661FA33EFA00748B5D /* main.m in Sources */,
 				93A9CBBB1FBB17D400AEBF4B /* RDLChartView.m in Sources */,
 				9356A0A91FBEFFA100C4DEDC /* AuthController.m in Sources */,
+				935A08391FC4442C004B0E74 /* GalaxyViewController.m in Sources */,
 				93BDBB581FA33EF900748B5D /* AppDelegate.m in Sources */,
 				9356A0B01FBF015C00C4DEDC /* ProfileModel.m in Sources */,
 				933F6CD21FA8A06D005B8305 /* Calculator.m in Sources */,
