@@ -69,7 +69,7 @@
     
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
     animation.keyPath = @"position.x";
-    animation.duration = 0.4;
+    animation.duration = 0.3;
     animation.values = @[@(currentPostionX),
                          @(currentPostionX - 10),
                          @(currentPostionX + 10),
@@ -80,6 +80,8 @@
                          @(currentPostionX)];
     animation.keyTimes = @[@0, @0.14, @0.28, @0.42, @0.56, @0.70, @0.84, @1];
     [self.userNameLabel.layer addAnimation:animation forKey:nil];
+    [self.passwordField.layer addAnimation:animation forKey:nil];
+    [self.userImageView.layer addAnimation:animation forKey:nil];
     
 }
 

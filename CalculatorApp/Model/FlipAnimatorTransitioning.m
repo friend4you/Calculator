@@ -8,15 +8,15 @@
 
 
 
-#import "Animator.h"
+#import "FlipAnimatorTransitioning.h"
 
-@interface Animator()
+@interface FlipAnimatorTransitioning()
 
 @property (nonatomic, assign)CGRect originFrame;
 
 @end
 
-@implementation Animator
+@implementation FlipAnimatorTransitioning
 
 - (CATransform3D)yRotation:(double)angle {
     return CATransform3DMakeRotation(angle, 0.0, 1.0, 0.0);

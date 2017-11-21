@@ -13,8 +13,7 @@
 		9356A0881FBD9F5400C4DEDC /* GreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A0871FBD9F5400C4DEDC /* GreenViewController.m */; };
 		9356A08B1FBD9F9000C4DEDC /* RedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A08A1FBD9F9000C4DEDC /* RedViewController.m */; };
 		9356A08E1FBD9FA200C4DEDC /* BlueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A08D1FBD9FA200C4DEDC /* BlueViewController.m */; };
-		9356A09F1FBE04D200C4DEDC /* Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A09E1FBE04D200C4DEDC /* Animator.m */; };
-		9356A0A41FBEF50000C4DEDC /* MyCoolSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A0A31FBEF4FF00C4DEDC /* MyCoolSegue.m */; };
+		9356A09F1FBE04D200C4DEDC /* FlipAnimatorTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A09E1FBE04D200C4DEDC /* FlipAnimatorTransitioning.m */; };
 		9356A0A61FBEFF8A00C4DEDC /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9356A0A51FBEFF8A00C4DEDC /* Profile.storyboard */; };
 		9356A0A91FBEFFA100C4DEDC /* AuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A0A71FBEFFA000C4DEDC /* AuthController.m */; };
 		9356A0AF1FBF015C00C4DEDC /* ProfilesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A0AB1FBF015900C4DEDC /* ProfilesDataSource.m */; };
@@ -49,11 +48,9 @@
 		9356A08A1FBD9F9000C4DEDC /* RedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedViewController.m; sourceTree = "<group>"; };
 		9356A08C1FBD9FA200C4DEDC /* BlueViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueViewController.h; sourceTree = "<group>"; };
 		9356A08D1FBD9FA200C4DEDC /* BlueViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlueViewController.m; sourceTree = "<group>"; };
-		9356A09D1FBE04D200C4DEDC /* Animator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Animator.h; sourceTree = "<group>"; };
-		9356A09E1FBE04D200C4DEDC /* Animator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Animator.m; sourceTree = "<group>"; };
+		9356A09D1FBE04D200C4DEDC /* FlipAnimatorTransitioning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipAnimatorTransitioning.h; sourceTree = "<group>"; };
+		9356A09E1FBE04D200C4DEDC /* FlipAnimatorTransitioning.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipAnimatorTransitioning.m; sourceTree = "<group>"; };
 		9356A0A01FBEE8CD00C4DEDC /* CalculatorApp.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = CalculatorApp.xcworkspace; sourceTree = "<group>"; };
-		9356A0A21FBEF4FF00C4DEDC /* MyCoolSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCoolSegue.h; sourceTree = "<group>"; };
-		9356A0A31FBEF4FF00C4DEDC /* MyCoolSegue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCoolSegue.m; sourceTree = "<group>"; };
 		9356A0A51FBEFF8A00C4DEDC /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		9356A0A71FBEFFA000C4DEDC /* AuthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthController.m; sourceTree = "<group>"; };
 		9356A0A81FBEFFA100C4DEDC /* AuthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthController.h; sourceTree = "<group>"; };
@@ -110,10 +107,14 @@
 		933F6CD31FA8A078005B8305 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9356A09D1FBE04D200C4DEDC /* FlipAnimatorTransitioning.h */,
+				9356A09E1FBE04D200C4DEDC /* FlipAnimatorTransitioning.m */,
 				933F6CD01FA8A06D005B8305 /* Calculator.h */,
 				933F6CD11FA8A06D005B8305 /* Calculator.m */,
 				93A9CBC31FBB2DA000AEBF4B /* Graphics.h */,
 				93A9CBC41FBB2DA000AEBF4B /* Graphics.m */,
+				93A9CBBF1FBB192600AEBF4B /* Graphics */,
+				935A08341FC41D69004B0E74 /* Profile */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -197,6 +198,17 @@
 			path = ProfileControllers;
 			sourceTree = "<group>";
 		};
+		935A08341FC41D69004B0E74 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9356A0AE1FBF015C00C4DEDC /* ProfileModel.h */,
+				9356A0AC1FBF015A00C4DEDC /* ProfileModel.m */,
+				9356A0AD1FBF015B00C4DEDC /* ProfilesDataSource.h */,
+				9356A0AB1FBF015900C4DEDC /* ProfilesDataSource.m */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		93A9CBBF1FBB192600AEBF4B /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,16 +254,7 @@
 				93BDBB651FA33EFA00748B5D /* main.m */,
 				9356FBBA1FB5D3FE0028C782 /* HistoryTableViewCell.h */,
 				9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */,
-				93A9CBBF1FBB192600AEBF4B /* Graphics */,
 				9356A0921FBDA04800C4DEDC /* Categories */,
-				9356A09D1FBE04D200C4DEDC /* Animator.h */,
-				9356A09E1FBE04D200C4DEDC /* Animator.m */,
-				9356A0A21FBEF4FF00C4DEDC /* MyCoolSegue.h */,
-				9356A0A31FBEF4FF00C4DEDC /* MyCoolSegue.m */,
-				9356A0AE1FBF015C00C4DEDC /* ProfileModel.h */,
-				9356A0AC1FBF015A00C4DEDC /* ProfileModel.m */,
-				9356A0AD1FBF015B00C4DEDC /* ProfilesDataSource.h */,
-				9356A0AB1FBF015900C4DEDC /* ProfilesDataSource.m */,
 			);
 			path = CalculatorApp;
 			sourceTree = "<group>";
@@ -339,7 +342,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9356A0A41FBEF50000C4DEDC /* MyCoolSegue.m in Sources */,
 				9356A0881FBD9F5400C4DEDC /* GreenViewController.m in Sources */,
 				93A9CBB91FBB17D400AEBF4B /* RDLChartViewController.m in Sources */,
 				93A9CBC51FBB2DA000AEBF4B /* Graphics.m in Sources */,
@@ -347,7 +349,7 @@
 				93A9CBBA1FBB17D400AEBF4B /* RDLPushUpsModel.m in Sources */,
 				9356A0AF1FBF015C00C4DEDC /* ProfilesDataSource.m in Sources */,
 				938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */,
-				9356A09F1FBE04D200C4DEDC /* Animator.m in Sources */,
+				9356A09F1FBE04D200C4DEDC /* FlipAnimatorTransitioning.m in Sources */,
 				9356FBBF1FB5E7280028C782 /* MainTabBarController.m in Sources */,
 				93BDBB5B1FA33EF900748B5D /* CalculatorViewController.m in Sources */,
 				9356A08E1FBD9FA200C4DEDC /* BlueViewController.m in Sources */,

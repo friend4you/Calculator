@@ -8,7 +8,7 @@
 
 #import "RedViewController.h"
 #import "GreenViewController.h"
-#import "Animator.h"
+#import "FlipAnimatorTransitioning.h"
 
 @interface RedViewController()
 
@@ -29,7 +29,7 @@
 
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    Animator *animator = [[Animator alloc] initWithFrame:_cardView.frame];
+    FlipAnimatorTransitioning *animator = [[FlipAnimatorTransitioning alloc] initWithFrame:_cardView.frame];
     return animator;
 }
 

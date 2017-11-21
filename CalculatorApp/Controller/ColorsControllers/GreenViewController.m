@@ -7,7 +7,7 @@
 //
 
 #import "GreenViewController.h"
-#import "Animator.h"
+#import "FlipAnimatorTransitioning.h"
 
 @interface GreenViewController()
 

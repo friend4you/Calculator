@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface Animator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface FlipAnimatorTransitioning : NSObject <UIViewControllerAnimatedTransitioning>
 
 - (instancetype)initWithFrame:(CGRect)originFrame;
 
