@@ -8,11 +8,21 @@
 
 #import "GalaxyModel.h"
 
+@interface GalaxyModel()
+
+@property (strong, nonatomic)NSURL *imageURL;
+
+@end
+
 @implementation GalaxyModel
 
-+ (NSURL *)getSpaceImage {
-    NSURL *spaceURL = [NSURL URLWithString:@"https://cdn.spacetelescope.org/archives/images/large/heic0601a.jpg"];
-    return spaceURL;
+
+- (NSURL *)imageURL {
+    if (!_imageURL) {
+        _imageURL = [NSURL URLWithString:@"https://cdn.spacetelescope.org/archives/images/large/heic0601a.jpg"];
+    }
+    return _imageURL;
+        
 }
 
 @end

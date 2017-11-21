@@ -67,14 +67,15 @@
         CGAffineTransform transform = CGAffineTransformMakeScale(1.3, 1.3);
         sender.transform = transform;
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.05 animations:^{
+        [UIView animateWithDuration:0.05 animations:^ {
             sender.transform = CGAffineTransformIdentity;
-            sender.layer.zPosition = 0;
             sender.layer.cornerRadius = 0;
             sender.layer.masksToBounds = NO;
+        } completion:^ (BOOL finished) {
+            sender.layer.zPosition = 0;
         }];
+        
     }];
-    
 }
 
 - (void)addItemViewController:(CalculatorHistoryViewController *)controller didFinishEnteringItem:(NSString *)item {

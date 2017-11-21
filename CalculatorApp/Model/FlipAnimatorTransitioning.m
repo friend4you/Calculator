@@ -22,11 +22,10 @@
     return CATransform3DMakeRotation(angle, 0.0, 1.0, 0.0);
 }
 
-- (UIView *)perspectiveTransformFor:(UIView *)containerView {
+- (void)perspectiveTransformFor:(UIView *)containerView {
     CATransform3D transform = CATransform3DIdentity;
     transform.m34 = -0.002;
     containerView.layer.sublayerTransform = transform;
-    return containerView;
 }
 
 - (instancetype)initWithFrame:(CGRect)originFrame {
@@ -58,10 +57,9 @@
     [containerView addSubview:snapshotTo];
     [toViewController.view setHidden:YES];
 
-    containerView = [self perspectiveTransformFor:containerView];
+    [self perspectiveTransformFor:containerView];
 
-    double angle = M_PI / 2;
-    snapshotTo.layer.transform = [self yRotation:angle];
+    snapshotTo.layer.transform = [self yRotation:M_PI_2];
 
     NSTimeInterval duration = [self transitionDuration:transitionContext];
 
@@ -69,15 +67,14 @@
                                    delay:0
                                  options:UIViewKeyframeAnimationOptionCalculationModeCubic
                               animations:^{
-//                                  [UIView addKeyframeWithRelativeStartTime:0.0
-//                                                          relativeDuration:0.25
-//                                                                animations:^{
-//                                                                    fromViewController.view.transform = CGAffineTransformMakeScale(0.8, 0.5);
-//                                                                }];
+                                  [UIView addKeyframeWithRelativeStartTime:0.0
+                                                          relativeDuration:0.25
+                                                                animations:^{
+                                                                    fromViewController.view.transform = CGAffineTransformScale(fromViewController.view.transform, 0.6, 0.5);                                                                }];
                                   [UIView addKeyframeWithRelativeStartTime:0.25
                                                           relativeDuration:0.25
                                                                 animations:^{
-                                                                    fromViewController.view.layer.transform = [self yRotation:-(angle)];
+                                                                    fromViewController.view.layer.transform = [self yRotation:-M_PI_2];
                                                                 }];
                                   [UIView addKeyframeWithRelativeStartTime:0.50
                                                           relativeDuration:0.25

@@ -34,7 +34,7 @@
     AuthController *auth = [AuthController instantiateFromStoryboard];
     auth.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"profileIcon"] tag:4];
     GalaxyViewController *galaxy = [GalaxyViewController instantiateFromStoryboard];
-    galaxy.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Galaxy" image:[UIImage imageNamed:@""] tag:5];
+    galaxy.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Galaxy" image:[UIImage imageNamed:@"galaxyIcon"] tag:5];
     
     
     [tabs addObject:calculator];

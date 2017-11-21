@@ -7,7 +7,6 @@
 //
 
 #import "GalaxyViewController.h"
-#import "GalaxyModel.h"
 
 @interface GalaxyViewController ()
 
@@ -30,11 +29,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.imageView = [[UIImageView alloc] init];
     [self.imageScrollView addSubview:self.imageView];
     
-    self.imageURL = [GalaxyModel getSpaceImage];
+    self.imageURL = [NSURL URLWithString:@"http://magazine.viterbi.usc.edu/wp-content/uploads/BSP_054.jpg"];
+
+    //[NSURL URLWithString:@"http://magazine.viterbi.usc.edu/wp-content/uploads/BSP_054.jpg"];
+    //[NSURL URLWithString:@"https://cdn.spacetelescope.org/archives/images/large/heic0601a.jpg"];
     
 }
 
@@ -50,23 +51,16 @@
     self.imageView.image = image;
     [self.imageView sizeToFit];
     self.imageScrollView.contentSize = self.imageView.frame.size;
+    CGFloat x = self.imageView.frame.size.width - self.view.frame.size.width;
+    CGFloat y = self.imageView.frame.size.height - self.view.frame.size.height;
+    self.imageScrollView.contentOffset = CGPointMake(x, y);
 }
 
 - (void)setImageURL:(NSURL *)imageURL {
-    self.imageURL = imageURL;
+    _imageURL = imageURL;
     
     self.image = nil;
     [self fetchImage];
 }
-
-- (NSURL *)imageURL {
-    if (!self.imageURL) {
-        self.imageURL = [GalaxyModel getSpaceImage];
-    }
-    
-    return self.imageURL;
-}
-
-
 
 @end

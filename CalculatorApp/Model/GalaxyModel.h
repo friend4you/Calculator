@@ -10,6 +10,6 @@
 
 @interface GalaxyModel : NSObject
 
-+ (NSURL *)getSpaceImage;
+@property (strong, nonatomic, readonly)NSURL *imageURL;
 
 @end
