@@ -7,13 +7,16 @@
 //
 
 #import "GalaxyViewController.h"
+#import "GalaxyModel.h"
 
 @interface GalaxyViewController ()
 
 @property (strong, nonatomic) NSURL *imageURL;
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) GalaxyModel *model;
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
+
 
 
 @end
@@ -31,17 +34,34 @@
     [super viewDidLoad];
     self.imageView = [[UIImageView alloc] init];
     [self.imageScrollView addSubview:self.imageView];
+    self.imageScrollView.minimumZoomScale = 0.5;
+    self.imageScrollView.maximumZoomScale = 3.0;
+    self.imageScrollView.delegate = self;
     
-    self.imageURL = [NSURL URLWithString:@"http://magazine.viterbi.usc.edu/wp-content/uploads/BSP_054.jpg"];
+    self.imageURL = self.model.imageURL;
+}
 
-    //[NSURL URLWithString:@"http://magazine.viterbi.usc.edu/wp-content/uploads/BSP_054.jpg"];
-    //[NSURL URLWithString:@"https://cdn.spacetelescope.org/archives/images/large/heic0601a.jpg"];
-    
+- (void)didReceiveMemoryWarning {
+    NSLog(@"You have memory warning");
 }
 
 - (void)fetchImage {
-    NSData *imageData = [NSData dataWithContentsOfURL:self.imageURL];
-    self.image = [UIImage imageWithData:imageData];
+    
+    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:self.imageURL
+                                                         completionHandler:^(NSData * _Nullable data,
+                                                                             NSURLResponse * _Nullable response,
+                                                                             NSError * _Nullable error) {
+                                                             if (!error) {
+                                                                 dispatch_async(dispatch_get_main_queue(), ^{
+                                                                     self.image = [UIImage imageWithData:data];
+                                                                 });
+                                                             }
+                                                         }];
+    [task resume];
+}
+
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.imageView;
 }
 
 
@@ -62,5 +82,13 @@
     self.image = nil;
     [self fetchImage];
 }
+
+- (GalaxyModel *)model {
+    if (!_model) {
+        _model = [[GalaxyModel alloc] init];
+    }
+    return _model;
+}
+
 
 @end

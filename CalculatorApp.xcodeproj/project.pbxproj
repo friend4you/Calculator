@@ -25,6 +25,9 @@
 		935A083D1FC44761004B0E74 /* GalaxyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 935A083C1FC44761004B0E74 /* GalaxyModel.m */; };
 		937F4ED71FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */; };
 		938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */; };
+		93A4ABF91FC5D18C00C47C8D /* GalaxyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A4ABF81FC5D18C00C47C8D /* GalaxyCollectionViewController.m */; };
+		93A4ABFC1FC5D1F900C47C8D /* GalaxyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A4ABFB1FC5D1F900C47C8D /* GalaxyCollectionViewCell.m */; };
+		93A4AC011FC5D2CA00C47C8D /* GalaxyCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A4AC001FC5D2CA00C47C8D /* GalaxyCellModel.m */; };
 		93A9CBB91FBB17D400AEBF4B /* RDLChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A9CBB51FBB17D200AEBF4B /* RDLChartViewController.m */; };
 		93A9CBBA1FBB17D400AEBF4B /* RDLPushUpsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A9CBB61FBB17D300AEBF4B /* RDLPushUpsModel.m */; };
 		93A9CBBB1FBB17D400AEBF4B /* RDLChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A9CBB81FBB17D300AEBF4B /* RDLChartView.m */; };
@@ -74,6 +77,12 @@
 		937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboardSegue+ContentViewController.m"; sourceTree = "<group>"; };
 		9388726E1FB071F300B632EB /* CalculatorHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorHistoryViewController.h; sourceTree = "<group>"; };
 		9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorHistoryViewController.m; sourceTree = "<group>"; };
+		93A4ABF71FC5D18C00C47C8D /* GalaxyCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalaxyCollectionViewController.h; sourceTree = "<group>"; };
+		93A4ABF81FC5D18C00C47C8D /* GalaxyCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalaxyCollectionViewController.m; sourceTree = "<group>"; };
+		93A4ABFA1FC5D1F900C47C8D /* GalaxyCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalaxyCollectionViewCell.h; sourceTree = "<group>"; };
+		93A4ABFB1FC5D1F900C47C8D /* GalaxyCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalaxyCollectionViewCell.m; sourceTree = "<group>"; };
+		93A4ABFF1FC5D2CA00C47C8D /* GalaxyCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalaxyCellModel.h; sourceTree = "<group>"; };
+		93A4AC001FC5D2CA00C47C8D /* GalaxyCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalaxyCellModel.m; sourceTree = "<group>"; };
 		93A9CBB21FBB17D000AEBF4B /* RDLChartPointProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDLChartPointProtocol.h; sourceTree = "<group>"; };
 		93A9CBB31FBB17D000AEBF4B /* RDLPushUpsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDLPushUpsModel.h; sourceTree = "<group>"; };
 		93A9CBB41FBB17D100AEBF4B /* RDLChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDLChartViewController.h; sourceTree = "<group>"; };
@@ -123,8 +132,7 @@
 				933F6CD11FA8A06D005B8305 /* Calculator.m */,
 				93A9CBC31FBB2DA000AEBF4B /* Graphics.h */,
 				93A9CBC41FBB2DA000AEBF4B /* Graphics.m */,
-				935A083B1FC44761004B0E74 /* GalaxyModel.h */,
-				935A083C1FC44761004B0E74 /* GalaxyModel.m */,
+				93A4ABFD1FC5D28000C47C8D /* Galaxy */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,8 +234,23 @@
 			children = (
 				935A08371FC4442C004B0E74 /* GalaxyViewController.h */,
 				935A08381FC4442C004B0E74 /* GalaxyViewController.m */,
+				93A4ABF71FC5D18C00C47C8D /* GalaxyCollectionViewController.h */,
+				93A4ABF81FC5D18C00C47C8D /* GalaxyCollectionViewController.m */,
+				93A4ABFA1FC5D1F900C47C8D /* GalaxyCollectionViewCell.h */,
+				93A4ABFB1FC5D1F900C47C8D /* GalaxyCollectionViewCell.m */,
 			);
 			path = GalaxyControllers;
+			sourceTree = "<group>";
+		};
+		93A4ABFD1FC5D28000C47C8D /* Galaxy */ = {
+			isa = PBXGroup;
+			children = (
+				935A083B1FC44761004B0E74 /* GalaxyModel.h */,
+				935A083C1FC44761004B0E74 /* GalaxyModel.m */,
+				93A4ABFF1FC5D2CA00C47C8D /* GalaxyCellModel.h */,
+				93A4AC001FC5D2CA00C47C8D /* GalaxyCellModel.m */,
+			);
+			path = Galaxy;
 			sourceTree = "<group>";
 		};
 		93A9CBBF1FBB192600AEBF4B /* Graphics */ = {
@@ -364,8 +387,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93A4ABFC1FC5D1F900C47C8D /* GalaxyCollectionViewCell.m in Sources */,
 				9356A0881FBD9F5400C4DEDC /* GreenViewController.m in Sources */,
 				93A9CBB91FBB17D400AEBF4B /* RDLChartViewController.m in Sources */,
+				93A4AC011FC5D2CA00C47C8D /* GalaxyCellModel.m in Sources */,
 				93A9CBC51FBB2DA000AEBF4B /* Graphics.m in Sources */,
 				93A9CBC81FBB334000AEBF4B /* RDLSelectChartViewController.m in Sources */,
 				93A9CBBA1FBB17D400AEBF4B /* RDLPushUpsModel.m in Sources */,
@@ -388,6 +413,7 @@
 				93BDBB581FA33EF900748B5D /* AppDelegate.m in Sources */,
 				9356A0B01FBF015C00C4DEDC /* ProfileModel.m in Sources */,
 				933F6CD21FA8A06D005B8305 /* Calculator.m in Sources */,
+				93A4ABF91FC5D18C00C47C8D /* GalaxyCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,7 +35,6 @@
     [super viewDidLoad];
     [self renderViewWithProfile:[self.dataSource currentModel]];
     [self setupImageView];
-    [self setupUserName];
     [self setupNextButton];
     [self setupPreviousButton];
     [self setupPasswordField];
@@ -50,12 +49,6 @@
 - (void)setupPreviousButton {
     self.prevButton.layer.shadowColor = [UIColor blackColor].CGColor;
     self.prevButton.layer.shadowOpacity = 0.5;
-}
-
-- (void)setupUserName {
-//    self.timer =  [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
-//        [self animateUserName];
-//    }];
 }
 
 - (void)setupPasswordField {
