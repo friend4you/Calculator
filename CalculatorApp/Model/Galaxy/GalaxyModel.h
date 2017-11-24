@@ -13,5 +13,4 @@
 @property (strong, nonatomic, readonly)NSURL *imageURL;
 @property (strong, nonatomic, readonly)NSArray *model;
 
-
 @end

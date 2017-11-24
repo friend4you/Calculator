@@ -25,6 +25,7 @@
 		935A083D1FC44761004B0E74 /* GalaxyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 935A083C1FC44761004B0E74 /* GalaxyModel.m */; };
 		937F4ED71FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */; };
 		938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */; };
+		939CB6B71FC82FCB0070F130 /* ImageLoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 939CB6B61FC82FCB0070F130 /* ImageLoadOperation.m */; };
 		93A4ABF91FC5D18C00C47C8D /* GalaxyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A4ABF81FC5D18C00C47C8D /* GalaxyCollectionViewController.m */; };
 		93A4ABFC1FC5D1F900C47C8D /* GalaxyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A4ABFB1FC5D1F900C47C8D /* GalaxyCollectionViewCell.m */; };
 		93A4AC011FC5D2CA00C47C8D /* GalaxyCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A4AC001FC5D2CA00C47C8D /* GalaxyCellModel.m */; };
@@ -77,6 +78,8 @@
 		937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboardSegue+ContentViewController.m"; sourceTree = "<group>"; };
 		9388726E1FB071F300B632EB /* CalculatorHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorHistoryViewController.h; sourceTree = "<group>"; };
 		9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorHistoryViewController.m; sourceTree = "<group>"; };
+		939CB6B51FC82FCB0070F130 /* ImageLoadOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageLoadOperation.h; sourceTree = "<group>"; };
+		939CB6B61FC82FCB0070F130 /* ImageLoadOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageLoadOperation.m; sourceTree = "<group>"; };
 		93A4ABF71FC5D18C00C47C8D /* GalaxyCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalaxyCollectionViewController.h; sourceTree = "<group>"; };
 		93A4ABF81FC5D18C00C47C8D /* GalaxyCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalaxyCollectionViewController.m; sourceTree = "<group>"; };
 		93A4ABFA1FC5D1F900C47C8D /* GalaxyCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalaxyCollectionViewCell.h; sourceTree = "<group>"; };
@@ -124,14 +127,12 @@
 		933F6CD31FA8A078005B8305 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				939CB6B51FC82FCB0070F130 /* ImageLoadOperation.h */,
+				939CB6B61FC82FCB0070F130 /* ImageLoadOperation.m */,
 				93A9CBBF1FBB192600AEBF4B /* Graphics */,
 				935A08341FC41D69004B0E74 /* Profile */,
-				9356A09D1FBE04D200C4DEDC /* FlipAnimatorTransitioning.h */,
-				9356A09E1FBE04D200C4DEDC /* FlipAnimatorTransitioning.m */,
-				933F6CD01FA8A06D005B8305 /* Calculator.h */,
-				933F6CD11FA8A06D005B8305 /* Calculator.m */,
-				93A9CBC31FBB2DA000AEBF4B /* Graphics.h */,
-				93A9CBC41FBB2DA000AEBF4B /* Graphics.m */,
+				939CB6B41FC82B530070F130 /* Animator */,
+				939CB6B31FC82B1F0070F130 /* Calculator */,
 				93A4ABFD1FC5D28000C47C8D /* Galaxy */,
 			);
 			path = Model;
@@ -152,10 +153,10 @@
 		935664921FB5A1750037F4B3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9356A0AA1FBEFFAE00C4DEDC /* ProfileControllers */,
-				9356A0911FBDA01B00C4DEDC /* CalculatorContollers */,
 				9356FBBD1FB5E7280028C782 /* MainTabBarController.h */,
 				9356FBBE1FB5E7280028C782 /* MainTabBarController.m */,
+				9356A0AA1FBEFFAE00C4DEDC /* ProfileControllers */,
+				9356A0911FBDA01B00C4DEDC /* CalculatorContollers */,
 				9356A0901FBDA00300C4DEDC /* RDLGraphicsControllers */,
 				9356A08F1FBD9FE500C4DEDC /* ColorsControllers */,
 				935A083A1FC4443A004B0E74 /* GalaxyControllers */,
@@ -192,6 +193,8 @@
 		9356A0911FBDA01B00C4DEDC /* CalculatorContollers */ = {
 			isa = PBXGroup;
 			children = (
+				9356FBBA1FB5D3FE0028C782 /* HistoryTableViewCell.h */,
+				9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */,
 				9388726E1FB071F300B632EB /* CalculatorHistoryViewController.h */,
 				9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */,
 				93BDBB591FA33EF900748B5D /* CalculatorViewController.h */,
@@ -242,6 +245,24 @@
 			path = GalaxyControllers;
 			sourceTree = "<group>";
 		};
+		939CB6B31FC82B1F0070F130 /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				933F6CD01FA8A06D005B8305 /* Calculator.h */,
+				933F6CD11FA8A06D005B8305 /* Calculator.m */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
+		939CB6B41FC82B530070F130 /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+				9356A09D1FBE04D200C4DEDC /* FlipAnimatorTransitioning.h */,
+				9356A09E1FBE04D200C4DEDC /* FlipAnimatorTransitioning.m */,
+			);
+			path = Animator;
+			sourceTree = "<group>";
+		};
 		93A4ABFD1FC5D28000C47C8D /* Galaxy */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +284,8 @@
 				93A9CBB61FBB17D300AEBF4B /* RDLPushUpsModel.m */,
 				93A9CBBD1FBB17DE00AEBF4B /* RDLViewControllerLogLifecycleViewController.h */,
 				93A9CBBC1FBB17DE00AEBF4B /* RDLViewControllerLogLifecycleViewController.m */,
+				93A9CBC31FBB2DA000AEBF4B /* Graphics.h */,
+				93A9CBC41FBB2DA000AEBF4B /* Graphics.m */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -296,8 +319,6 @@
 				93BDBB611FA33EFA00748B5D /* LaunchScreen.storyboard */,
 				93BDBB641FA33EFA00748B5D /* Info.plist */,
 				93BDBB651FA33EFA00748B5D /* main.m */,
-				9356FBBA1FB5D3FE0028C782 /* HistoryTableViewCell.h */,
-				9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */,
 				9356A0921FBDA04800C4DEDC /* Categories */,
 			);
 			path = CalculatorApp;
@@ -414,6 +435,7 @@
 				9356A0B01FBF015C00C4DEDC /* ProfileModel.m in Sources */,
 				933F6CD21FA8A06D005B8305 /* Calculator.m in Sources */,
 				93A4ABF91FC5D18C00C47C8D /* GalaxyCollectionViewController.m in Sources */,
+				939CB6B71FC82FCB0070F130 /* ImageLoadOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

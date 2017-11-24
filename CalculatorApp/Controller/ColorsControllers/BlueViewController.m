@@ -12,7 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *cardView;
 
-
 @end
 
 @implementation BlueViewController
@@ -21,8 +20,7 @@
     [super viewDidLoad];
     
     self.cardView.layer.cornerRadius = 20;
-    self.cardView.layer.masksToBounds = YES;
-    
+    self.cardView.layer.masksToBounds = YES;    
 }
 
 @end

@@ -18,5 +18,4 @@
 @property (strong, nonatomic, readonly) NSMutableArray *expressionsForHistory;
 @property (strong, nonatomic, readonly) NSMutableArray *resultsForHistory;
 
-
 @end

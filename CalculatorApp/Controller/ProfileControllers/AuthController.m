@@ -38,8 +38,14 @@
     [self setupNextButton];
     [self setupPreviousButton];
     [self setupPasswordField];
-    
 }
+
+- (void)dealloc {
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+#define mark - InterfaceSetup
 
 - (void)setupNextButton {
     self.nextButton.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -56,34 +62,6 @@
     self.passwordField.layer.masksToBounds = YES;
 }
 
-- (void)animateUserName {
-    
-    CGFloat currentPostionX = self.userNameLabel.layer.position.x;
-    
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
-    animation.keyPath = @"position.x";
-    animation.duration = 0.3;
-    animation.values = @[@(currentPostionX),
-                         @(currentPostionX - 10),
-                         @(currentPostionX + 10),
-                         @(currentPostionX + 10),
-                         @(currentPostionX - 10),
-                         @(currentPostionX - 5),
-                         @(currentPostionX + 10),
-                         @(currentPostionX)];
-    animation.keyTimes = @[@0, @0.14, @0.28, @0.42, @0.56, @0.70, @0.84, @1];
-    [self.userNameLabel.layer addAnimation:animation forKey:nil];
-    [self.passwordField.layer addAnimation:animation forKey:nil];
-    [self.userImageView.layer addAnimation:animation forKey:nil];
-    
-}
-
-
-- (void)dealloc {
-    [self.timer invalidate];
-    self.timer = nil;
-}
-
 - (void)setupImageView {
     self.userImageView.layer.cornerRadius = CGRectGetHeight(self.userImageView.frame)/2;
     self.userImageView.layer.masksToBounds = YES;
@@ -92,6 +70,17 @@
     self.userImageView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.userImageView.layer.shadowOpacity = 0.5;
     
+    [self animateUserImage];
+}
+
+- (void)renderViewWithProfile:(ProfileModel *)profile {
+    self.userImageView.image = profile.profileImage;
+    self.userNameLabel.text = profile.profileName;
+}
+
+#pragma mark - Animations
+
+- (void)animateUserImage {
     CABasicAnimation *borderAnimation = [CABasicAnimation animationWithKeyPath:@"borderWidth"];
     borderAnimation.toValue = @5;
     borderAnimation.duration = 1;
@@ -117,24 +106,40 @@
     group.autoreverses = YES;
     
     [self.userImageView.layer addAnimation:group forKey:nil];
-
 }
 
-- (void)renderViewWithProfile:(ProfileModel *)profile {
-    self.userImageView.image = profile.profileImage;
-    self.userNameLabel.text = profile.profileName;
+- (void)animateUserName {
+    
+    CGFloat currentPostionX = self.userNameLabel.layer.position.x;
+    
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+    animation.keyPath = @"position.x";
+    animation.duration = 0.3;
+    animation.values = @[@(currentPostionX),
+                         @(currentPostionX - 10),
+                         @(currentPostionX + 10),
+                         @(currentPostionX + 10),
+                         @(currentPostionX - 10),
+                         @(currentPostionX - 5),
+                         @(currentPostionX + 10),
+                         @(currentPostionX)];
+    animation.keyTimes = @[@0, @0.14, @0.28, @0.42, @0.56, @0.70, @0.84, @1];
+    [self.userNameLabel.layer addAnimation:animation forKey:nil];
+    [self.passwordField.layer addAnimation:animation forKey:nil];
+    [self.userImageView.layer addAnimation:animation forKey:nil];
+    
 }
 
 #pragma mark - Actions
 
 - (IBAction)nextProfile:(id)sender {
-    
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.25 animations:^{
         CGAffineTransform transform = CGAffineTransformMakeScale(1.7, 1.7);
-        self.userNameLabel.transform = transform;
+        weakSelf.userNameLabel.transform = transform;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.1 animations:^{
-            self.userNameLabel.transform = CGAffineTransformIdentity;
+            weakSelf.userNameLabel.transform = CGAffineTransformIdentity;
         }];
     }];
     
@@ -144,7 +149,7 @@
                               duration:0.25
                                options:UIViewAnimationOptionTransitionFlipFromLeft
                             animations:^{
-                                [self renderViewWithProfile:model];
+                                [weakSelf renderViewWithProfile:model];
                             } completion:^(BOOL finished) {
 
                             }];
@@ -152,22 +157,24 @@
     }];
     [UIView animateWithDuration:0.05 animations:^{
         CGAffineTransform transform = CGAffineTransformMakeScale(1.3, 1.3);
-        self.nextButton.transform = transform;
+        weakSelf.nextButton.transform = transform;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.05 animations:^{
-            self.nextButton.transform = CGAffineTransformIdentity;
+            weakSelf.nextButton.transform = CGAffineTransformIdentity;
         }];
     }];
 }
 
  - (IBAction)prevProfile:(id)sender {
+     __weak typeof(self) weakSelf = self;
      [self.dataSource previousModelWithCompletion:^(ProfileModel *model, BOOL isLastModel) {
          if (!isLastModel) {
-             [UIView transitionWithView:self.userImageView
+             __strong typeof(weakSelf) strongSelf = weakSelf;
+             [UIView transitionWithView:weakSelf.userImageView
                                duration:0.25
                                 options:UIViewAnimationOptionTransitionFlipFromRight
                              animations:^{
-                                 [self renderViewWithProfile:model];
+                                 [strongSelf renderViewWithProfile:model];
                              } completion:^(BOOL finished) {
                                  
                              }];
@@ -175,14 +182,12 @@
      }];
      [UIView animateWithDuration:0.05 animations:^{
          CGAffineTransform transform = CGAffineTransformMakeScale(1.3, 1.3);
-         self.prevButton.transform = transform;
+         weakSelf.prevButton.transform = transform;
      } completion:^(BOOL finished) {
          [UIView animateWithDuration:0.05 animations:^{
-             self.prevButton.transform = CGAffineTransformIdentity;
+             weakSelf.prevButton.transform = CGAffineTransformIdentity;
          }];
      }];
-     
-     
  }
 
 - (IBAction)checkEnteredNameButton:(UIButton *)sender {
@@ -195,7 +200,6 @@
     colorAnimation.keyPath = @"borderColor";
     colorAnimation.duration = 2;
     
-    
     colorAnimation.keyTimes = @[@0, @0.5, @1];
     
     CAAnimationGroup *group = [[CAAnimationGroup alloc] init];
@@ -203,12 +207,9 @@
     group.duration = 2;
     
     if ([self.passwordField.text isEqualToString:self.userNameLabel.text]) {
-        
         colorAnimation.values = @[ (__bridge id )[UIColor whiteColor].CGColor,
                                    (__bridge id )[UIColor greenColor].CGColor,
                                    (__bridge id )[UIColor whiteColor].CGColor];
-        
-        
     } else {
         colorAnimation.values = @[ (__bridge id )[UIColor whiteColor].CGColor,
                                    (__bridge id )[UIColor redColor].CGColor,
@@ -217,11 +218,7 @@
     }
     
     [self.passwordField.layer addAnimation:group forKey:nil];
-    
-    
-    
 }
-
 
 #pragma mark - Lazy Load
 

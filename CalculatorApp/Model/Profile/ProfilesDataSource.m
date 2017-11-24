@@ -54,7 +54,7 @@
     NSMutableArray *generatedProfiles = [NSMutableArray array];
     NSArray *names = @[@"Racoon", @"Dog", @"Hamster", @"Cat"];
     [names enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL * _Nonnull stop) {
-        ProfileModel *profile = [ProfileModel new];
+        ProfileModel *profile = [[ProfileModel alloc] init];
         NSString *imageName = [NSString stringWithFormat:@"profile%lu", (unsigned long)idx];
         profile.profileImage = [UIImage imageNamed:imageName];
         profile.profileName = name;

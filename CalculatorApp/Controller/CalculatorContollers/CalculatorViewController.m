@@ -9,7 +9,7 @@
 #import "CalculatorViewController.h"
 #import "Calculator.h"
 
-@interface CalculatorViewController ()
+@interface CalculatorViewController () <CalculatorHistoryDelegate, UIGestureRecognizerDelegate>
 
 @property (assign, nonatomic) BOOL isUserInTheMiddleOfNumber;
 @property (assign, nonatomic) double displayValue;
@@ -30,7 +30,7 @@
 - (Calculator *)model {
     
     if (!_model) {
-        _model = [Calculator new];
+        _model = [[Calculator alloc] init];
     }
     
     return _model;
@@ -39,7 +39,6 @@
 - (double)displayValue {
     return self.resultLabel.text.doubleValue;
 }
-
 
 - (void)setDisplayValue:(double)displayValue {
     self.resultLabel.text = @(displayValue).stringValue;
@@ -55,11 +54,9 @@
     deleteNumeralRecognizer.delegate = self;
     [self.resultLabel addGestureRecognizer:deleteNumeralRecognizer];
     
-    
 }
 
 - (void)pushupsButtons:(UIButton *)sender {
-    
     [UIView animateWithDuration:0.1 animations:^ {
         sender.layer.cornerRadius = 20;
         sender.layer.masksToBounds = YES;
@@ -127,14 +124,12 @@
 }
 
 - (IBAction)showExpressionsHistory:(UIButton *)sender {
-    CalculatorHistoryViewController *history = [self.storyboard instantiateViewControllerWithIdentifier:@"CalculatorHistoryViewController"];
+    CalculatorHistoryViewController *history = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([CalculatorHistoryViewController class])];
     history.delegate = self;
     history.expressionsForHistory = self.model.expressionsForHistory;
-    history.resultsForHistory = self.model.resultsForHistory;
-    
+    history.resultsForHistory = self.model.resultsForHistory;    
     
     [self.navigationController pushViewController:history animated:YES];
 }
-
 
 @end

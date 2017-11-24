@@ -8,16 +8,16 @@
 
 #import "GalaxyViewController.h"
 #import "GalaxyModel.h"
+#import "ImageLoadOperation.h"
 
-@interface GalaxyViewController ()
+@interface GalaxyViewController () <UIScrollViewDelegate>
 
 @property (strong, nonatomic) NSURL *imageURL;
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) GalaxyModel *model;
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
-
-
+@property (strong, nonatomic) NSOperationQueue *queue;
 
 @end
 
@@ -28,7 +28,6 @@
     GalaxyViewController *controller = [galaxyStoryboard instantiateViewControllerWithIdentifier:NSStringFromClass([GalaxyViewController class])];
     return controller;
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,31 +40,17 @@
     self.imageURL = self.model.imageURL;
 }
 
-- (void)didReceiveMemoryWarning {
-    NSLog(@"You have memory warning");
-}
-
 - (void)fetchImage {
     
-    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:self.imageURL
-                                                         completionHandler:^(NSData * _Nullable data,
-                                                                             NSURLResponse * _Nullable response,
-                                                                             NSError * _Nullable error) {
-                                                             if (!error) {
-                                                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                                                     self.image = [UIImage imageWithData:data];
-                                                                 });
-                                                             }
-                                                         }];
-    [task resume];
+    ImageLoadOperation *operation = [[ImageLoadOperation alloc] initWithUrl:self.imageURL];
+    operation.loadCompilation = ^(UIImage *image) {
+        self.image = image;
+    };
 }
 
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return self.imageView;
 }
-
-
-#define mark - Lazy loading
 
 - (void)setImage:(UIImage *)image {
     self.imageView.image = image;
@@ -90,5 +75,14 @@
     return _model;
 }
 
+- (NSOperationQueue *)queue {
+    if (!_queue) {
+        _queue = [[NSOperationQueue alloc] init];
+        _queue.qualityOfService = NSQualityOfServiceUserInitiated;
+        _queue.suspended = YES;
+        _queue.maxConcurrentOperationCount = 1;
+    }
+    return _queue;
+}
 
 @end

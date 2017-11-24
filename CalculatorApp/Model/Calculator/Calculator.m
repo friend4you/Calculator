@@ -109,8 +109,6 @@ typedef double(^Binary)(double, double);
     }
 }
 
-
-
 - (NSMutableArray *)expressionsForHistory {
     if (!_expressionsForHistory) {
         _expressionsForHistory = [[NSMutableArray alloc] init];
@@ -188,7 +186,6 @@ typedef double(^Binary)(double, double);
     
     return _binaryOperations;
 }
-
 
 - (void)setOperand:(double)operand {
     self.accumulate = operand;

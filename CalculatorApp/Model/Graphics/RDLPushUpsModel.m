@@ -7,8 +7,9 @@
 //
 
 #import "RDLPushUpsModel.h"
+#import "RDLChartPointProtocol.h"
 
-@interface RDLPushUpsModel()
+@interface RDLPushUpsModel() <RDLChartPointProtocol>
 
 @property (nonatomic, assign) NSInteger day;
 @property (nonatomic, assign) NSInteger pushUps;

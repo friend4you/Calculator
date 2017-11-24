@@ -52,7 +52,6 @@
     snapshotTo.layer.cornerRadius = 20;
     snapshotTo.layer.masksToBounds = YES;
 
-
     [containerView addSubview:toViewController.view];
     [containerView addSubview:snapshotTo];
     [toViewController.view setHidden:YES];
@@ -63,10 +62,12 @@
 
     NSTimeInterval duration = [self transitionDuration:transitionContext];
 
+    __weak typeof(self) weakSelf = self;
     [UIView animateKeyframesWithDuration:duration
                                    delay:0
                                  options:UIViewKeyframeAnimationOptionCalculationModeCubic
                               animations:^{
+                                  __strong typeof(weakSelf) strongSelf = weakSelf;
                                   [UIView addKeyframeWithRelativeStartTime:0.0
                                                           relativeDuration:0.25
                                                                 animations:^{
@@ -74,12 +75,12 @@
                                   [UIView addKeyframeWithRelativeStartTime:0.25
                                                           relativeDuration:0.25
                                                                 animations:^{
-                                                                    fromViewController.view.layer.transform = [self yRotation:-M_PI_2];
+                                                                    fromViewController.view.layer.transform = [strongSelf yRotation:-M_PI_2];
                                                                 }];
                                   [UIView addKeyframeWithRelativeStartTime:0.50
                                                           relativeDuration:0.25
                                                                 animations:^{
-                                                                    snapshotTo.layer.transform = [self yRotation:0.0];
+                                                                    snapshotTo.layer.transform = [strongSelf yRotation:0.0];
                                                                 }];
                                   [UIView addKeyframeWithRelativeStartTime:0.75
                                                           relativeDuration:0.25
@@ -95,8 +96,6 @@
                                   fromViewController.view.layer.transform = CATransform3DIdentity;
                                   [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
                               }];
-
-  
 }
 
 - (NSTimeInterval)transitionDuration:(nullable id<UIViewControllerContextTransitioning>)transitionContext {

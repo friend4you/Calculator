@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GalaxyViewController : UIViewController<UIScrollViewDelegate>
+@interface GalaxyViewController : UIViewController
 
 + (GalaxyViewController *)instantiateFromStoryboard;
 

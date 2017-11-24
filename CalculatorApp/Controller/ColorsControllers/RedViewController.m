@@ -10,10 +10,9 @@
 #import "GreenViewController.h"
 #import "FlipAnimatorTransitioning.h"
 
-@interface RedViewController()
+@interface RedViewController() <UIViewControllerTransitioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *cardView;
-
 
 @end
 
@@ -26,7 +25,6 @@
     self.cardView.layer.masksToBounds = YES;
     
 }
-
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     FlipAnimatorTransitioning *animator = [[FlipAnimatorTransitioning alloc] initWithFrame:_cardView.frame];
@@ -49,8 +47,6 @@
     greenController.transitioningDelegate = self;
     [self presentViewController:greenController animated:YES completion:nil];
 }
-
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     segue.destinationViewController.modalPresentationStyle = UIModalPresentationCustom;

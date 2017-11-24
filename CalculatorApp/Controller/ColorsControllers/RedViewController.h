@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RedViewController : UIViewController<UIViewControllerTransitioningDelegate>
+@interface RedViewController : UIViewController
 
 + (RedViewController *)instantiateFromStoryboard;
 

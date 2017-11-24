@@ -18,8 +18,6 @@
 
 @implementation GalaxyModel
 
-
-
 - (NSURL *)imageURL {
     if (!_imageURL) {
         _imageURL = [NSURL URLWithString:@"https://upload.wikimedia.org/wikipedia/commons/f/f9/The_hidden_fires_of_the_Flame_Nebula.jpg"];
@@ -45,6 +43,5 @@
     
     return [model copy];
 }
-
 
 @end

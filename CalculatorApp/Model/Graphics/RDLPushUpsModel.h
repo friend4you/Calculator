@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RDLChartPointProtocol.h"
 
-@interface RDLPushUpsModel : NSObject <RDLChartPointProtocol>
+@interface RDLPushUpsModel : NSObject
 
 - (instancetype)initWithDay:(NSInteger)day withPushUpsAmount:(NSInteger)pushUps;
 

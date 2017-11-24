@@ -78,8 +78,6 @@ static const CGFloat kAxisSideOffset = 10;
     }
 }
 
-
-
 - (void)addVertexText:(NSString *)text
               context:(CGContextRef)ctx
              withrect:(CGRect)rect {

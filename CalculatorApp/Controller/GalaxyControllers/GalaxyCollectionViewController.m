@@ -25,8 +25,6 @@
     return _model;
 }
 
-static NSString * const reuseIdentifier = @"GalaxyCell";
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -34,7 +32,7 @@ static NSString * const reuseIdentifier = @"GalaxyCell";
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([GalaxyCollectionViewCell class])];
     
     // Do any additional setup after loading the view.
 }
@@ -63,7 +61,7 @@ static NSString * const reuseIdentifier = @"GalaxyCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    GalaxyCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    GalaxyCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([GalaxyCollectionViewCell class]) forIndexPath:indexPath];
     
     // Configure the cell
     

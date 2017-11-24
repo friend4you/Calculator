@@ -11,6 +11,8 @@
 
 @implementation CalculatorHistoryViewController
 
+#pragma mark - Lazy Load
+
 - (NSMutableArray *)expressionsForHistory {
     if (!_expressionsForHistory) {
         _expressionsForHistory = [[NSMutableArray alloc] init];
@@ -25,6 +27,8 @@
     return _resultsForHistory;
 }
 
+#pragma mark - TableView
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.expressionsForHistory.count;
 }
@@ -36,10 +40,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryTableViewCell" forIndexPath:indexPath];
+    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HistoryTableViewCell class]) forIndexPath:indexPath];
     
     cell.expressionLabel.text = [self.expressionsForHistory objectAtIndex:indexPath.row];
-    cell.resultLabel.text = [self.resultsForHistory objectAtIndex:indexPath.row];
+    cell.resultLabel.text = self.resultsForHistory[indexPath.row];
     
     return cell;
 }
