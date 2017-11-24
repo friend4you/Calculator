@@ -40,12 +40,12 @@
     self.imageURL = self.model.imageURL;
 }
 
-- (void)fetchImage {
-    
+- (void)fetchImage {    
     ImageLoadOperation *operation = [[ImageLoadOperation alloc] initWithUrl:self.imageURL];
     operation.loadCompilation = ^(UIImage *image) {
         self.image = image;
     };
+    [self.queue addOperation:operation];
 }
 
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
@@ -79,7 +79,7 @@
     if (!_queue) {
         _queue = [[NSOperationQueue alloc] init];
         _queue.qualityOfService = NSQualityOfServiceUserInitiated;
-        _queue.suspended = YES;
+        _queue.suspended = NO;
         _queue.maxConcurrentOperationCount = 1;
     }
     return _queue;

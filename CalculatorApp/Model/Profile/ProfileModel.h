@@ -11,7 +11,7 @@
 
 @interface ProfileModel : NSObject
 
-@property (nonatomic, strong) UIImage *profileImage;
+@property (nonatomic, strong) NSURL *profileImage;
 @property (nonatomic, strong) NSString *profileName;
 
 @end

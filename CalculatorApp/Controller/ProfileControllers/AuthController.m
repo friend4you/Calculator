@@ -8,6 +8,7 @@
 
 #import "AuthController.h"
 #import "ProfilesDataSource.h"
+#import "ImageLoadOperation.h"
 
 @interface AuthController ()
 
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *prevButton;
 @property (nonatomic, strong) ProfilesDataSource *dataSource;
 @property (nonatomic, weak) NSTimer *timer;
+@property (strong, nonatomic) NSOperationQueue *queue;
 
 
 @end
@@ -74,7 +76,12 @@
 }
 
 - (void)renderViewWithProfile:(ProfileModel *)profile {
-    self.userImageView.image = profile.profileImage;
+    self.userImageView.image = nil;
+    ImageLoadOperation *operation = [[ImageLoadOperation alloc] initWithUrl:profile.profileImage];
+    operation.loadCompilation = ^(UIImage *image) {
+        self.userImageView.image = image;
+    };
+    [self.queue addOperation:operation];
     self.userNameLabel.text = profile.profileName;
 }
 
@@ -227,6 +234,15 @@
         _dataSource = [[ProfilesDataSource alloc] init];
     }
     return _dataSource;
+}
+
+- (NSOperationQueue *)queue {
+    
+    if (!_queue) {
+        _queue = [[NSOperationQueue alloc] init];
+        _queue.qualityOfService = NSQualityOfServiceUserInteractive;
+    }
+    return _queue;
 }
 
 @end

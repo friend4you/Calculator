@@ -62,10 +62,42 @@ typedef enum : NSUInteger {
                                                                              NSURLResponse * _Nullable response,
                                                                              NSError * _Nullable error) {
                                                              __strong typeof(weakSelf) strongSelf = weakSelf;
-                                                             if (!error) {
+                                                             
+                                                             if (data) {
+                                                                 UIImage *image = [UIImage imageWithData:data];
+                                                                 CGFloat radius = 0;
+                                                                 CGRect rect = CGRectZero;
+                                                                 if(image.size.height < image.size.width) {
+                                                                     radius = image.size.height / 2;
+                                                                     rect.size.height = image.size.height;
+                                                                     rect.size.width = image.size.height;
+                                                                     //rect.origin.x = (image.size.width - image.size.height) / 2;
+                                                                 } else {
+                                                                     radius = image.size.width / 2;
+                                                                     rect.size.height = image.size.width;
+                                                                     rect.size.width = image.size.width;
+                                                                     //rect.origin.y = (image.size.height - image.size.width) / 2;
+                                                                 }
+
+                                                                 // Begin a new image that will be the new image with the rounded corners
+                                                                 // (here with the size of an UIImageView)
+                                                                 UIGraphicsBeginImageContextWithOptions(rect.size, NO, 1.0);
+
+                                                                 // Add a clip before drawing anything, in the shape of an rounded rect
+                                                                 [[UIBezierPath bezierPathWithRoundedRect:rect
+                                                                                             cornerRadius:radius] addClip];
+                                                                 // Draw your image
+                                                                 [image drawInRect:rect];
+
+                                                                 // Get the image, here setting the UIImageView image
+                                                                 UIImage *roundedImage = UIGraphicsGetImageFromCurrentImageContext();
+
+                                                                 // Lets forget about that we were drawing
+                                                                 UIGraphicsEndImageContext();
+                                                                 
                                                                  dispatch_async(dispatch_get_main_queue(), ^{
-                                                                     strongSelf.loadCompilation([UIImage imageWithData:data]);
-                                                                     [self setFinishedState];
+                                                                     strongSelf.loadCompilation(roundedImage);
+                                                                     [strongSelf setFinishedState];
                                                                  });
                                                              }
                                                          }];
@@ -82,10 +114,10 @@ typedef enum : NSUInteger {
 
 - (void)setFinishedState {
     [self willChangeValueForKey:@"isReady"];
-    [self willChangeValueForKey:@"isExecuting"];
+    [self willChangeValueForKey:@"isFinished"];
     self.state = ExecutingState;
     [self didChangeValueForKey:@"isReady"];
-    [self didChangeValueForKey:@"isExecuting"];
+    [self didChangeValueForKey:@"isFinished"];
 }
 
 @end

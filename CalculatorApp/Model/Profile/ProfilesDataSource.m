@@ -53,10 +53,14 @@
 - (void)loadProfiles {
     NSMutableArray *generatedProfiles = [NSMutableArray array];
     NSArray *names = @[@"Racoon", @"Dog", @"Hamster", @"Cat"];
+    NSArray *images = @[@"https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/r/raccoon_thumb.JPG",
+                        @"https://politexpert.net/uploads/2016/08/29/full-maxresdefault-1472485492.jpg",
+                        @"http://cdn.skim.gs/images/wr3lhzo3todpecvbkxzp/facts-you-didnt-know-about-hamsters",
+                        @"https://s-media-cache-ak0.pinimg.com/originals/2f/66/ab/2f66abb007554ade8d4ee784259c1322.jpg"];
     [names enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL * _Nonnull stop) {
         ProfileModel *profile = [[ProfileModel alloc] init];
-        NSString *imageName = [NSString stringWithFormat:@"profile%lu", (unsigned long)idx];
-        profile.profileImage = [UIImage imageNamed:imageName];
+        NSString *imageName = images[idx];
+        profile.profileImage = [NSURL URLWithString:imageName]; //[UIImage imageNamed:imageName];
         profile.profileName = name;
         [generatedProfiles addObject:profile];
     }];

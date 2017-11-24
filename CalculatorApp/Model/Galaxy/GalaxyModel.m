@@ -20,7 +20,7 @@
 
 - (NSURL *)imageURL {
     if (!_imageURL) {
-        _imageURL = [NSURL URLWithString:@"https://upload.wikimedia.org/wikipedia/commons/f/f9/The_hidden_fires_of_the_Flame_Nebula.jpg"];
+        _imageURL = [NSURL URLWithString:@"http://magazine.viterbi.usc.edu/wp-content/uploads/BSP_054.jpg"];
         // http://magazine.viterbi.usc.edu/wp-content/uploads/BSP_054.jpg //
         // https://cdn.spacetelescope.org/archives/images/large/heic0601a.jpg // 18000 × 18000
         // http://www.faustisland.com/wp-content/uploads/2017/03/pexels-photo-107956.jpeg // 5257 × 3474
