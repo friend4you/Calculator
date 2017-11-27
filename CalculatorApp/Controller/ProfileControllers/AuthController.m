@@ -21,7 +21,7 @@
 @property (nonatomic, strong) ProfilesDataSource *dataSource;
 @property (nonatomic, weak) NSTimer *timer;
 @property (strong, nonatomic) NSOperationQueue *queue;
-
+@property (strong, nonatomic) ImageLoadOperation *operation;
 
 @end
 
@@ -76,12 +76,17 @@
 }
 
 - (void)renderViewWithProfile:(ProfileModel *)profile {
+    __weak typeof(self) weakSelf = self;
     self.userImageView.image = nil;
-    ImageLoadOperation *operation = [[ImageLoadOperation alloc] initWithUrl:profile.profileImage];
-    operation.loadCompilation = ^(UIImage *image) {
-        self.userImageView.image = image;
+    if(_operation.isExecuting){
+        [self.operation cancel];
+    }
+    self.operation = [[ImageLoadOperation alloc] initWithUrl:profile.profileImage];
+    self.operation.loadCompilation = ^(UIImage *image) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.userImageView.image = image;
     };
-    [self.queue addOperation:operation];
+    [self.queue addOperation:self.operation];
     self.userNameLabel.text = profile.profileName;
 }
 
