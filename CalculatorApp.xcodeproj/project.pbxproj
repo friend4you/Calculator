@@ -42,9 +42,18 @@
 		93BDBB601FA33EFA00748B5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93BDBB5F1FA33EFA00748B5D /* Assets.xcassets */; };
 		93BDBB631FA33EFA00748B5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93BDBB611FA33EFA00748B5D /* LaunchScreen.storyboard */; };
 		93BDBB661FA33EFA00748B5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BDBB651FA33EFA00748B5D /* main.m */; };
+		93F344401FCC2F48000A4EAF /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F3443F1FCC2F48000A4EAF /* MainTableViewController.m */; };
+		93F344431FCC312F000A4EAF /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F344421FCC312F000A4EAF /* MainTableViewCell.m */; };
+		93F344461FCC37E9000A4EAF /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F344451FCC37E9000A4EAF /* AppModel.m */; };
+		93F3444B1FCC534F000A4EAF /* TwitterLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F3444A1FCC534F000A4EAF /* TwitterLoginViewController.m */; };
+		93F3444D1FCC536B000A4EAF /* SocialSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93F3444C1FCC536B000A4EAF /* SocialSearch.storyboard */; };
+		93F344501FCC7606000A4EAF /* TweetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F3444F1FCC7606000A4EAF /* TweetsTableViewController.m */; };
+		93F344531FCC7DCA000A4EAF /* TweetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F344521FCC7DCA000A4EAF /* TweetTableViewCell.m */; };
+		A12539E1C6BF517F4DAF901A /* libPods-CalculatorApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2009429E6BBDD81875EA1A /* libPods-CalculatorApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B63A073A05346B33FB80559 /* Pods-CalculatorApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalculatorApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalculatorApp/Pods-CalculatorApp.debug.xcconfig"; sourceTree = "<group>"; };
 		933F6CD01FA8A06D005B8305 /* Calculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		933F6CD11FA8A06D005B8305 /* Calculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
 		9356648F1FB5A1320037F4B3 /* Graphics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graphics.storyboard; sourceTree = "<group>"; };
@@ -111,6 +120,21 @@
 		93BDBB621FA33EFA00748B5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93BDBB641FA33EFA00748B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93BDBB651FA33EFA00748B5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		93F3443E1FCC2F48000A4EAF /* MainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
+		93F3443F1FCC2F48000A4EAF /* MainTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
+		93F344411FCC312F000A4EAF /* MainTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTableViewCell.h; sourceTree = "<group>"; };
+		93F344421FCC312F000A4EAF /* MainTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
+		93F344441FCC37E9000A4EAF /* AppModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppModel.h; sourceTree = "<group>"; };
+		93F344451FCC37E9000A4EAF /* AppModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppModel.m; sourceTree = "<group>"; };
+		93F344491FCC534F000A4EAF /* TwitterLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwitterLoginViewController.h; sourceTree = "<group>"; };
+		93F3444A1FCC534F000A4EAF /* TwitterLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterLoginViewController.m; sourceTree = "<group>"; };
+		93F3444C1FCC536B000A4EAF /* SocialSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SocialSearch.storyboard; sourceTree = "<group>"; };
+		93F3444E1FCC7606000A4EAF /* TweetsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetsTableViewController.h; sourceTree = "<group>"; };
+		93F3444F1FCC7606000A4EAF /* TweetsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetsTableViewController.m; sourceTree = "<group>"; };
+		93F344511FCC7DCA000A4EAF /* TweetTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetTableViewCell.h; sourceTree = "<group>"; };
+		93F344521FCC7DCA000A4EAF /* TweetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetTableViewCell.m; sourceTree = "<group>"; };
+		9B2009429E6BBDD81875EA1A /* libPods-CalculatorApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CalculatorApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE5A3FB65E48A4C64A2B35B8 /* Pods-CalculatorApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalculatorApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalculatorApp/Pods-CalculatorApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A12539E1C6BF517F4DAF901A /* libPods-CalculatorApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +159,8 @@
 				939CB6B41FC82B530070F130 /* Animator */,
 				939CB6B31FC82B1F0070F130 /* Calculator */,
 				93A4ABFD1FC5D28000C47C8D /* Galaxy */,
+				93F344441FCC37E9000A4EAF /* AppModel.h */,
+				93F344451FCC37E9000A4EAF /* AppModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -146,6 +173,7 @@
 				9356A0841FBD95C600C4DEDC /* Colors.storyboard */,
 				9356A0A51FBEFF8A00C4DEDC /* Profile.storyboard */,
 				935A08351FC443EB004B0E74 /* Galaxy.storyboard */,
+				93F3444C1FCC536B000A4EAF /* SocialSearch.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -153,6 +181,7 @@
 		935664921FB5A1750037F4B3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				93F344481FCC5316000A4EAF /* SocialSearchControllers */,
 				9356FBBD1FB5E7280028C782 /* MainTabBarController.h */,
 				9356FBBE1FB5E7280028C782 /* MainTabBarController.m */,
 				9356A0AA1FBEFFAE00C4DEDC /* ProfileControllers */,
@@ -160,6 +189,7 @@
 				9356A0901FBDA00300C4DEDC /* RDLGraphicsControllers */,
 				9356A08F1FBD9FE500C4DEDC /* ColorsControllers */,
 				935A083A1FC4443A004B0E74 /* GalaxyControllers */,
+				93F344471FCC488E000A4EAF /* MainControllers */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -224,9 +254,9 @@
 		935A08341FC41D69004B0E74 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				9356A0AE1FBF015C00C4DEDC /* ProfileModel.h */,
 				9356A0AC1FBF015A00C4DEDC /* ProfileModel.m */,
 				9356A0AD1FBF015B00C4DEDC /* ProfilesDataSource.h */,
+				9356A0AE1FBF015C00C4DEDC /* ProfileModel.h */,
 				9356A0AB1FBF015900C4DEDC /* ProfilesDataSource.m */,
 			);
 			path = Profile;
@@ -296,6 +326,7 @@
 				93BDBB551FA33EF900748B5D /* CalculatorApp */,
 				93BDBB541FA33EF900748B5D /* Products */,
 				F151F607C7E07305AAC0EB39 /* Frameworks */,
+				B1E1EDBC0F5ED1AB358AC623 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -324,10 +355,44 @@
 			path = CalculatorApp;
 			sourceTree = "<group>";
 		};
+		93F344471FCC488E000A4EAF /* MainControllers */ = {
+			isa = PBXGroup;
+			children = (
+				93F3443E1FCC2F48000A4EAF /* MainTableViewController.h */,
+				93F3443F1FCC2F48000A4EAF /* MainTableViewController.m */,
+				93F344411FCC312F000A4EAF /* MainTableViewCell.h */,
+				93F344421FCC312F000A4EAF /* MainTableViewCell.m */,
+			);
+			path = MainControllers;
+			sourceTree = "<group>";
+		};
+		93F344481FCC5316000A4EAF /* SocialSearchControllers */ = {
+			isa = PBXGroup;
+			children = (
+				93F344491FCC534F000A4EAF /* TwitterLoginViewController.h */,
+				93F3444A1FCC534F000A4EAF /* TwitterLoginViewController.m */,
+				93F3444E1FCC7606000A4EAF /* TweetsTableViewController.h */,
+				93F3444F1FCC7606000A4EAF /* TweetsTableViewController.m */,
+				93F344511FCC7DCA000A4EAF /* TweetTableViewCell.h */,
+				93F344521FCC7DCA000A4EAF /* TweetTableViewCell.m */,
+			);
+			path = SocialSearchControllers;
+			sourceTree = "<group>";
+		};
+		B1E1EDBC0F5ED1AB358AC623 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B63A073A05346B33FB80559 /* Pods-CalculatorApp.debug.xcconfig */,
+				BE5A3FB65E48A4C64A2B35B8 /* Pods-CalculatorApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F151F607C7E07305AAC0EB39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				9356A0A01FBEE8CD00C4DEDC /* CalculatorApp.xcworkspace */,
+				9B2009429E6BBDD81875EA1A /* libPods-CalculatorApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -339,9 +404,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93BDBB691FA33EFA00748B5D /* Build configuration list for PBXNativeTarget "CalculatorApp" */;
 			buildPhases = (
+				9B6D342C56A22B20EC9704E7 /* [CP] Check Pods Manifest.lock */,
 				93BDBB4F1FA33EF800748B5D /* Sources */,
 				93BDBB501FA33EF800748B5D /* Frameworks */,
 				93BDBB511FA33EF800748B5D /* Resources */,
+				4B21BCDC89DD11D4215AE7BA /* [CP] Embed Pods Frameworks */,
+				C566A533B95BDFAC20702873 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -398,10 +466,66 @@
 				93BDBB5E1FA33EF900748B5D /* Main.storyboard in Resources */,
 				935A08361FC443EB004B0E74 /* Galaxy.storyboard in Resources */,
 				935664901FB5A1320037F4B3 /* Graphics.storyboard in Resources */,
+				93F3444D1FCC536B000A4EAF /* SocialSearch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4B21BCDC89DD11D4215AE7BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CalculatorApp/Pods-CalculatorApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B6D342C56A22B20EC9704E7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CalculatorApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C566A533B95BDFAC20702873 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CalculatorApp/Pods-CalculatorApp-resources.sh",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CalculatorApp/Pods-CalculatorApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		93BDBB4F1FA33EF800748B5D /* Sources */ = {
@@ -410,10 +534,15 @@
 			files = (
 				93A4ABFC1FC5D1F900C47C8D /* GalaxyCollectionViewCell.m in Sources */,
 				9356A0881FBD9F5400C4DEDC /* GreenViewController.m in Sources */,
+				93F3444B1FCC534F000A4EAF /* TwitterLoginViewController.m in Sources */,
+				93F344501FCC7606000A4EAF /* TweetsTableViewController.m in Sources */,
 				93A9CBB91FBB17D400AEBF4B /* RDLChartViewController.m in Sources */,
 				93A4AC011FC5D2CA00C47C8D /* GalaxyCellModel.m in Sources */,
 				93A9CBC51FBB2DA000AEBF4B /* Graphics.m in Sources */,
+				93F344531FCC7DCA000A4EAF /* TweetTableViewCell.m in Sources */,
+				93F344461FCC37E9000A4EAF /* AppModel.m in Sources */,
 				93A9CBC81FBB334000AEBF4B /* RDLSelectChartViewController.m in Sources */,
+				93F344401FCC2F48000A4EAF /* MainTableViewController.m in Sources */,
 				93A9CBBA1FBB17D400AEBF4B /* RDLPushUpsModel.m in Sources */,
 				9356A0AF1FBF015C00C4DEDC /* ProfilesDataSource.m in Sources */,
 				938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */,
@@ -431,6 +560,7 @@
 				93A9CBBB1FBB17D400AEBF4B /* RDLChartView.m in Sources */,
 				9356A0A91FBEFFA100C4DEDC /* AuthController.m in Sources */,
 				935A08391FC4442C004B0E74 /* GalaxyViewController.m in Sources */,
+				93F344431FCC312F000A4EAF /* MainTableViewCell.m in Sources */,
 				93BDBB581FA33EF900748B5D /* AppDelegate.m in Sources */,
 				9356A0B01FBF015C00C4DEDC /* ProfileModel.m in Sources */,
 				933F6CD21FA8A06D005B8305 /* Calculator.m in Sources */,
@@ -567,6 +697,7 @@
 		};
 		93BDBB6A1FA33EFA00748B5D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B63A073A05346B33FB80559 /* Pods-CalculatorApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -584,6 +715,7 @@
 		};
 		93BDBB6B1FA33EFA00748B5D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE5A3FB65E48A4C64A2B35B8 /* Pods-CalculatorApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

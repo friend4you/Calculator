@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <TwitterKit/TwitterKit.h>
+
 
 @interface AppDelegate ()
 
@@ -16,7 +18,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    [[Twitter sharedInstance] startWithConsumerKey:@"X6TWXaqG03PEtCvHGKslkWaxQ" consumerSecret:@"hJcwwaceGJKQn84LQmIiMNnOGz8vtuzHTvGf59aKdfccttkbvj"];
+    
     return YES;
 }
 
@@ -49,6 +53,12 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#define mark - TwitterKit
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    return [[Twitter sharedInstance] application:app openURL:url options:options];
 }
 
 

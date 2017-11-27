@@ -69,7 +69,9 @@ static NSString *operationFinished = @"isFinished";
     [self setExecutingState];
     __weak typeof(self) weakSelf = self;
     
-    [self fileFromManager];
+    if ([self fileFromManager]) {
+        return;
+    }
     
     
     
@@ -82,8 +84,10 @@ static NSString *operationFinished = @"isFinished";
                                                              if (data) {
                                                                  
                                                                  UIImage *image = [UIImage imageWithData:data];
-                                                                 [strongSelf saveImageData:data];
                                                                  UIImage *roundedImage = [strongSelf makeCircleBorderWithImage:image];
+                                                                 
+                                                                 [strongSelf saveImageData:data];
+                                                                 
                                                                  
                                                                  dispatch_async(dispatch_get_main_queue(), ^{
                                                                      strongSelf.loadCompilation(roundedImage);
@@ -111,7 +115,7 @@ static NSString *operationFinished = @"isFinished";
     [self didChangeValueForKey:operationFinished];
 }
 
-- (void)fileFromManager {
+- (BOOL)fileFromManager {
     __weak typeof(self) weakSelf = self;
     
     NSString *fileName = [[self.imageUrl path] lastPathComponent];
@@ -120,10 +124,14 @@ static NSString *operationFinished = @"isFinished";
     NSString *path = [tempDir stringByAppendingPathComponent:fileName];
     if ([fileManager fileExistsAtPath:path]) {
         UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfFile:path]];
+        UIImage *roundedImage = [self makeCircleBorderWithImage:img];
         dispatch_async(dispatch_get_main_queue(), ^{
-            weakSelf.loadCompilation(img);
+            weakSelf.loadCompilation(roundedImage);
             [weakSelf setFinishedState];
         });
+        return YES;
+    } else {
+        return NO;
     }
 }
 
@@ -131,8 +139,8 @@ static NSString *operationFinished = @"isFinished";
     NSString *fileName = [[self.imageUrl path] lastPathComponent];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *tempDir = NSTemporaryDirectory();
-    //NSString *path = [tempDir stringByAppendingPathComponent:fileName];
-    [fileManager createFileAtPath:tempDir contents:data attributes:nil];
+    NSString *path = [tempDir stringByAppendingPathComponent:fileName];
+    [fileManager createFileAtPath:path contents:data attributes:nil];
 }
 
 - (UIImage *)makeCircleBorderWithImage:(UIImage *)image {

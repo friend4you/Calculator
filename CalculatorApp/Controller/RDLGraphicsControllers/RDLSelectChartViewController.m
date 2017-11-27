@@ -13,6 +13,7 @@
 
 @interface RDLSelectChartViewController ()
 
+
 @end
 
 @implementation RDLSelectChartViewController
@@ -31,5 +32,11 @@
         chartViewController.model = [graphics getChartById:segue.identifier];
     }    
 }
+
+- (IBAction)backToMain:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 @end

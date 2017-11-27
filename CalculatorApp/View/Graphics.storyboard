@@ -132,7 +132,18 @@
                             <constraint firstItem="1Qb-Hj-of8" firstAttribute="centerY" secondItem="X60-BT-Sch" secondAttribute="centerY" id="Pb4-rM-8qk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Select Chart" id="7hN-3N-gbt"/>
+                    <navigationItem key="navigationItem" title="Select Chart" id="7hN-3N-gbt">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="WIz-tt-XLB">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T8e-QJ-FgP">
+                                <rect key="frame" x="16" y="7" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backToMain:" destination="QbW-YZ-AfU" eventType="touchUpInside" id="Zh3-lo-6Ba"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9GX-om-wzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
