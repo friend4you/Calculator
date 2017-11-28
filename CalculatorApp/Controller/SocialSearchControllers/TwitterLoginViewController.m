@@ -25,18 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
-    
-    if (store.session) {
-        TweetsTableViewController *tweets = [TweetsTableViewController instantiateFromStoryboard];
-        [self presentViewController:tweets animated:YES completion:nil];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
-    
     TWTRLogInButton *logInButton = [TWTRLogInButton buttonWithLogInCompletion:^(TWTRSession *session, NSError *error) {
         if (session) {
-            TweetsTableViewController *tweets = [TweetsTableViewController instantiateFromStoryboard];
-            [self presentViewController:tweets animated:YES completion:nil];
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
             NSLog(@"error: %@", [error localizedDescription]);

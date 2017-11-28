@@ -16,7 +16,7 @@
 #import "RedViewController.h"
 #import "AuthController.h"
 #import "GalaxyViewController.h"
-#import "TwitterLoginViewController.h"
+#import "TweetsTableViewController.h"
 
 static NSString *calculatorTitle = @"Calculator";
 static NSString *graphicsTitle = @"Graphics";
@@ -54,32 +54,32 @@ static NSString *socialSearchImageName = @"twitterIcon";
     AppModel *calculator = [[AppModel alloc] init];
     calculator.image = [UIImage imageNamed:calculatorImageName];
     calculator.title = calculatorTitle;
-    calculator.controller = [CalculatorViewController instantiateFromStoryboard];
+    calculator.identifier = NSStringFromClass([CalculatorViewController class]);
 
     AppModel *chartView = [[AppModel alloc] init];
     chartView.image = [UIImage imageNamed:graphicsImageName];
     chartView.title = graphicsTitle;
-    chartView.controller = [RDLSplitGraphicsViewController instantiateFromStoryboard];
+    chartView.identifier = NSStringFromClass([RDLSplitGraphicsViewController class]);
     
     AppModel *color = [[AppModel alloc] init];
     color.image = [UIImage imageNamed:colorsImageName];
     color.title = colorsTitle;
-    color.controller = [RedViewController instantiateFromStoryboard];
+    color.identifier = NSStringFromClass([RedViewController class]);
 
     AppModel *profile = [[AppModel alloc] init];
     profile.image = [UIImage imageNamed:profileImageName];
     profile.title = profileTitle;
-    profile.controller = [AuthController instantiateFromStoryboard];
+    profile.identifier = NSStringFromClass([AuthController class]);
     
     AppModel *galaxy = [[AppModel alloc] init];
     galaxy.image = [UIImage imageNamed:galaxyImageName];
     galaxy.title = galaxyTitle;
-    galaxy.controller = [GalaxyViewController instantiateFromStoryboard];
+    galaxy.identifier = NSStringFromClass([GalaxyViewController class]);
     
     AppModel *social = [[AppModel alloc] init];
     social.image = [UIImage imageNamed:socialSearchImageName];
     social.title = socialSearchTitle;
-    social.controller = [TwitterLoginViewController instantiateFromStoryboard];
+    social.identifier = NSStringFromClass([TweetsTableViewController class]);
     
     [self.appList addObject:calculator];
     [self.appList addObject:chartView];
@@ -110,11 +110,24 @@ static NSString *socialSearchImageName = @"twitterIcon";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIViewController *controller = self.appList[indexPath.row].controller;
-    if ([controller isKindOfClass:[UISplitViewController class]]) {
-        [self presentViewController:controller animated:YES completion:nil];
-    } else {
-        [self.navigationController pushViewController:controller animated:YES];
+    if ([self.appList[indexPath.row].identifier isEqualToString:NSStringFromClass([CalculatorViewController class])]) {
+        CalculatorViewController *calculator = [CalculatorViewController instantiateFromStoryboard];
+        [self.navigationController pushViewController:calculator animated:YES];
+    } else if ([self.appList[indexPath.row].identifier isEqualToString:NSStringFromClass([RDLSplitGraphicsViewController class])]) {
+        RDLSplitGraphicsViewController *chart = [RDLSplitGraphicsViewController instantiateFromStoryboard];
+        [self presentViewController:chart animated:YES completion:nil];
+    } else if ([self.appList[indexPath.row].identifier isEqualToString:NSStringFromClass([RedViewController class])]) {
+        RedViewController *colors = [RedViewController instantiateFromStoryboard];
+        [self.navigationController pushViewController:colors animated:YES];
+    } else if ([self.appList[indexPath.row].identifier isEqualToString:NSStringFromClass([AuthController class])]) {
+        AuthController *profile = [AuthController instantiateFromStoryboard];
+        [self.navigationController pushViewController:profile animated:YES];
+    } else if ([self.appList[indexPath.row].identifier isEqualToString:NSStringFromClass([GalaxyViewController class])]) {
+        GalaxyViewController *galaxy = [GalaxyViewController instantiateFromStoryboard];
+        [self.navigationController pushViewController:galaxy animated:YES];
+    } else if ([self.appList[indexPath.row].identifier isEqualToString:NSStringFromClass([TweetsTableViewController class])]) {
+        TweetsTableViewController *twitter = [TweetsTableViewController instantiateFromStoryboard];
+        [self presentViewController:twitter animated:YES completion:nil];
     }
 }
 

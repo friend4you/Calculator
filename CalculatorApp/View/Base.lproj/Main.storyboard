@@ -637,7 +637,7 @@
             </objects>
             <point key="canvasLocation" x="-1206" y="134"/>
         </scene>
-        <!--Main Table View Controller-->
+        <!--AppsList-->
         <scene sceneID="RMt-sm-lOk">
             <objects>
                 <tableViewController id="Tcv-L2-FQJ" customClass="MainTableViewController" sceneMemberID="viewController">
@@ -691,7 +691,7 @@
                             <outlet property="delegate" destination="Tcv-L2-FQJ" id="rkj-ot-qI9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="3f0-cO-fRB"/>
+                    <navigationItem key="navigationItem" title="AppsList" id="3f0-cO-fRB"/>
                     <connections>
                         <outlet property="footerView" destination="Tuw-fH-yRi" id="Wm0-f9-D4N"/>
                     </connections>

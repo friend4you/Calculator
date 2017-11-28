@@ -7,12 +7,18 @@
 //
 
 #import "TweetsTableViewController.h"
+#import "ImageLoadOperation.h"
+#import "TweetsLoadOperation.h"
 #import "TweetTableViewCell.h"
+#import "TwitterLoginViewController.h"
 #import <TwitterKit/TwitterKit.h>
 
 @interface TweetsTableViewController ()
 
-@property (strong, nonatomic) NSDictionary *json;
+@property (strong, nonatomic) NSDictionary *tweets;
+@property (strong, nonatomic) NSArray *json;
+@property (strong, nonatomic) NSOperationQueue *queue;
+@property (weak, nonatomic) IBOutlet UIView *footerView;
 
 @end
 
@@ -26,11 +32,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.tableFooterView = self.footerView;   
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
+    
+    if (!store.session) {
+        TwitterLoginViewController *login = [TwitterLoginViewController instantiateFromStoryboard];
+        [self presentViewController:login animated:YES completion:nil];
+    } else {
+        [self fetchTweetsFromTwitter];
+    }
+}
+
+- (void)fetchTweetsFromTwitter {
+    __weak typeof(self) weakSelf = self;
+
+    TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
+
     TWTRAPIClient *client = [[TWTRAPIClient alloc] initWithUserID:store.session.userID];
     
     NSString *statusesShowEndpoint = @"https://api.twitter.com/1.1/statuses/user_timeline.json";
-    NSDictionary *params = @{@"user_id" : client.userID};
+    NSDictionary *params = @{@"user_id" : @"580097412"};
     NSError *clientError;
     
     NSURLRequest *request = [client URLRequestWithMethod:@"GET" URL:statusesShowEndpoint parameters:params error:&clientError];
@@ -38,8 +64,11 @@
     if (request) {
         [client sendTwitterRequest:request completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             if (data) {
+                __strong typeof(weakSelf) strongSelf = weakSelf;
                 NSError *jsonError;
-                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                self.json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                strongSelf.tweets = [self.json objectAtIndex:0];
+                [strongSelf.tableView reloadData];
             }
             else {
                 NSLog(@"Error: %@", connectionError);
@@ -52,70 +81,51 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.json.allKeys.count;
+    //NSArray *keys = [self.tweets allKeys];
+    return self.json.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TweetTableViewCell class]) forIndexPath:indexPath];
+    TweetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TweetTableViewCell class]) forIndexPath:indexPath];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *tweets = [self.json objectAtIndex:indexPath.row];
     TweetTableViewCell *tweetCell = (TweetTableViewCell *)cell;
+    NSDictionary *dict = [tweets objectForKey:@"user"];
+    NSString *imageUrlString = [dict objectForKey:@"profile_image_url"];//[14][2]
+    NSString *text = [tweets objectForKey:@"text"];//[17]
+    ImageLoadOperation *operation = [[ImageLoadOperation alloc] initWithUrl:[NSURL URLWithString:imageUrlString]];
+    operation.loadCompilation = ^(UIImage *image) {
+        tweetCell.avatar = image;
+        
+    };
+    tweetCell.text = text;
+    [self.queue addOperation:operation];
+}
+- (IBAction)twitterLogoutButton:(UIButton *)sender {
+    TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
+    [store logOutUserID:store.session.userID];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)backToMainButton:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+#define mark - Lazy Load
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (NSOperationQueue *)queue {
+    if (!_queue) {
+        _queue = [[NSOperationQueue alloc] init];
+        _queue.qualityOfService = NSQualityOfServiceDefault;
+    }
+    return _queue;
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
