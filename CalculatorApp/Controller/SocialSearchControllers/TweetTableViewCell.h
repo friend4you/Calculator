@@ -12,5 +12,8 @@
 
 @property (strong, nonatomic) UIImage *avatar;
 @property (strong, nonatomic) NSString *text;
+@property (strong, nonatomic) NSString *userName;
+@property (strong, nonatomic) NSString *retweetCount;
+@property (strong, nonatomic) NSString *likesCount;
 
 @end

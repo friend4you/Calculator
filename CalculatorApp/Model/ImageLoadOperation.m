@@ -69,9 +69,9 @@ static NSString *operationFinished = @"isFinished";
     [self setExecutingState];
     __weak typeof(self) weakSelf = self;
     
-    if ([self fileFromManager]) {
-        return;
-    }
+//    if ([self fileFromManager]) {
+//        return;
+//    }
     
     
     
@@ -86,7 +86,7 @@ static NSString *operationFinished = @"isFinished";
                                                                  UIImage *image = [UIImage imageWithData:data];
                                                                  UIImage *roundedImage = [strongSelf makeCircleBorderWithImage:image];
                                                                  
-                                                                 [strongSelf saveImageData:data];
+                                                                 //[strongSelf saveImageData:data];
                                                                  
                                                                  
                                                                  dispatch_async(dispatch_get_main_queue(), ^{

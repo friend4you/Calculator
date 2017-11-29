@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^TweetsLoadComplition)(NSDictionary *json);
+typedef void(^TweetsLoadComplition)(NSArray *json);
 
 @interface TweetsLoadOperation : NSOperation
+
+- (instancetype)initWithSearchText:(NSString *)text NS_DESIGNATED_INITIALIZER;
+- (instancetype)init NS_UNAVAILABLE;
 
 @property (copy, nonatomic) TweetsLoadComplition loadCompilation;
 

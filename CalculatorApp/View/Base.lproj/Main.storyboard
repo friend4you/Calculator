@@ -626,6 +626,7 @@
         <!--Main Tab Bar Controller-->
         <scene sceneID="Mc3-A5-gcC">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vf3-R9-uxO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController storyboardIdentifier="MainTabBarController" id="4tV-Fl-9GU" customClass="MainTabBarController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7T2-Se-ebo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -633,14 +634,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vf3-R9-uxO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1206" y="134"/>
         </scene>
         <!--AppsList-->
         <scene sceneID="RMt-sm-lOk">
             <objects>
-                <tableViewController id="Tcv-L2-FQJ" customClass="MainTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MainTableViewController" id="Tcv-L2-FQJ" customClass="MainTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="z5g-Ej-sjZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

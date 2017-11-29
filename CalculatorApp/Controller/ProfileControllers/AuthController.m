@@ -22,6 +22,7 @@
 @property (nonatomic, weak) NSTimer *timer;
 @property (strong, nonatomic) NSOperationQueue *queue;
 @property (strong, nonatomic) ImageLoadOperation *operation;
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
 @end
 
@@ -40,6 +41,7 @@
     [self setupNextButton];
     [self setupPreviousButton];
     [self setupPasswordField];
+    self.mainScrollView.contentSize = self.view.frame.size;
 }
 
 - (void)dealloc {
@@ -47,7 +49,7 @@
     self.timer = nil;
 }
 
-#define mark - InterfaceSetup
+#pragma mark - InterfaceSetup
 
 - (void)setupNextButton {
     self.nextButton.layer.shadowColor = [UIColor blackColor].CGColor;

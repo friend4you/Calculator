@@ -12,6 +12,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *tweetText;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
+@property (weak, nonatomic) IBOutlet UILabel *likesLabel;
 
 @end
 
@@ -42,6 +45,30 @@
 
 - (void)setText:(NSString *)text {
     self.tweetText.text = text;
+}
+
+- (NSString *)userName {
+    return self.userNameLabel.text;
+}
+
+- (void)setUserName:(NSString *)userName {
+    self.userNameLabel.text = userName;
+}
+
+- (NSString *)retweetCount {
+    return self.retweetLabel.text;
+}
+
+- (void)setRetweetCount:(NSString *)retweetCount {
+    self.retweetLabel.text = retweetCount;
+}
+
+- (NSString *)likesCount {
+    return self.likesLabel.text;
+}
+
+- (void)setLikesCount:(NSString *)likesCount {
+    self.likesLabel.text = likesCount;
 }
 
 @end

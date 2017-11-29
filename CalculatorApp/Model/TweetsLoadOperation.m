@@ -23,15 +23,17 @@ static NSString *operationFinished = @"isFinished";
 
 @property (assign, nonatomic) OperationState state;
 @property (strong, nonatomic) NSURLSessionTask *loadTask;
+@property (strong, nonatomic) NSString *searchText;
 
 @end
 
 @implementation TweetsLoadOperation
 
-- (instancetype)init {
+-(instancetype)initWithSearchText:(NSString *)text {
     self = [super init];
     if (self) {
-        self.state = ReadyState;
+        self.searchText = text;
+        _state = ReadyState;
     }
     return self;
 }
@@ -61,7 +63,7 @@ static NSString *operationFinished = @"isFinished";
     [super cancel];
     
     [self.loadTask cancel];
-    NSLog(@"canceled operation");
+    NSLog(@"canceled operation with query: %@", self.searchText);
 }
 
 - (void)start {
@@ -71,31 +73,31 @@ static NSString *operationFinished = @"isFinished";
     TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
     TWTRAPIClient *client = [[TWTRAPIClient alloc] initWithUserID:store.session.userID];
     
-    NSString *statusesShowEndpoint = @"https://api.twitter.com/1.1/statuses/user_timeline.json";
-    NSDictionary *params = @{@"user_id" : client.userID};
+    NSString *statusesShowEndpoint = @"https://api.twitter.com/1.1/search/tweets.json";
+    NSDictionary *params = @{@"q" : self.searchText};
     NSError *clientError;
     
     NSURLRequest *request = [client URLRequestWithMethod:@"GET" URL:statusesShowEndpoint parameters:params error:&clientError];
-    
-    if (request) {
-        [client sendTwitterRequest:request completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            if (data) {
-                __strong typeof(weakSelf) strongSelf = weakSelf;
-                NSError *jsonError;
-                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-                dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (request) {
+            [client sendTwitterRequest:request completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                if (data) {
+                    __strong typeof(weakSelf) strongSelf = weakSelf;
+                    NSError *jsonError;
+                    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                    
                     strongSelf.loadCompilation(json);
                     [strongSelf setFinishedState];
-                });
-            }
-            else {
-                NSLog(@"Error: %@", connectionError);
-            }
-        }];
-    }
-    else {
-        NSLog(@"Error: %@", clientError);
-    }
+                }
+                else {
+                    NSLog(@"Error: %@", connectionError);
+                }
+            }];
+        }
+        else {
+            NSLog(@"Error: %@", clientError);
+        }
+    });
 }
 
 - (void)setExecutingState {
