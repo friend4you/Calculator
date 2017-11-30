@@ -8,11 +8,11 @@
 
 #import "ImageLoadOperation.h"
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, OperationState) {
     ReadyState,
     ExecutingState,
     FinishedState
-} OperationState;
+};
 
 static NSString *operationReady = @"isReady";
 static NSString *operationExecuting = @"isExecuting";
@@ -62,32 +62,21 @@ static NSString *operationFinished = @"isFinished";
     [super cancel];
     
     [self.loadTask cancel];
-    NSLog(@"canceled operation");
 }
 
 - (void)start {
     [self setExecutingState];
     __weak typeof(self) weakSelf = self;
-    
-//    if ([self fileFromManager]) {
-//        return;
-//    }
-    
-    
-    
+   
     NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:self.imageUrl
                                                          completionHandler:^(NSData * _Nullable data,
                                                                              NSURLResponse * _Nullable response,
                                                                              NSError * _Nullable error) {
                                                              __strong typeof(weakSelf) strongSelf = weakSelf;
                                                              
-                                                             if (data) {
-                                                                 
+                                                             if (data) {                                                                 
                                                                  UIImage *image = [UIImage imageWithData:data];
                                                                  UIImage *roundedImage = [strongSelf makeCircleBorderWithImage:image];
-                                                                 
-                                                                 //[strongSelf saveImageData:data];
-                                                                 
                                                                  
                                                                  dispatch_async(dispatch_get_main_queue(), ^{
                                                                      strongSelf.loadCompilation(roundedImage);

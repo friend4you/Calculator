@@ -32,6 +32,15 @@ static NSString *profileImageName = @"profileIcon";
 static NSString *galaxyImageName = @"galaxyIcon";
 static NSString *socialSearchImageName = @"twitterIcon";
 
+typedef NS_ENUM (NSInteger, AppsList) {
+    AppCalculator,
+    AppChartView,
+    AppColors,
+    AppProfiler,
+    AppGalaxy,
+    AppSocial
+};
+
 @interface MainTableViewController ()
 
 @property (strong, nonatomic) NSMutableArray<AppModel *> *appList;
@@ -54,32 +63,26 @@ static NSString *socialSearchImageName = @"twitterIcon";
     AppModel *calculator = [[AppModel alloc] init];
     calculator.image = [UIImage imageNamed:calculatorImageName];
     calculator.title = calculatorTitle;
-    calculator.identifier = NSStringFromClass([CalculatorViewController class]);
 
     AppModel *chartView = [[AppModel alloc] init];
     chartView.image = [UIImage imageNamed:graphicsImageName];
     chartView.title = graphicsTitle;
-    chartView.identifier = NSStringFromClass([RDLSplitGraphicsViewController class]);
     
     AppModel *color = [[AppModel alloc] init];
     color.image = [UIImage imageNamed:colorsImageName];
     color.title = colorsTitle;
-    color.identifier = NSStringFromClass([RedViewController class]);
 
     AppModel *profile = [[AppModel alloc] init];
     profile.image = [UIImage imageNamed:profileImageName];
     profile.title = profileTitle;
-    profile.identifier = NSStringFromClass([AuthController class]);
     
     AppModel *galaxy = [[AppModel alloc] init];
     galaxy.image = [UIImage imageNamed:galaxyImageName];
     galaxy.title = galaxyTitle;
-    galaxy.identifier = NSStringFromClass([GalaxyViewController class]);
     
     AppModel *social = [[AppModel alloc] init];
     social.image = [UIImage imageNamed:socialSearchImageName];
     social.title = socialSearchTitle;
-    social.identifier = NSStringFromClass([TweetsTableViewController class]);
     
     [self.appList addObject:calculator];
     [self.appList addObject:chartView];
@@ -110,25 +113,57 @@ static NSString *socialSearchImageName = @"twitterIcon";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.appList[indexPath.row].identifier isEqualToString:NSStringFromClass([CalculatorViewController class])]) {
-        CalculatorViewController *calculator = [CalculatorViewController instantiateFromStoryboard];
-        [self.navigationController pushViewController:calculator animated:YES];
-    } else if ([self.appList[indexPath.row].identifier isEqualToString:NSStringFromClass([RDLSplitGraphicsViewController class])]) {
-        RDLSplitGraphicsViewController *chart = [RDLSplitGraphicsViewController instantiateFromStoryboard];
-        [self presentViewController:chart animated:YES completion:nil];
-    } else if ([self.appList[indexPath.row].identifier isEqualToString:NSStringFromClass([RedViewController class])]) {
-        RedViewController *colors = [RedViewController instantiateFromStoryboard];
-        [self.navigationController pushViewController:colors animated:YES];
-    } else if ([self.appList[indexPath.row].identifier isEqualToString:NSStringFromClass([AuthController class])]) {
-        AuthController *profile = [AuthController instantiateFromStoryboard];
-        [self.navigationController pushViewController:profile animated:YES];
-    } else if ([self.appList[indexPath.row].identifier isEqualToString:NSStringFromClass([GalaxyViewController class])]) {
-        GalaxyViewController *galaxy = [GalaxyViewController instantiateFromStoryboard];
-        [self.navigationController pushViewController:galaxy animated:YES];
-    } else if ([self.appList[indexPath.row].identifier isEqualToString:NSStringFromClass([TweetsTableViewController class])]) {
-        TweetsTableViewController *twitter = [TweetsTableViewController instantiateFromStoryboard];
-        [self presentViewController:twitter animated:YES completion:nil];
-    }
+ 
+    switch (indexPath.row) {
+        case AppCalculator:
+            [self openCalculatorController];
+            break;
+        case AppChartView:
+            [self openChartController];
+            break;
+        case AppColors:
+            [self openColorsController];
+            break;
+        case AppProfiler:
+            [self openProfileController];
+            break;
+        case AppGalaxy:
+            [self openGalaxyController];
+            break;
+        case AppSocial:
+            [self openSocialController];
+            break;
+    }    
+}
+
+- (void)openCalculatorController {
+    CalculatorViewController *calculator = [CalculatorViewController instantiateFromStoryboard];
+    [self.navigationController pushViewController:calculator animated:YES];
+}
+
+- (void)openChartController {
+    RDLSplitGraphicsViewController *chart = [RDLSplitGraphicsViewController instantiateFromStoryboard];
+    [self presentViewController:chart animated:YES completion:nil];
+}
+
+- (void)openColorsController {
+    RedViewController *colors = [RedViewController instantiateFromStoryboard];
+    [self.navigationController pushViewController:colors animated:YES];
+}
+
+- (void)openGalaxyController {
+    GalaxyViewController *galaxy = [GalaxyViewController instantiateFromStoryboard];
+    [self.navigationController pushViewController:galaxy animated:YES];
+}
+
+- (void)openProfileController {
+    AuthController *profile = [AuthController instantiateFromStoryboard];
+    [self.navigationController pushViewController:profile animated:YES];    
+}
+
+- (void)openSocialController {
+    TweetsTableViewController *twitter = [TweetsTableViewController instantiateFromStoryboard];
+    [self presentViewController:twitter animated:YES completion:nil];
 }
 
 @end

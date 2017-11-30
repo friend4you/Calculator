@@ -71,4 +71,13 @@
     self.likesLabel.text = likesCount;
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.tweetText.text = nil;
+    self.avatarImageView.image = nil;
+    self.userNameLabel.text = nil;
+    self.retweetLabel.text = nil;
+    self.likesLabel.text = nil;
+}
+
 @end

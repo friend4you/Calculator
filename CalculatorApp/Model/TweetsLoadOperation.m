@@ -9,11 +9,11 @@
 #import "TweetsLoadOperation.h"
 #import <TwitterKit/TwitterKit.h>
 
-typedef enum : NSUInteger {
+typedef NS_ENUM (NSUInteger, OperationState) {
     ReadyState,
     ExecutingState,
     FinishedState
-} OperationState;
+};
 
 static NSString *operationReady = @"isReady";
 static NSString *operationExecuting = @"isExecuting";
@@ -63,7 +63,6 @@ static NSString *operationFinished = @"isFinished";
     [super cancel];
     
     [self.loadTask cancel];
-    NSLog(@"canceled operation with query: %@", self.searchText);
 }
 
 - (void)start {
@@ -89,14 +88,8 @@ static NSString *operationFinished = @"isFinished";
                     strongSelf.loadCompilation(json);
                     [strongSelf setFinishedState];
                 }
-                else {
-                    NSLog(@"Error: %@", connectionError);
-                }
             }];
-        }
-        else {
-            NSLog(@"Error: %@", clientError);
-        }
+        }        
     });
 }
 
