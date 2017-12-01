@@ -86,6 +86,7 @@
 		935A08381FC4442C004B0E74 /* GalaxyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalaxyViewController.m; sourceTree = "<group>"; };
 		935A083B1FC44761004B0E74 /* GalaxyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalaxyModel.h; sourceTree = "<group>"; };
 		935A083C1FC44761004B0E74 /* GalaxyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalaxyModel.m; sourceTree = "<group>"; };
+		937652231FD19D6A00FA809A /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mantle.framework; path = "../../../Library/Developer/Xcode/DerivedData/CalculatorApp-ekjhqyczcjgluhdtfxrqrwtefoeu/Build/Products/Debug-iphoneos/Mantle.framework"; sourceTree = "<group>"; };
 		937F4ED51FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIStoryboardSegue+ContentViewController.h"; sourceTree = "<group>"; };
 		937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboardSegue+ContentViewController.m"; sourceTree = "<group>"; };
 		9388726E1FB071F300B632EB /* CalculatorHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorHistoryViewController.h; sourceTree = "<group>"; };
@@ -396,6 +397,7 @@
 		F151F607C7E07305AAC0EB39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				937652231FD19D6A00FA809A /* Mantle.framework */,
 				9356A0A01FBEE8CD00C4DEDC /* CalculatorApp.xcworkspace */,
 				9B2009429E6BBDD81875EA1A /* libPods-CalculatorApp.a */,
 			);
