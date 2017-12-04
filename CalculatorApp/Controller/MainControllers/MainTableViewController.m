@@ -16,7 +16,7 @@
 #import "RedViewController.h"
 #import "AuthController.h"
 #import "GalaxyViewController.h"
-#import "TweetsTableViewController.h"
+#import "SocialSearchTabBarController.h"
 
 static NSString *calculatorTitle = @"Calculator";
 static NSString *graphicsTitle = @"Graphics";
@@ -32,20 +32,11 @@ static NSString *profileImageName = @"profileIcon";
 static NSString *galaxyImageName = @"galaxyIcon";
 static NSString *socialSearchImageName = @"twitterIcon";
 
-typedef NS_ENUM (NSInteger, AppsList) {
-    AppCalculator,
-    AppChartView,
-    AppColors,
-    AppProfiler,
-    AppGalaxy,
-    AppSocial
-};
 
 @interface MainTableViewController ()
 
 @property (strong, nonatomic) NSMutableArray<AppModel *> *appList;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
-
 
 @end
 
@@ -59,37 +50,69 @@ typedef NS_ENUM (NSInteger, AppsList) {
 }
 
 - (void)fetchAppList {
-    self.appList = [[NSMutableArray alloc] init];
-    AppModel *calculator = [[AppModel alloc] init];
-    calculator.image = [UIImage imageNamed:calculatorImageName];
-    calculator.title = calculatorTitle;
+    NSMutableArray *appMutableList = [NSMutableArray array];
+    for (NSInteger i = 0; i < AppListCount; i++) {
+        AppModel *model = [[AppModel alloc] init];
+        model.image = [self imageNameWithType:i];
+        model.title = [self titleWithType:i];
+        model.actionBlock = [self actionBlockWithType:i];
+        
+        [appMutableList addObject:model];
+    }
+    
+    self.appList = appMutableList;
+}
 
-    AppModel *chartView = [[AppModel alloc] init];
-    chartView.image = [UIImage imageNamed:graphicsImageName];
-    chartView.title = graphicsTitle;
-    
-    AppModel *color = [[AppModel alloc] init];
-    color.image = [UIImage imageNamed:colorsImageName];
-    color.title = colorsTitle;
+- (UIImage *)imageNameWithType:(AppsList)type {
+    NSDictionary *sourDict = @{@(AppCalculator) : [UIImage imageNamed:calculatorImageName],
+                               @(AppChartView) : [UIImage imageNamed:graphicsImageName],
+                               @(AppColors) : [UIImage imageNamed:colorsImageName],
+                               @(AppProfiler) : [UIImage imageNamed:profileImageName],
+                               @(AppGalaxy) : [UIImage imageNamed:galaxyImageName],
+                               @(AppSocial) : [UIImage imageNamed:socialSearchImageName],
+                               };
+    return sourDict[@(type)];
+}
 
-    AppModel *profile = [[AppModel alloc] init];
-    profile.image = [UIImage imageNamed:profileImageName];
-    profile.title = profileTitle;
-    
-    AppModel *galaxy = [[AppModel alloc] init];
-    galaxy.image = [UIImage imageNamed:galaxyImageName];
-    galaxy.title = galaxyTitle;
-    
-    AppModel *social = [[AppModel alloc] init];
-    social.image = [UIImage imageNamed:socialSearchImageName];
-    social.title = socialSearchTitle;
-    
-    [self.appList addObject:calculator];
-    [self.appList addObject:chartView];
-    [self.appList addObject:color];
-    [self.appList addObject:profile];
-    [self.appList addObject:galaxy];
-    [self.appList addObject:social];
+- (NSString *)titleWithType:(AppsList)type {
+    NSDictionary *titles = @{@(AppCalculator) : calculatorTitle,
+                             @(AppChartView) : graphicsTitle,
+                             @(AppColors) : colorsTitle,
+                             @(AppProfiler) : profileTitle,
+                             @(AppGalaxy) : galaxyTitle,
+                             @(AppSocial) : socialSearchTitle,
+                             };
+    return titles[@(type)];
+}
+
+- (AppModelActionBlock)actionBlockWithType:(AppsList)type {
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *sourDict = @{@(AppCalculator) : ^ {
+        CalculatorViewController *calculator = [CalculatorViewController instantiateFromStoryboard];
+        [weakSelf.navigationController pushViewController:calculator animated:YES];
+    },
+                               @(AppChartView) : ^{
+                                   RDLSplitGraphicsViewController *chart = [RDLSplitGraphicsViewController instantiateFromStoryboard];
+                                   [self presentViewController:chart animated:YES completion:nil];
+                               },
+                               @(AppColors) : ^{
+                                   RedViewController *colors = [RedViewController instantiateFromStoryboard];
+                                   [self.navigationController pushViewController:colors animated:YES];
+                               },
+                               @(AppProfiler) : ^{
+                                   AuthController *profile = [AuthController instantiateFromStoryboard];
+                                   [self.navigationController pushViewController:profile animated:YES];
+                               },
+                               @(AppGalaxy) : ^{
+                                   GalaxyViewController *galaxy = [GalaxyViewController instantiateFromStoryboard];
+                                   [self.navigationController pushViewController:galaxy animated:YES];
+                               },
+                               @(AppSocial) : ^{
+                                   SocialSearchTabBarController *social = [SocialSearchTabBarController instantiateFromStoryboard];
+                                   [self presentViewController:social animated:YES completion:nil];
+                               }
+                               };
+    return sourDict[@(type)];
 }
 
 #pragma mark - Table view data source
@@ -100,70 +123,18 @@ typedef NS_ENUM (NSInteger, AppsList) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MainTableViewCell class]) forIndexPath:indexPath];
+    AppModel *model = self.appList[indexPath.row];
+    [cell updateWithModel:model];
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([cell isKindOfClass:[MainTableViewCell class]]) {
-        MainTableViewCell *mainCell = (MainTableViewCell *)cell;
-        mainCell.appImage = self.appList[indexPath.row].image;
-        mainCell.appName = self.appList[indexPath.row].title;
-    }
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
- 
-    switch (indexPath.row) {
-        case AppCalculator:
-            [self openCalculatorController];
-            break;
-        case AppChartView:
-            [self openChartController];
-            break;
-        case AppColors:
-            [self openColorsController];
-            break;
-        case AppProfiler:
-            [self openProfileController];
-            break;
-        case AppGalaxy:
-            [self openGalaxyController];
-            break;
-        case AppSocial:
-            [self openSocialController];
-            break;
-    }    
-}
-
-- (void)openCalculatorController {
-    CalculatorViewController *calculator = [CalculatorViewController instantiateFromStoryboard];
-    [self.navigationController pushViewController:calculator animated:YES];
-}
-
-- (void)openChartController {
-    RDLSplitGraphicsViewController *chart = [RDLSplitGraphicsViewController instantiateFromStoryboard];
-    [self presentViewController:chart animated:YES completion:nil];
-}
-
-- (void)openColorsController {
-    RedViewController *colors = [RedViewController instantiateFromStoryboard];
-    [self.navigationController pushViewController:colors animated:YES];
-}
-
-- (void)openGalaxyController {
-    GalaxyViewController *galaxy = [GalaxyViewController instantiateFromStoryboard];
-    [self.navigationController pushViewController:galaxy animated:YES];
-}
-
-- (void)openProfileController {
-    AuthController *profile = [AuthController instantiateFromStoryboard];
-    [self.navigationController pushViewController:profile animated:YES];    
-}
-
-- (void)openSocialController {
-    TweetsTableViewController *twitter = [TweetsTableViewController instantiateFromStoryboard];
-    [self presentViewController:twitter animated:YES completion:nil];
+    
+    AppModel *model = self.appList[indexPath.row];
+    if (model.actionBlock) {
+        model.actionBlock();
+    }
 }
 
 @end
