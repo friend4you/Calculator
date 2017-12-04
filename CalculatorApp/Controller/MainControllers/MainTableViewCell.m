@@ -7,11 +7,12 @@
 //
 
 #import "MainTableViewCell.h"
-#import "AppModel.h"
+
 @interface MainTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *appIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *appLabel;
+
 
 @end
 
@@ -28,10 +29,22 @@
     // Configure the view for the selected state
 }
 
-- (void)updateWithModel:(id)model {
-    AppModel *appModel = (AppModel *)model;
-    self.appLabel.text = appModel.title;
-    self.appIconImageView.image = appModel.image;
+#define mark - Lazy Load
+
+- (NSString *)appName {
+    return self.appLabel.text;
+}
+
+- (void)setAppName:(NSString *)appName {
+    self.appLabel.text = appName;
+}
+
+- (UIImage *)appImage {
+    return self.appIconImageView.image;
+}
+
+-(void)setAppImage:(UIImage *)appImage {
+    self.appIconImageView.image = appImage;
 }
 
 @end

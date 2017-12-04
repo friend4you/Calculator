@@ -10,6 +10,7 @@
 
 @interface MainTableViewCell : UITableViewCell
 
-- (void)updateWithModel:(id)model;
+@property (strong, nonatomic) NSString *appName;
+@property (strong, nonatomic) UIImage *appImage;
 
 @end
