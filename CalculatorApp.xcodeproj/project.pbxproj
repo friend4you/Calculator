@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		933F6CD21FA8A06D005B8305 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 933F6CD11FA8A06D005B8305 /* Calculator.m */; };
-		934C86DE1FD548190085C0E3 /* FbPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C86DD1FD548190085C0E3 /* FbPostTableViewCell.m */; };
-		934C86E11FD54A720085C0E3 /* FacebookTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C86E01FD54A720085C0E3 /* FacebookTableViewController.m */; };
 		934C86E41FD554BC0085C0E3 /* SocialSearchTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C86E31FD554BC0085C0E3 /* SocialSearchTabBarController.m */; };
-		934C86E91FD55CE60085C0E3 /* FacebookLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C86E81FD55CE60085C0E3 /* FacebookLoginViewController.m */; };
 		9352158A1FCD77C400F7E1E3 /* TweetsLoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 935215891FCD77C400F7E1E3 /* TweetsLoadOperation.m */; };
 		935664901FB5A1320037F4B3 /* Graphics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9356648F1FB5A1320037F4B3 /* Graphics.storyboard */; };
 		9356A0851FBD95C700C4DEDC /* Colors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9356A0841FBD95C600C4DEDC /* Colors.storyboard */; };
@@ -61,14 +58,8 @@
 		3B63A073A05346B33FB80559 /* Pods-CalculatorApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalculatorApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalculatorApp/Pods-CalculatorApp.debug.xcconfig"; sourceTree = "<group>"; };
 		933F6CD01FA8A06D005B8305 /* Calculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		933F6CD11FA8A06D005B8305 /* Calculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
-		934C86DC1FD548190085C0E3 /* FbPostTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FbPostTableViewCell.h; sourceTree = "<group>"; };
-		934C86DD1FD548190085C0E3 /* FbPostTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FbPostTableViewCell.m; sourceTree = "<group>"; };
-		934C86DF1FD54A710085C0E3 /* FacebookTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacebookTableViewController.h; sourceTree = "<group>"; };
-		934C86E01FD54A720085C0E3 /* FacebookTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookTableViewController.m; sourceTree = "<group>"; };
 		934C86E21FD554BC0085C0E3 /* SocialSearchTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocialSearchTabBarController.h; sourceTree = "<group>"; };
 		934C86E31FD554BC0085C0E3 /* SocialSearchTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocialSearchTabBarController.m; sourceTree = "<group>"; };
-		934C86E71FD55CE60085C0E3 /* FacebookLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacebookLoginViewController.h; sourceTree = "<group>"; };
-		934C86E81FD55CE60085C0E3 /* FacebookLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookLoginViewController.m; sourceTree = "<group>"; };
 		935215881FCD77C400F7E1E3 /* TweetsLoadOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetsLoadOperation.h; sourceTree = "<group>"; };
 		935215891FCD77C400F7E1E3 /* TweetsLoadOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetsLoadOperation.m; sourceTree = "<group>"; };
 		9356648F1FB5A1320037F4B3 /* Graphics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graphics.storyboard; sourceTree = "<group>"; };
@@ -165,9 +156,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9314A9D71FD5AAE600A06562 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		933F6CD31FA8A078005B8305 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9314A9D71FD5AAE600A06562 /* CoreData */,
 				939CB6B51FC82FCB0070F130 /* ImageLoadOperation.h */,
 				939CB6B61FC82FCB0070F130 /* ImageLoadOperation.m */,
 				93A9CBBF1FBB192600AEBF4B /* Graphics */,
@@ -194,19 +193,6 @@
 				93F344521FCC7DCA000A4EAF /* TweetTableViewCell.m */,
 			);
 			path = TwitterControllers;
-			sourceTree = "<group>";
-		};
-		934C86E61FD554F90085C0E3 /* FacebookControllers */ = {
-			isa = PBXGroup;
-			children = (
-				934C86DC1FD548190085C0E3 /* FbPostTableViewCell.h */,
-				934C86DD1FD548190085C0E3 /* FbPostTableViewCell.m */,
-				934C86DF1FD54A710085C0E3 /* FacebookTableViewController.h */,
-				934C86E01FD54A720085C0E3 /* FacebookTableViewController.m */,
-				934C86E71FD55CE60085C0E3 /* FacebookLoginViewController.h */,
-				934C86E81FD55CE60085C0E3 /* FacebookLoginViewController.m */,
-			);
-			path = FacebookControllers;
 			sourceTree = "<group>";
 		};
 		935664911FB5A1630037F4B3 /* View */ = {
@@ -414,7 +400,6 @@
 			isa = PBXGroup;
 			children = (
 				934C86E51FD554D70085C0E3 /* TwitterControllers */,
-				934C86E61FD554F90085C0E3 /* FacebookControllers */,
 				934C86E21FD554BC0085C0E3 /* SocialSearchTabBarController.h */,
 				934C86E31FD554BC0085C0E3 /* SocialSearchTabBarController.m */,
 			);
@@ -556,7 +541,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CalculatorApp/Pods-CalculatorApp-resources.sh",
-				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
 			);
@@ -582,7 +566,6 @@
 				93F344501FCC7606000A4EAF /* TweetsTableViewController.m in Sources */,
 				93A9CBB91FBB17D400AEBF4B /* RDLChartViewController.m in Sources */,
 				93A4AC011FC5D2CA00C47C8D /* GalaxyCellModel.m in Sources */,
-				934C86E91FD55CE60085C0E3 /* FacebookLoginViewController.m in Sources */,
 				93A9CBC51FBB2DA000AEBF4B /* Graphics.m in Sources */,
 				93F344531FCC7DCA000A4EAF /* TweetTableViewCell.m in Sources */,
 				9352158A1FCD77C400F7E1E3 /* TweetsLoadOperation.m in Sources */,
@@ -590,7 +573,6 @@
 				93A9CBC81FBB334000AEBF4B /* RDLSelectChartViewController.m in Sources */,
 				93F344401FCC2F48000A4EAF /* MainTableViewController.m in Sources */,
 				93A9CBBA1FBB17D400AEBF4B /* RDLPushUpsModel.m in Sources */,
-				934C86DE1FD548190085C0E3 /* FbPostTableViewCell.m in Sources */,
 				9356A0AF1FBF015C00C4DEDC /* ProfilesDataSource.m in Sources */,
 				938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */,
 				934C86E41FD554BC0085C0E3 /* SocialSearchTabBarController.m in Sources */,
@@ -599,7 +581,6 @@
 				93BDBB5B1FA33EF900748B5D /* CalculatorViewController.m in Sources */,
 				9356A08E1FBD9FA200C4DEDC /* BlueViewController.m in Sources */,
 				9356A08B1FBD9F9000C4DEDC /* RedViewController.m in Sources */,
-				934C86E11FD54A720085C0E3 /* FacebookTableViewController.m in Sources */,
 				93A9CBBE1FBB17DF00AEBF4B /* RDLViewControllerLogLifecycleViewController.m in Sources */,
 				937F4ED71FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m in Sources */,
 				93A9CBC21FBB21C600AEBF4B /* RDLSplitGraphicsViewController.m in Sources */,
@@ -752,6 +733,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CalculatorApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.epam.arseniuk.CalculatorApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -770,6 +752,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CalculatorApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.epam.arseniuk.CalculatorApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

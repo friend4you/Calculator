@@ -19,7 +19,7 @@ typedef NS_ENUM (NSInteger, AppsList) {
     AppListCount
 };
 
-typedef void(^AppModelActionBlock)();
+typedef void(^AppModelActionBlock)(void);
 
 @interface AppModel : NSObject
 

@@ -1,16 +1,4 @@
 PODS:
-  - Bolts (1.8.4):
-    - Bolts/AppLinks (= 1.8.4)
-    - Bolts/Tasks (= 1.8.4)
-  - Bolts/AppLinks (1.8.4):
-    - Bolts/Tasks
-  - Bolts/Tasks (1.8.4)
-  - FBSDKCoreKit (4.28.0):
-    - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.28.0):
-    - FBSDKCoreKit
-  - FBSDKShareKit (4.28.0):
-    - FBSDKCoreKit
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
@@ -19,21 +7,14 @@ PODS:
     - TwitterCore (>= 3.0.2)
 
 DEPENDENCIES:
-  - FBSDKCoreKit
-  - FBSDKLoginKit
-  - FBSDKShareKit
-  - Mantle (~> 2.1.0)
+  - Mantle
   - TwitterKit
 
 SPEC CHECKSUMS:
-  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  FBSDKCoreKit: ca961e279113f691fd83dc634c0bbad9d4e3f370
-  FBSDKLoginKit: b077381c27d800f21661757e8140cf2c80a91e4a
-  FBSDKShareKit: 4f525556e0df4cf0f574cb3f01c675434f29d477
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   TwitterCore: e0420b01e02e7d20e94690e37f43e75de219ab8d
   TwitterKit: 205ac89824bbfe9e85a16c420d30bb7bcbedac45
 
-PODFILE CHECKSUM: dc35c2daa0caa1b73dca5eba047829fc9761acd6
+PODFILE CHECKSUM: 453bff945e29b81ae6fbccf399ff8cb80fd976ff
 
 COCOAPODS: 1.3.1
