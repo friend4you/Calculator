@@ -9,9 +9,23 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM (NSInteger, AppsList) {
+    AppCalculator,
+    AppChartView,
+    AppColors,
+    AppProfiler,
+    AppGalaxy,
+    AppSocial,
+    AppListCount
+};
+
+typedef void(^AppModelActionBlock)();
+
 @interface AppModel : NSObject
 
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSString *title;
+@property (assign, nonatomic) AppsList type;
+@property (nonatomic, copy) AppModelActionBlock actionBlock;
 
 @end

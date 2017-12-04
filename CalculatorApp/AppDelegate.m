@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <TwitterKit/TwitterKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 
 @interface AppDelegate ()
@@ -20,7 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     [[Twitter sharedInstance] startWithConsumerKey:@"X6TWXaqG03PEtCvHGKslkWaxQ" consumerSecret:@"hJcwwaceGJKQn84LQmIiMNnOGz8vtuzHTvGf59aKdfccttkbvj"];
-    
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
 
@@ -45,8 +47,8 @@
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
 }
 
-
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBSDKAppEvents activateApp];
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
@@ -58,8 +60,13 @@
 #define mark - TwitterKit
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    return [[Twitter sharedInstance] application:app openURL:url options:options];
+    BOOL handledFb = [[FBSDKApplicationDelegate sharedInstance] application:app
+                                                                  openURL:url
+                                                        sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                                               annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
+                    ];
+    //BOOL handledTw = [[Twitter sharedInstance] application:app openURL:url options:options];
+    return handledFb;
 }
-
 
 @end
