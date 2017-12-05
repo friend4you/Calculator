@@ -25,6 +25,9 @@
 		935A08361FC443EB004B0E74 /* Galaxy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935A08351FC443EB004B0E74 /* Galaxy.storyboard */; };
 		935A08391FC4442C004B0E74 /* GalaxyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 935A08381FC4442C004B0E74 /* GalaxyViewController.m */; };
 		935A083D1FC44761004B0E74 /* GalaxyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 935A083C1FC44761004B0E74 /* GalaxyModel.m */; };
+		9365CB391FD6B66E0011C019 /* SocialSearchModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9365CB371FD6B66E0011C019 /* SocialSearchModel.xcdatamodeld */; };
+		9365CB431FD6B99A0011C019 /* Tweet+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9365CB3D1FD6B99A0011C019 /* Tweet+CoreDataProperties.m */; };
+		9365CB451FD6B99A0011C019 /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9365CB411FD6B99A0011C019 /* User+CoreDataProperties.m */; };
 		937F4ED71FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */; };
 		938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9388726F1FB071F300B632EB /* CalculatorHistoryViewController.m */; };
 		939CB6B71FC82FCB0070F130 /* ImageLoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 939CB6B61FC82FCB0070F130 /* ImageLoadOperation.m */; };
@@ -89,6 +92,15 @@
 		935A08381FC4442C004B0E74 /* GalaxyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalaxyViewController.m; sourceTree = "<group>"; };
 		935A083B1FC44761004B0E74 /* GalaxyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalaxyModel.h; sourceTree = "<group>"; };
 		935A083C1FC44761004B0E74 /* GalaxyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalaxyModel.m; sourceTree = "<group>"; };
+		9365CB381FD6B66E0011C019 /* SocialSearchModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SocialSearchModel.xcdatamodel; sourceTree = "<group>"; };
+		9365CB3C1FD6B99A0011C019 /* Tweet+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tweet+CoreDataProperties.h"; sourceTree = "<group>"; };
+		9365CB3D1FD6B99A0011C019 /* Tweet+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Tweet+CoreDataProperties.m"; sourceTree = "<group>"; };
+		9365CB401FD6B99A0011C019 /* User+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
+		9365CB411FD6B99A0011C019 /* User+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
+		9365CB461FD6C1F70011C019 /* User+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataClass.m"; sourceTree = "<group>"; };
+		9365CB471FD6C1F80011C019 /* Tweet+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tweet+CoreDataClass.m"; sourceTree = "<group>"; };
+		9365CB481FD6C1F90011C019 /* User+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataClass.h"; sourceTree = "<group>"; };
+		9365CB491FD6C1F90011C019 /* Tweet+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tweet+CoreDataClass.h"; sourceTree = "<group>"; };
 		937652231FD19D6A00FA809A /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mantle.framework; path = "../../../Library/Developer/Xcode/DerivedData/CalculatorApp-ekjhqyczcjgluhdtfxrqrwtefoeu/Build/Products/Debug-iphoneos/Mantle.framework"; sourceTree = "<group>"; };
 		937F4ED51FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIStoryboardSegue+ContentViewController.h"; sourceTree = "<group>"; };
 		937F4ED61FBB54D000FFD8E3 /* UIStoryboardSegue+ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboardSegue+ContentViewController.m"; sourceTree = "<group>"; };
@@ -159,6 +171,15 @@
 		9314A9D71FD5AAE600A06562 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				9365CB491FD6C1F90011C019 /* Tweet+CoreDataClass.h */,
+				9365CB471FD6C1F80011C019 /* Tweet+CoreDataClass.m */,
+				9365CB481FD6C1F90011C019 /* User+CoreDataClass.h */,
+				9365CB461FD6C1F70011C019 /* User+CoreDataClass.m */,
+				9365CB3C1FD6B99A0011C019 /* Tweet+CoreDataProperties.h */,
+				9365CB3D1FD6B99A0011C019 /* Tweet+CoreDataProperties.m */,
+				9365CB401FD6B99A0011C019 /* User+CoreDataProperties.h */,
+				9365CB411FD6B99A0011C019 /* User+CoreDataProperties.m */,
+				9365CB371FD6B66E0011C019 /* SocialSearchModel.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -570,6 +591,7 @@
 				93F344531FCC7DCA000A4EAF /* TweetTableViewCell.m in Sources */,
 				9352158A1FCD77C400F7E1E3 /* TweetsLoadOperation.m in Sources */,
 				93F344461FCC37E9000A4EAF /* AppModel.m in Sources */,
+				9365CB451FD6B99A0011C019 /* User+CoreDataProperties.m in Sources */,
 				93A9CBC81FBB334000AEBF4B /* RDLSelectChartViewController.m in Sources */,
 				93F344401FCC2F48000A4EAF /* MainTableViewController.m in Sources */,
 				93A9CBBA1FBB17D400AEBF4B /* RDLPushUpsModel.m in Sources */,
@@ -577,6 +599,7 @@
 				938872701FB071F300B632EB /* CalculatorHistoryViewController.m in Sources */,
 				934C86E41FD554BC0085C0E3 /* SocialSearchTabBarController.m in Sources */,
 				9356A09F1FBE04D200C4DEDC /* FlipAnimatorTransitioning.m in Sources */,
+				9365CB391FD6B66E0011C019 /* SocialSearchModel.xcdatamodeld in Sources */,
 				9356FBBF1FB5E7280028C782 /* MainTabBarController.m in Sources */,
 				93BDBB5B1FA33EF900748B5D /* CalculatorViewController.m in Sources */,
 				9356A08E1FBD9FA200C4DEDC /* BlueViewController.m in Sources */,
@@ -590,6 +613,7 @@
 				93A9CBBB1FBB17D400AEBF4B /* RDLChartView.m in Sources */,
 				9356A0A91FBEFFA100C4DEDC /* AuthController.m in Sources */,
 				935A08391FC4442C004B0E74 /* GalaxyViewController.m in Sources */,
+				9365CB431FD6B99A0011C019 /* Tweet+CoreDataProperties.m in Sources */,
 				93F344431FCC312F000A4EAF /* MainTableViewCell.m in Sources */,
 				93BDBB581FA33EF900748B5D /* AppDelegate.m in Sources */,
 				9356A0B01FBF015C00C4DEDC /* ProfileModel.m in Sources */,
@@ -732,6 +756,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = CalculatorApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -751,6 +776,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = CalculatorApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -784,6 +810,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9365CB371FD6B66E0011C019 /* SocialSearchModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9365CB381FD6B66E0011C019 /* SocialSearchModel.xcdatamodel */,
+			);
+			currentVersion = 9365CB381FD6B66E0011C019 /* SocialSearchModel.xcdatamodel */;
+			path = SocialSearchModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 93BDBB4B1FA33EF800748B5D /* Project object */;
 }

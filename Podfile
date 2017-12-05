@@ -6,8 +6,4 @@ target 'CalculatorApp' do
 pod 'TwitterKit'
 pod 'Mantle'
 
-#pod 'FBSDKCoreKit', '4.25.0'
-#pod 'FBSDKLoginKit', '4.25.0'
-#pod 'FBSDKShareKit', '4.25.0'
-
 end
