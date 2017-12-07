@@ -68,6 +68,10 @@ static NSString *operationFinished = @"isFinished";
     [self setExecutingState];
     __weak typeof(self) weakSelf = self;
    
+    if ([self fileFromManager]) {
+        return;
+    }
+    
     NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:self.imageUrl
                                                          completionHandler:^(NSData * _Nullable data,
                                                                              NSURLResponse * _Nullable response,
@@ -77,6 +81,7 @@ static NSString *operationFinished = @"isFinished";
                                                              if (data) {                                                                 
                                                                  UIImage *image = [UIImage imageWithData:data];
                                                                  UIImage *roundedImage = [strongSelf makeCircleBorderWithImage:image];
+                                                                 [self saveImageData:data];
                                                                  
                                                                  dispatch_async(dispatch_get_main_queue(), ^{
                                                                      strongSelf.loadCompilation(roundedImage);

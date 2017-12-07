@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.m
 //  CalculatorApp
 //
-//  Created by Vladyslav Arseniuk on 12/5/17.
+//  Created by Vladyslav Arseniuk on 12/7/17.
 //  Copyright © 2017 Vladyslav Arseniuk. All rights reserved.
 //
 //
@@ -15,8 +15,8 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"User"];
 }
 
-@dynamic name;
 @dynamic image;
+@dynamic name;
 @dynamic userId;
 @dynamic tweets;
 

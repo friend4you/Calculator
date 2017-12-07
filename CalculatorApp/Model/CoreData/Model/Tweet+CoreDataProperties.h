@@ -2,7 +2,7 @@
 //  Tweet+CoreDataProperties.h
 //  CalculatorApp
 //
-//  Created by Vladyslav Arseniuk on 12/5/17.
+//  Created by Vladyslav Arseniuk on 12/7/17.
 //  Copyright © 2017 Vladyslav Arseniuk. All rights reserved.
 //
 //
@@ -19,17 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *likes;
 @property (nullable, nonatomic, copy) NSString *retweets;
 @property (nullable, nonatomic, copy) NSString *text;
-@property (nonatomic) int32_t tweetId;
-@property (nullable, nonatomic, retain) NSSet<User *> *user;
-
-@end
-
-@interface Tweet (CoreDataGeneratedAccessors)
-
-- (void)addUserObject:(User *)value;
-- (void)removeUserObject:(User *)value;
-- (void)addUser:(NSSet<User *> *)values;
-- (void)removeUser:(NSSet<User *> *)values;
+@property (nullable, nonatomic, copy) NSString *tweetId;
+@property (nullable, nonatomic, retain) User *user;
 
 @end
 

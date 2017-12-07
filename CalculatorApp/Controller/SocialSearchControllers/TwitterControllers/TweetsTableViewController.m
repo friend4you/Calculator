@@ -10,37 +10,21 @@
 #import "ImageLoadOperation.h"
 #import "TweetsLoadOperation.h"
 #import "TweetTableViewCell.h"
+#import "TwitterTweet.h"
+#import "CoreDataHelper.h"
 #import "TwitterLoginViewController.h"
 #import <TwitterKit/TwitterKit.h>
-
-
-
-static NSString *requestMethodGET = @"GET";
-
-static NSString *userTimeLine = @"https://api.twitter.com/1.1/statuses/user_timeline.json";
-static NSString *homeTimeLine = @"https://api.twitter.com/1.1/statuses/home_timeline.json";
-static NSString *searchUrl = @"https://api.twitter.com/1.1/search/tweets.json";
-
-static NSString *userJsonKey = @"user";
-static NSString *profileImageUrlJsonKey = @"profile_image_url_https";
-static NSString *favoriteCountJsonKey = @"favorite_count";
-static NSString *retweetCountJsonKey = @"retweet_count";
-static NSString *userNameJsonKey = @"name";
-static NSString *tweetTextJsonKey = @"text";
-static NSString *statusesJsonKey = @"statuses";
-static NSString *userIdRequestKey = @"user_id";
-static NSString *countRequestKey = @"count";
-static NSString *queryRequestKey = @"q";
+#import "Reachability.h"
+#import "TwitterHelper.h"
 
 @interface TweetsTableViewController () <UISearchBarDelegate>
 
 @property (strong, nonatomic) NSArray *json;
 @property (strong, nonatomic) NSOperationQueue *queue;
-@property (strong, nonatomic) NSOperationQueue *searchQueue;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
+@property (nonatomic, strong) NSMutableArray<TwitterTweet *> *tweets;
 @property (strong, nonatomic) NSDictionary *homeTimeLineParams;
-@property (strong, nonatomic) NSDictionary *userTimeLineParams;
 
 @end
 
@@ -51,6 +35,8 @@ static NSString *queryRequestKey = @"q";
     TweetsTableViewController *controller = [socialSearch instantiateViewControllerWithIdentifier:NSStringFromClass([TweetsTableViewController class])];
     return controller;
 }
+
+#pragma mark - Life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,86 +52,54 @@ static NSString *queryRequestKey = @"q";
         TwitterLoginViewController *login = [TwitterLoginViewController instantiateFromStoryboard];
         [self presentViewController:login animated:YES completion:nil];
     } else {
-        [self fetchTweetsFromTwitterWithUrl:homeTimeLine params:_homeTimeLineParams];
-    }
-}
-
-- (void)fetchTweetsFromTwitterWithUrl: (NSString *)url params:(NSDictionary *)params {
-    __weak typeof(self) weakSelf = self;
-    
-    TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
-    TWTRAPIClient *client = [[TWTRAPIClient alloc] initWithUserID:store.session.userID];
-    
-    NSError *clientError;
-    NSURLRequest *request = [client URLRequestWithMethod:requestMethodGET URL:url parameters:params error:&clientError];
-    
-    if (request) {
-        [client sendTwitterRequest:request completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            if (data) {
-                __strong typeof(weakSelf) strongSelf = weakSelf;
-                NSError *jsonError;
-                strongSelf.json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-                [strongSelf.tableView reloadData];
-            }
-        }];
+        TwitterHelper *helper = [TwitterHelper new];
+        [helper fetchHomeTweetsFromTwitter];
+        helper.getTweets = ^(NSArray *tweets) {
+            self.tweets = [NSMutableArray arrayWithArray:tweets];
+            [self.tableView reloadData];
+        };
+        
     }
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    __weak typeof(self) weakSelf = self;
     
     if ([searchText isEqualToString:@""]) {
-        [self fetchTweetsFromTwitterWithUrl:homeTimeLine params:self.homeTimeLineParams];
+        TwitterHelper *helper = [TwitterHelper new];
+        [helper fetchHomeTweetsFromTwitter];
+        helper.getTweets = ^(NSArray *tweets) {
+            self.tweets = [NSMutableArray arrayWithArray:tweets];
+            [self.tableView reloadData];
+        };
         return;
     }
-    
-    TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
-    TWTRAPIClient *client = [[TWTRAPIClient alloc] initWithUserID:store.session.userID];
-    
-    NSDictionary *params = @{queryRequestKey : searchText};
-    NSError *clientError;
-    
-    NSURLRequest *request = [client URLRequestWithMethod:requestMethodGET URL:searchUrl parameters:params error:&clientError];
-    
-    if (request) {
-        [client sendTwitterRequest:request completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            if (data) {
-                __strong typeof(weakSelf) strongSelf = weakSelf;
-                NSError *jsonError;
-                
-                NSDictionary *twjson = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-                strongSelf.json = [twjson objectForKey:statusesJsonKey];
-                [strongSelf.tableView reloadData];
-            }
-        }];
-    }
+    TwitterHelper *helper = [TwitterHelper new];
+    [helper searchInTwitterWithQuery:searchText];
+    helper.getTweets = ^(NSArray *tweets) {
+        self.tweets = [NSMutableArray arrayWithArray:tweets];
+        [self.tableView reloadData];
+    };    
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.json.count;
+    return self.tweets.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetTableViewCell *tweetCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TweetTableViewCell class]) forIndexPath:indexPath];
-    NSDictionary *tweets = [self.json objectAtIndex:indexPath.row];
+    TwitterTweet *tweet = self.tweets[indexPath.row];
     
-    NSDictionary *dict = [tweets objectForKey:userJsonKey];
-    NSString *imageUrlString = [dict objectForKey:profileImageUrlJsonKey];
-    NSString *likes = [[tweets objectForKey:favoriteCountJsonKey] stringValue];
-    NSString *retweets = [[tweets objectForKey:retweetCountJsonKey] stringValue];
-    NSString *userName = [dict objectForKey:userNameJsonKey];
-    NSString *text = [tweets objectForKey:tweetTextJsonKey];
-    ImageLoadOperation *operation = [[ImageLoadOperation alloc] initWithUrl:[NSURL URLWithString:imageUrlString]];
+    ImageLoadOperation *operation = [[ImageLoadOperation alloc] initWithUrl:[NSURL URLWithString:tweet.user.image]];
     operation.loadCompilation = ^(UIImage *image) {
-        tweetCell.avatar = image;        
+        tweetCell.avatar = image;
     };
     [self.queue addOperation:operation];
-    tweetCell.text = text;
-    tweetCell.userName = userName;
-    tweetCell.retweetCount = retweets;
-    tweetCell.likesCount = likes;    
+    tweetCell.text = tweet.text;
+    tweetCell.userName = tweet.user.name;
+    tweetCell.retweetCount = tweet.retweets;
+    tweetCell.likesCount = tweet.likes;
     return tweetCell;
 }
 
@@ -171,27 +125,11 @@ static NSString *queryRequestKey = @"q";
     return _queue;
 }
 
-- (NSOperationQueue *)searchQueue {
-    if (!_searchQueue) {
-        _searchQueue = [[NSOperationQueue alloc]  init];
-        _searchQueue.qualityOfService = NSQualityOfServiceUserInteractive;
-        _searchQueue.maxConcurrentOperationCount = 1;
+- (NSMutableArray<TwitterTweet *> *)tweets {
+    if (!_tweets) {
+        _tweets = [[NSMutableArray alloc] init];
     }
-    return _searchQueue;
-}
-
-- (NSDictionary *)homeTimeLineParams {
-    if (!_homeTimeLineParams) {
-        _homeTimeLineParams = @{countRequestKey : @"20"};
-    }
-    return _homeTimeLineParams;
-}
-
-- (NSDictionary *)userTimeLineParams {
-    if (!_userTimeLineParams) {
-        _userTimeLineParams = @{userIdRequestKey : @"580097412"}; //ChrisEvans twitter id: 580097412
-    }
-    return _userTimeLineParams;
+    return _tweets;
 }
 
 @end
