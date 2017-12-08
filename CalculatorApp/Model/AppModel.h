@@ -16,6 +16,7 @@ typedef NS_ENUM (NSInteger, AppsList) {
     AppProfiler,
     AppGalaxy,
     AppSocial,
+    AppCard,
     AppListCount
 };
 

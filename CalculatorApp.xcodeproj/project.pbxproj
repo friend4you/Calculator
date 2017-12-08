@@ -12,7 +12,6 @@
 		933F6CD21FA8A06D005B8305 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 933F6CD11FA8A06D005B8305 /* Calculator.m */; };
 		9347FF641FD935EB00682482 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9347FF631FD935EB00682482 /* CoreDataHelper.m */; };
 		934C86E41FD554BC0085C0E3 /* SocialSearchTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C86E31FD554BC0085C0E3 /* SocialSearchTabBarController.m */; };
-		9352158A1FCD77C400F7E1E3 /* TweetsLoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 935215891FCD77C400F7E1E3 /* TweetsLoadOperation.m */; };
 		935664901FB5A1320037F4B3 /* Graphics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9356648F1FB5A1320037F4B3 /* Graphics.storyboard */; };
 		9356A0851FBD95C700C4DEDC /* Colors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9356A0841FBD95C600C4DEDC /* Colors.storyboard */; };
 		9356A0881FBD9F5400C4DEDC /* GreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A0871FBD9F5400C4DEDC /* GreenViewController.m */; };
@@ -25,6 +24,14 @@
 		9356A0B01FBF015C00C4DEDC /* ProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356A0AC1FBF015A00C4DEDC /* ProfileModel.m */; };
 		9356FBBC1FB5D3FE0028C782 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */; };
 		9356FBBF1FB5E7280028C782 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9356FBBE1FB5E7280028C782 /* MainTabBarController.m */; };
+		935916981FDA9D3D005319FB /* Cards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935916971FDA9D3C005319FB /* Cards.storyboard */; };
+		9359169B1FDAA00D005319FB /* CardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9359169A1FDAA00D005319FB /* CardCollectionViewCell.m */; };
+		9359169F1FDAA071005319FB /* CardCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9359169E1FDAA071005319FB /* CardCollectionViewController.m */; };
+		935916A21FDAA546005319FB /* GridViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 935916A11FDAA546005319FB /* GridViewLayout.m */; };
+		935916A51FDAA9A5005319FB /* Character_Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 935916A41FDAA9A5005319FB /* Character_Data.plist */; };
+		935916A91FDAAA0F005319FB /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 935916A81FDAAA0F005319FB /* Character.m */; };
+		935916AC1FDAAA5D005319FB /* CharacterDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 935916AB1FDAAA5D005319FB /* CharacterDataSource.m */; };
+		935916AF1FDAC7A6005319FB /* LineViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 935916AE1FDAC7A6005319FB /* LineViewLayout.m */; };
 		935A08361FC443EB004B0E74 /* Galaxy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935A08351FC443EB004B0E74 /* Galaxy.storyboard */; };
 		935A08391FC4442C004B0E74 /* GalaxyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 935A08381FC4442C004B0E74 /* GalaxyViewController.m */; };
 		935A083D1FC44761004B0E74 /* GalaxyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 935A083C1FC44761004B0E74 /* GalaxyModel.m */; };
@@ -76,8 +83,6 @@
 		9347FF631FD935EB00682482 /* CoreDataHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		934C86E21FD554BC0085C0E3 /* SocialSearchTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocialSearchTabBarController.h; sourceTree = "<group>"; };
 		934C86E31FD554BC0085C0E3 /* SocialSearchTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocialSearchTabBarController.m; sourceTree = "<group>"; };
-		935215881FCD77C400F7E1E3 /* TweetsLoadOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetsLoadOperation.h; sourceTree = "<group>"; };
-		935215891FCD77C400F7E1E3 /* TweetsLoadOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetsLoadOperation.m; sourceTree = "<group>"; };
 		9356648F1FB5A1320037F4B3 /* Graphics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graphics.storyboard; sourceTree = "<group>"; };
 		9356A0841FBD95C600C4DEDC /* Colors.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Colors.storyboard; sourceTree = "<group>"; };
 		9356A0861FBD9F5400C4DEDC /* GreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GreenViewController.h; sourceTree = "<group>"; };
@@ -100,6 +105,20 @@
 		9356FBBB1FB5D3FE0028C782 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
 		9356FBBD1FB5E7280028C782 /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		9356FBBE1FB5E7280028C782 /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
+		935916971FDA9D3C005319FB /* Cards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cards.storyboard; sourceTree = "<group>"; };
+		935916991FDAA00D005319FB /* CardCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardCollectionViewCell.h; sourceTree = "<group>"; };
+		9359169A1FDAA00D005319FB /* CardCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardCollectionViewCell.m; sourceTree = "<group>"; };
+		9359169D1FDAA071005319FB /* CardCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardCollectionViewController.h; sourceTree = "<group>"; };
+		9359169E1FDAA071005319FB /* CardCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardCollectionViewController.m; sourceTree = "<group>"; };
+		935916A01FDAA546005319FB /* GridViewLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridViewLayout.h; sourceTree = "<group>"; };
+		935916A11FDAA546005319FB /* GridViewLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridViewLayout.m; sourceTree = "<group>"; };
+		935916A41FDAA9A5005319FB /* Character_Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Character_Data.plist; sourceTree = "<group>"; };
+		935916A71FDAAA0F005319FB /* Character.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		935916A81FDAAA0F005319FB /* Character.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
+		935916AA1FDAAA5D005319FB /* CharacterDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharacterDataSource.h; sourceTree = "<group>"; };
+		935916AB1FDAAA5D005319FB /* CharacterDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharacterDataSource.m; sourceTree = "<group>"; };
+		935916AD1FDAC7A6005319FB /* LineViewLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineViewLayout.h; sourceTree = "<group>"; };
+		935916AE1FDAC7A6005319FB /* LineViewLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LineViewLayout.m; sourceTree = "<group>"; };
 		935A08351FC443EB004B0E74 /* Galaxy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Galaxy.storyboard; sourceTree = "<group>"; };
 		935A08371FC4442C004B0E74 /* GalaxyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalaxyViewController.h; sourceTree = "<group>"; };
 		935A08381FC4442C004B0E74 /* GalaxyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalaxyViewController.m; sourceTree = "<group>"; };
@@ -231,6 +250,7 @@
 		933F6CD31FA8A078005B8305 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				935916A61FDAA9D9005319FB /* Character */,
 				931D43171FD82BB20057DF8F /* SocialSearch */,
 				9314A9D71FD5AAE600A06562 /* CoreData */,
 				939CB6B51FC82FCB0070F130 /* ImageLoadOperation.h */,
@@ -242,8 +262,6 @@
 				93A4ABFD1FC5D28000C47C8D /* Galaxy */,
 				93F344441FCC37E9000A4EAF /* AppModel.h */,
 				93F344451FCC37E9000A4EAF /* AppModel.m */,
-				935215881FCD77C400F7E1E3 /* TweetsLoadOperation.h */,
-				935215891FCD77C400F7E1E3 /* TweetsLoadOperation.m */,
 				93EC0F911FD9852800C593A3 /* Reachability.h */,
 				93EC0F901FD9852700C593A3 /* Reachability.m */,
 			);
@@ -272,6 +290,7 @@
 				9356A0A51FBEFF8A00C4DEDC /* Profile.storyboard */,
 				935A08351FC443EB004B0E74 /* Galaxy.storyboard */,
 				93F3444C1FCC536B000A4EAF /* SocialSearch.storyboard */,
+				935916971FDA9D3C005319FB /* Cards.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -288,6 +307,7 @@
 				9356A08F1FBD9FE500C4DEDC /* ColorsControllers */,
 				935A083A1FC4443A004B0E74 /* GalaxyControllers */,
 				93F344471FCC488E000A4EAF /* MainControllers */,
+				9359169C1FDAA01E005319FB /* CardsControllers */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -347,6 +367,40 @@
 				9356A0A71FBEFFA000C4DEDC /* AuthController.m */,
 			);
 			path = ProfileControllers;
+			sourceTree = "<group>";
+		};
+		9359169C1FDAA01E005319FB /* CardsControllers */ = {
+			isa = PBXGroup;
+			children = (
+				935916991FDAA00D005319FB /* CardCollectionViewCell.h */,
+				9359169A1FDAA00D005319FB /* CardCollectionViewCell.m */,
+				9359169D1FDAA071005319FB /* CardCollectionViewController.h */,
+				9359169E1FDAA071005319FB /* CardCollectionViewController.m */,
+				935916A01FDAA546005319FB /* GridViewLayout.h */,
+				935916A11FDAA546005319FB /* GridViewLayout.m */,
+				935916AD1FDAC7A6005319FB /* LineViewLayout.h */,
+				935916AE1FDAC7A6005319FB /* LineViewLayout.m */,
+			);
+			path = CardsControllers;
+			sourceTree = "<group>";
+		};
+		935916A31FDAA95C005319FB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				935916A41FDAA9A5005319FB /* Character_Data.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		935916A61FDAA9D9005319FB /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				935916A71FDAAA0F005319FB /* Character.h */,
+				935916A81FDAAA0F005319FB /* Character.m */,
+				935916AA1FDAAA5D005319FB /* CharacterDataSource.h */,
+				935916AB1FDAAA5D005319FB /* CharacterDataSource.m */,
+			);
+			path = Character;
 			sourceTree = "<group>";
 		};
 		935A08341FC41D69004B0E74 /* Profile */ = {
@@ -448,6 +502,7 @@
 				93BDBB611FA33EFA00748B5D /* LaunchScreen.storyboard */,
 				93BDBB641FA33EFA00748B5D /* Info.plist */,
 				93BDBB651FA33EFA00748B5D /* main.m */,
+				935916A31FDAA95C005319FB /* Resources */,
 				9356A0921FBDA04800C4DEDC /* Categories */,
 			);
 			path = CalculatorApp;
@@ -561,9 +616,11 @@
 				93BDBB631FA33EFA00748B5D /* LaunchScreen.storyboard in Resources */,
 				9356A0851FBD95C700C4DEDC /* Colors.storyboard in Resources */,
 				93BDBB601FA33EFA00748B5D /* Assets.xcassets in Resources */,
+				935916981FDA9D3D005319FB /* Cards.storyboard in Resources */,
 				93BDBB5E1FA33EF900748B5D /* Main.storyboard in Resources */,
 				935A08361FC443EB004B0E74 /* Galaxy.storyboard in Resources */,
 				935664901FB5A1320037F4B3 /* Graphics.storyboard in Resources */,
+				935916A51FDAA9A5005319FB /* Character_Data.plist in Resources */,
 				93F3444D1FCC536B000A4EAF /* SocialSearch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -631,16 +688,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				93A4ABFC1FC5D1F900C47C8D /* GalaxyCollectionViewCell.m in Sources */,
+				9359169B1FDAA00D005319FB /* CardCollectionViewCell.m in Sources */,
 				9356A0881FBD9F5400C4DEDC /* GreenViewController.m in Sources */,
 				93F3444B1FCC534F000A4EAF /* TwitterLoginViewController.m in Sources */,
 				93F344501FCC7606000A4EAF /* TweetsTableViewController.m in Sources */,
+				935916AC1FDAAA5D005319FB /* CharacterDataSource.m in Sources */,
 				93A9CBB91FBB17D400AEBF4B /* RDLChartViewController.m in Sources */,
 				93A4AC011FC5D2CA00C47C8D /* GalaxyCellModel.m in Sources */,
 				9347FF641FD935EB00682482 /* CoreDataHelper.m in Sources */,
 				93A9CBC51FBB2DA000AEBF4B /* Graphics.m in Sources */,
 				93F344531FCC7DCA000A4EAF /* TweetTableViewCell.m in Sources */,
-				9352158A1FCD77C400F7E1E3 /* TweetsLoadOperation.m in Sources */,
 				93F344461FCC37E9000A4EAF /* AppModel.m in Sources */,
+				9359169F1FDAA071005319FB /* CardCollectionViewController.m in Sources */,
 				9365CB451FD6B99A0011C019 /* User+CoreDataProperties.m in Sources */,
 				93A9CBC81FBB334000AEBF4B /* RDLSelectChartViewController.m in Sources */,
 				93F344401FCC2F48000A4EAF /* MainTableViewController.m in Sources */,
@@ -659,11 +718,14 @@
 				93A9CBC21FBB21C600AEBF4B /* RDLSplitGraphicsViewController.m in Sources */,
 				931D431A1FD82C0C0057DF8F /* TwitterUser.m in Sources */,
 				935A083D1FC44761004B0E74 /* GalaxyModel.m in Sources */,
+				935916A21FDAA546005319FB /* GridViewLayout.m in Sources */,
 				93EC0F921FD9852900C593A3 /* Reachability.m in Sources */,
 				9356FBBC1FB5D3FE0028C782 /* HistoryTableViewCell.m in Sources */,
 				93BDBB661FA33EFA00748B5D /* main.m in Sources */,
+				935916A91FDAAA0F005319FB /* Character.m in Sources */,
 				93A9CBBB1FBB17D400AEBF4B /* RDLChartView.m in Sources */,
 				93EC0F951FD98D0B00C593A3 /* TwitterHelper.m in Sources */,
+				935916AF1FDAC7A6005319FB /* LineViewLayout.m in Sources */,
 				9356A0A91FBEFFA100C4DEDC /* AuthController.m in Sources */,
 				935A08391FC4442C004B0E74 /* GalaxyViewController.m in Sources */,
 				9365CB431FD6B99A0011C019 /* Tweet+CoreDataProperties.m in Sources */,

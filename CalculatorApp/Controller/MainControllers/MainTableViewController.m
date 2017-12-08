@@ -17,6 +17,7 @@
 #import "AuthController.h"
 #import "GalaxyViewController.h"
 #import "SocialSearchTabBarController.h"
+#import "CardCollectionViewController.h"
 
 static NSString *calculatorTitle = @"Calculator";
 static NSString *graphicsTitle = @"Graphics";
@@ -24,6 +25,7 @@ static NSString *colorsTitle = @"Colors";
 static NSString *profileTitle = @"Profile";
 static NSString *galaxyTitle = @"Galaxy";
 static NSString *socialSearchTitle = @"SocialSearch";
+static NSString *cardTitle = @"Cards";
 
 static NSString *calculatorImageName = @"calculatorIcon";
 static NSString *graphicsImageName = @"graphicsIcon";
@@ -31,7 +33,7 @@ static NSString *colorsImageName = @"colorsIcon";
 static NSString *profileImageName = @"profileIcon";
 static NSString *galaxyImageName = @"galaxyIcon";
 static NSString *socialSearchImageName = @"twitterIcon";
-
+static NSString *cardImageName = @"cardsIcon";
 
 @interface MainTableViewController ()
 
@@ -70,6 +72,7 @@ static NSString *socialSearchImageName = @"twitterIcon";
                                @(AppProfiler) : [UIImage imageNamed:profileImageName],
                                @(AppGalaxy) : [UIImage imageNamed:galaxyImageName],
                                @(AppSocial) : [UIImage imageNamed:socialSearchImageName],
+                               @(AppCard) : [UIImage imageNamed:cardImageName]
                                };
     return sourDict[@(type)];
 }
@@ -81,6 +84,7 @@ static NSString *socialSearchImageName = @"twitterIcon";
                              @(AppProfiler) : profileTitle,
                              @(AppGalaxy) : galaxyTitle,
                              @(AppSocial) : socialSearchTitle,
+                             @(AppCard) : cardTitle
                              };
     return titles[@(type)];
 }
@@ -110,6 +114,10 @@ static NSString *socialSearchImageName = @"twitterIcon";
                                @(AppSocial) : ^{
                                    SocialSearchTabBarController *social = [SocialSearchTabBarController instantiateFromStoryboard];
                                    [self presentViewController:social animated:YES completion:nil];
+                               },
+                               @(AppCard) : ^{
+                                   CardCollectionViewController *cards = [CardCollectionViewController instantiateFromStoryboard];
+                                   [self presentViewController:cards animated:YES completion:nil];
                                }
                                };
     return sourDict[@(type)];

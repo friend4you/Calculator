@@ -8,7 +8,6 @@
 
 #import "TweetsTableViewController.h"
 #import "ImageLoadOperation.h"
-#import "TweetsLoadOperation.h"
 #import "TweetTableViewCell.h"
 #import "TwitterTweet.h"
 #import "CoreDataHelper.h"
