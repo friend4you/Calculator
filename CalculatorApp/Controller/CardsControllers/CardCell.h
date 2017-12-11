@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Character.h"
 
-@interface CardCollectionViewCell : UICollectionViewCell
+@interface CardCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *characterImageView;
+@property (weak, nonatomic) IBOutlet UILabel *characterInfoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *characterNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *characterDescriptionLabel;
 
 @end

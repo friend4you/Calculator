@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,38 +16,33 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="t0k-wj-IAZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dRj-aM-1Os" customClass="LineViewLayout">
-                            <size key="itemSize" width="253" height="337"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
+                        <color key="backgroundColor" red="0.75067862750050751" green="0.67144449411994689" blue="0.45369866009838955" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <collectionViewLayout key="collectionViewLayout" id="du0-a6-nsb" customClass="GridViewLayout"/>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCollectionViewCell" id="UDm-lX-3ie" customClass="CardCollectionViewCell">
-                                <rect key="frame" x="61" y="0.0" width="253" height="337"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCell" id="UDm-lX-3ie" customClass="CardCell">
+                                <rect key="frame" x="62.5" y="0.0" width="250" height="340"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="253" height="337"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="340"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejc-EO-1cv">
-                                            <rect key="frame" x="0.0" y="0.0" width="253" height="337"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="340"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YVr-Dh-zIo">
-                                                    <rect key="frame" x="8" y="8" width="237" height="237"/>
+                                                    <rect key="frame" x="8" y="8" width="234" height="200"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="YVr-Dh-zIo" secondAttribute="height" multiplier="1:1" id="Kkc-fH-OW5"/>
+                                                        <constraint firstAttribute="height" constant="200" id="PKl-if-vDZ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8X0-5J-StG">
-                                                    <rect key="frame" x="8" y="274" width="237" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <rect key="frame" x="8" y="237" width="234" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgX-Un-76z">
-                                                    <rect key="frame" x="8" y="253" width="237" height="18"/>
+                                                    <rect key="frame" x="8" y="216" width="234" height="18"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -76,11 +70,12 @@
                                     <constraint firstAttribute="bottom" secondItem="ejc-EO-1cv" secondAttribute="bottom" id="kE6-La-kSn"/>
                                     <constraint firstItem="ejc-EO-1cv" firstAttribute="top" secondItem="UDm-lX-3ie" secondAttribute="top" id="x84-is-XJr"/>
                                 </constraints>
-                                <size key="customSize" width="253" height="337"/>
+                                <size key="customSize" width="250" height="340"/>
                                 <connections>
-                                    <outlet property="characterDescriptionLabel" destination="8X0-5J-StG" id="2GK-id-Myu"/>
-                                    <outlet property="characterImageView" destination="YVr-Dh-zIo" id="BT8-Rx-QSh"/>
-                                    <outlet property="characterNameLabel" destination="MgX-Un-76z" id="u5N-lY-Ret"/>
+                                    <outlet property="characterImageView" destination="YVr-Dh-zIo" id="K5u-bn-JUT"/>
+                                    <outlet property="characterInfoLabel" destination="8X0-5J-StG" id="3OD-Sv-Bkw"/>
+                                    <outlet property="characterNameLabel" destination="MgX-Un-76z" id="a9v-6o-wbo"/>
+                                    <outlet property="imageHeightConstraint" destination="PKl-if-vDZ" id="Nhi-qL-YUq"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

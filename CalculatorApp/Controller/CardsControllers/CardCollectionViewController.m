@@ -7,11 +7,14 @@
 //
 
 #import "CardCollectionViewController.h"
-#import "CardCollectionViewCell.h"
+#import "CardCell.h"
 #import "Character.h"
 #import "CharacterDataSource.h"
+#import "LineViewLayout.h"
+#import "GridViewLayout.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface CardCollectionViewController ()
+@interface CardCollectionViewController () <GridViewLayoutDelegate>
 
 @property (nonatomic, strong) NSMutableArray<Character *> *characters;
 @property (weak, nonatomic) IBOutlet UISwitch *gridSwitcher;
@@ -22,19 +25,41 @@
 
 + (instancetype)instantiateFromStoryboard {
     UIStoryboard *card = [UIStoryboard storyboardWithName:@"Cards" bundle:nil];
-    CardCollectionViewController *controller = [card instantiateViewControllerWithIdentifier:NSStringFromClass([CardCollectionViewController class])];
+    CardCollectionViewController *controller = [card instantiateViewControllerWithIdentifier:@"CardNavigationView"];
     return controller;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.gridSwitcher addTarget:self action:@selector(changeCollectionLayout) forControlEvents:UIControlEventValueChanged];
     
+    if ([self.collectionViewLayout isKindOfClass:[LineViewLayout class]]) {
+        LineViewLayout *layout = self.collectionViewLayout;
+        layout.minimumLineSpacing = - (layout.itemSize.width * 0.5);
+    } else if ([self.collectionViewLayout isKindOfClass:[GridViewLayout class]]) {
+        GridViewLayout *gridLayout = self.collectionViewLayout;
+        gridLayout.numberOfColums = 2;
+        gridLayout.delegate = self;
+        self.collectionView.contentInset = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
+        gridLayout.padding = 5.0;
+    }
     
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([CardCollectionViewCell class])];
-    
-    // Do any additional setup after loading the view.
+}
+
+- (void)changeCollectionLayout {
+    if ([self.collectionViewLayout isKindOfClass:[LineViewLayout class]]) {
+        GridViewLayout *gridLayout = [[GridViewLayout alloc] init];
+        gridLayout.numberOfColums = 2;
+        gridLayout.delegate = self;
+        self.collectionView.contentInset = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
+        gridLayout.padding = 5.0;
+        [self.collectionView setCollectionViewLayout:gridLayout animated:YES];
+    } else {
+        LineViewLayout *lineLayout = [[LineViewLayout alloc] init];
+        lineLayout.minimumLineSpacing = - (lineLayout.itemSize.width * 0.5);
+        [self.collectionView setCollectionViewLayout:lineLayout animated:YES];
+    }
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -48,45 +73,14 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([CardCollectionViewCell class]) forIndexPath:indexPath];
+    CardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([CardCell class]) forIndexPath:indexPath];
     Character *character = self.characters[indexPath.row];
     
     cell.characterNameLabel.text = character.name;
     cell.characterImageView.image = [UIImage imageNamed:character.name];
-    cell.characterDescriptionLabel.text = character.info;
+    cell.characterInfoLabel.text = character.info;
     return cell;
 }
-
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 #pragma mark - Lazy Load
 
@@ -95,6 +89,34 @@
         _characters = [[CharacterDataSource characters] mutableCopy];
     }
     return _characters;
+}
+
+#pragma mark - CustomViewControllerDelegate
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView heightForImageAtIndexPath:(NSIndexPath *)indexPath withWidth:(CGFloat)width {
+    
+    Character *character = self.characters[indexPath.row];
+    UIImage *image = [UIImage imageNamed:character.name];
+    CGRect boundingRect = CGRectMake(0.0, 0.0, width, CGFLOAT_MAX);
+    CGRect resultRect = AVMakeRectWithAspectRatioInsideRect(image.size, boundingRect);
+    
+    return resultRect.size.height;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView heightForDescriptionAtIndexPath:(NSIndexPath *)indexPath withWidth:(CGFloat)width {
+    
+    Character *character = self.characters[indexPath.row];
+    CGFloat descriptionHeight = [self heightForText:character.info withWidth:width-24];
+    CGFloat height = 30 + 20 + descriptionHeight;
+    
+    return height;
+}
+
+- (CGFloat) heightForText:(NSString *)text withWidth: (CGFloat) width {
+    UIFont *font = [UIFont systemFontOfSize:13];
+    CGRect rect = [text boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil];
+    
+    return rect.size.height;
 }
 
 @end

@@ -7,7 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GridLayoutAttributes.h"
+
+@class GridLayoutAttributes;
+
+@protocol GridViewLayoutDelegate <NSObject>
+
+- (CGFloat) collectionView: (UICollectionView *) collectionView heightForImageAtIndexPath: (NSIndexPath *) indexPath withWidth: (CGFloat) width;
+
+- (CGFloat) collectionView: (UICollectionView *) collectionView heightForDescriptionAtIndexPath: (NSIndexPath *) indexPath withWidth: (CGFloat) width;
+
+@end
 
 @interface GridViewLayout : UICollectionViewLayout
+
+@property (nonatomic, weak) id<GridViewLayoutDelegate> delegate;
+@property (nonatomic, assign) NSInteger numberOfColums;
+@property (nonatomic, assign) CGFloat padding;
+@property (nonatomic, strong) NSMutableArray<GridLayoutAttributes *> *cache;
 
 @end
