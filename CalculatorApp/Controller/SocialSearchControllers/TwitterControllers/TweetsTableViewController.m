@@ -39,12 +39,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configureController];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self authenticationSession];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    __weak typeof(self) weakSelf = self;
+    if ([searchText isEqualToString:@""]) {
+        TwitterHelper *helper = [TwitterHelper new];
+        [helper fetchHomeTweetsFromTwitter];
+        helper.getTweets = ^(NSArray *tweets) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            strongSelf.tweets = [NSMutableArray arrayWithArray:tweets];
+            [strongSelf.tableView reloadData];
+        };
+        return;
+    }
+    TwitterHelper *helper = [TwitterHelper new];
+    [helper searchInTwitterWithQuery:searchText];
+    helper.getTweets = ^(NSArray *tweets) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.tweets = [NSMutableArray arrayWithArray:tweets];
+        [strongSelf.tableView reloadData];
+    };    
+}
+
+- (void)configureController {
     self.tableView.tableFooterView = self.footerView;
     self.tableView.rowHeight = 150;
     self.searchBar.delegate = self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)authenticationSession {
     TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
     
     if (!store.session) {
@@ -61,25 +90,6 @@
     }
 }
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    
-    if ([searchText isEqualToString:@""]) {
-        TwitterHelper *helper = [TwitterHelper new];
-        [helper fetchHomeTweetsFromTwitter];
-        helper.getTweets = ^(NSArray *tweets) {
-            self.tweets = [NSMutableArray arrayWithArray:tweets];
-            [self.tableView reloadData];
-        };
-        return;
-    }
-    TwitterHelper *helper = [TwitterHelper new];
-    [helper searchInTwitterWithQuery:searchText];
-    helper.getTweets = ^(NSArray *tweets) {
-        self.tweets = [NSMutableArray arrayWithArray:tweets];
-        [self.tableView reloadData];
-    };    
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -90,15 +100,8 @@
     TweetTableViewCell *tweetCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TweetTableViewCell class]) forIndexPath:indexPath];
     TwitterTweet *tweet = self.tweets[indexPath.row];
     
-    ImageLoadOperation *operation = [[ImageLoadOperation alloc] initWithUrl:[NSURL URLWithString:tweet.user.image]];
-    operation.loadCompilation = ^(UIImage *image) {
-        tweetCell.avatar = image;
-    };
-    [self.queue addOperation:operation];
-    tweetCell.text = tweet.text;
-    tweetCell.userName = tweet.user.name;
-    tweetCell.retweetCount = tweet.retweets;
-    tweetCell.likesCount = tweet.likes;
+    [tweetCell configureCellWithData:tweet queue:self.queue];
+    
     return tweetCell;
 }
 

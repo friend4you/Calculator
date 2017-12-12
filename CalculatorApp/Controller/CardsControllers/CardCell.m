@@ -21,8 +21,8 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        self.layer.cornerRadius = self.bounds.size.width * 0.125;
-        self.layer.borderWidth = 6;
+        self.layer.cornerRadius = self.bounds.size.width * 0.05;
+        self.layer.borderWidth = 3;
         self.layer.borderColor = [UIColor colorWithRed:0.5 green:0.47 blue:0.25 alpha:1.0].CGColor;
     }
     return self;
@@ -41,7 +41,11 @@
     GridLayoutAttributes *attributes = (GridLayoutAttributes *)layoutAttributes;
     if ([attributes isKindOfClass:[GridLayoutAttributes class]]) {
         self.imageHeightConstraint.constant = attributes.imageHeight;
+    } else {
+        CGFloat imageWidth = self.characterImageView.frame.size.width;
+        self.imageHeightConstraint.constant = imageWidth;        
     }
+    
 }
 
 @end

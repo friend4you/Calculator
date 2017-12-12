@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TwitterTweet.h"
 
 @interface TweetTableViewCell : UITableViewCell
 
@@ -15,5 +16,7 @@
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *retweetCount;
 @property (strong, nonatomic) NSString *likesCount;
+
+- (void)configureCellWithData:(TwitterTweet *)tweet queue:(NSOperationQueue *)queue;
 
 @end

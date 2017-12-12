@@ -7,6 +7,7 @@
 //
 
 #import "TweetTableViewCell.h"
+#import "ImageLoadOperation.h"
 
 @interface TweetTableViewCell ()
 
@@ -70,6 +71,22 @@
 - (void)setLikesCount:(NSString *)likesCount {
     self.likesLabel.text = likesCount;
 }
+
+- (void)configureCellWithData:(TwitterTweet *)tweet queue:(NSOperationQueue *)queue{
+    __weak typeof(self) weakSelf = self;
+    self.tweetText.text = tweet.text;
+    self.userNameLabel.text = tweet.user.name;
+    self.retweetLabel.text = tweet.retweets;
+    self.likesLabel.text = tweet.likes;
+    NSURL *imageUrl = [NSURL URLWithString:tweet.user.image];
+    ImageLoadOperation *operation = [[ImageLoadOperation alloc] initWithUrl:imageUrl];
+    operation.loadCompilation = ^(UIImage *image) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.avatarImageView.image = image;
+    };
+    [queue addOperation:operation];
+}
+
 
 - (void)prepareForReuse {
     [super prepareForReuse];

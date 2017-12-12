@@ -33,8 +33,7 @@ static NSString *cursorRequestKey = @"cursor";
 
 - (void)fetchHomeTweetsFromTwitter{
 
-    if ([[Reachability reachabilityForInternetConnection]currentReachabilityStatus] == NotReachable)
-    {
+    if ([[Reachability reachabilityForInternetConnection]currentReachabilityStatus] == NotReachable) {
         self.getTweets([CoreDataHelper getAllTweets]);
     }
     

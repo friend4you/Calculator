@@ -28,10 +28,9 @@
     // Configure the view for the selected state
 }
 
-- (void)updateWithModel:(id)model {
-    AppModel *appModel = (AppModel *)model;
-    self.appLabel.text = appModel.title;
-    self.appIconImageView.image = appModel.image;
+- (void)updateWithModel:(AppModel *)model {
+    self.appLabel.text = model.title;
+    self.appIconImageView.image = model.image;
 }
 
 @end

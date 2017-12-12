@@ -34,7 +34,7 @@
 
 - (CGFloat) width {
     UIEdgeInsets insets = self.collectionView.contentInset;
-    return self.collectionView.bounds.size.width - (insets.left + insets.right);
+    return self.collectionView.frame.size.width - (insets.left + insets.right);
 }
 
 - (CGSize)collectionViewContentSize {
@@ -42,6 +42,7 @@
 }
 
 - (void)prepareLayout {
+    self.cache = [[NSMutableArray alloc] init];
     if (self.cache.count == 0 && self.numberOfColums > 0) {
         CGFloat columnWidth = self.width / self.numberOfColums;
         
@@ -77,14 +78,16 @@
 
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSMutableArray<UICollectionViewLayoutAttributes *> *attributesArray = [NSMutableArray array];
-    
     for (UICollectionViewLayoutAttributes *attributes in self.cache) {
         if (CGRectIntersectsRect(attributes.frame, rect)) {
             [attributesArray addObject:attributes];
         }
     }
-    
     return attributesArray;
+}
+
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
+    return YES;
 }
 
 

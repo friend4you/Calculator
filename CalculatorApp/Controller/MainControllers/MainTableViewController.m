@@ -94,32 +94,25 @@ static NSString *cardImageName = @"cardsIcon";
     NSDictionary *sourDict = @{@(AppCalculator) : ^ {
         CalculatorViewController *calculator = [CalculatorViewController instantiateFromStoryboard];
         [weakSelf.navigationController pushViewController:calculator animated:YES];
-    },
-                               @(AppChartView) : ^{
-                                   RDLSplitGraphicsViewController *chart = [RDLSplitGraphicsViewController instantiateFromStoryboard];
-                                   [self presentViewController:chart animated:YES completion:nil];
-                               },
-                               @(AppColors) : ^{
-                                   RedViewController *colors = [RedViewController instantiateFromStoryboard];
-                                   [self.navigationController pushViewController:colors animated:YES];
-                               },
-                               @(AppProfiler) : ^{
-                                   AuthController *profile = [AuthController instantiateFromStoryboard];
-                                   [self.navigationController pushViewController:profile animated:YES];
-                               },
-                               @(AppGalaxy) : ^{
-                                   GalaxyViewController *galaxy = [GalaxyViewController instantiateFromStoryboard];
-                                   [self.navigationController pushViewController:galaxy animated:YES];
-                               },
-                               @(AppSocial) : ^{
-                                   SocialSearchTabBarController *social = [SocialSearchTabBarController instantiateFromStoryboard];
-                                   [self presentViewController:social animated:YES completion:nil];
-                               },
-                               @(AppCard) : ^{
-                                   CardCollectionViewController *cards = [CardCollectionViewController instantiateFromStoryboard];
-                                   [self presentViewController:cards animated:YES completion:nil];
-                               }
-                               };
+    }, @(AppChartView) : ^{
+        RDLSplitGraphicsViewController *chart = [RDLSplitGraphicsViewController instantiateFromStoryboard];
+        [self presentViewController:chart animated:YES completion:nil];
+    }, @(AppColors) : ^{
+        RedViewController *colors = [RedViewController instantiateFromStoryboard];
+        [self.navigationController pushViewController:colors animated:YES];
+    }, @(AppProfiler) : ^{
+        AuthController *profile = [AuthController instantiateFromStoryboard];
+        [self.navigationController pushViewController:profile animated:YES];
+    }, @(AppGalaxy) : ^{
+        GalaxyViewController *galaxy = [GalaxyViewController instantiateFromStoryboard];
+        [self.navigationController pushViewController:galaxy animated:YES];
+    }, @(AppSocial) : ^{
+        SocialSearchTabBarController *social = [SocialSearchTabBarController instantiateFromStoryboard];
+        [self presentViewController:social animated:YES completion:nil];
+    }, @(AppCard) : ^{
+        CardCollectionViewController *cards = [CardCollectionViewController instantiateFromStoryboard];
+        [self presentViewController:cards animated:YES completion:nil];
+    }};
     return sourDict[@(type)];
 }
 

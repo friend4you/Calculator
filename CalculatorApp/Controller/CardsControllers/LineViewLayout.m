@@ -9,7 +9,7 @@
 #import "LineViewLayout.h"
 
 static CGFloat standartItemAlpha = 0.1;
-static CGFloat standartItemScale = 0.2;
+static CGFloat standartItemScale = 0.3;
 
 @interface LineViewLayout () <UICollectionViewDelegateFlowLayout>
 
@@ -17,12 +17,11 @@ static CGFloat standartItemScale = 0.2;
 
 @implementation LineViewLayout
 
-
 - (void)changeAttribute:(UICollectionViewLayoutAttributes *) attributes {
-    CGFloat center = self.collectionView.bounds.size.width / 2.0;
-    CGFloat offset = self.collectionView.contentOffset.x;
-    CGFloat normalizedCenter = attributes.center.x - offset;
-    CGFloat maxDistance = self.itemSize.width + self.minimumLineSpacing;
+    CGFloat center = self.collectionView.frame.size.height / 2.0;
+    CGFloat offset = self.collectionView.contentOffset.y;
+    CGFloat normalizedCenter = attributes.center.y - offset;
+    CGFloat maxDistance = self.itemSize.height + self.minimumLineSpacing;
     CGFloat distance = MIN(fabs(center - normalizedCenter), maxDistance);
     
     CGFloat ratio = (maxDistance - distance) / maxDistance;
@@ -37,11 +36,11 @@ static CGFloat standartItemScale = 0.2;
 - (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
     NSArray<UICollectionViewLayoutAttributes *> *attributes = [self layoutAttributesForElementsInRect:self.collectionView.bounds];
     
-    CGFloat center = self.collectionView.bounds.size.width / 2;
-    CGFloat proposedContentOffsetCenterOrigin = proposedContentOffset.x + center;
+    CGFloat center = self.collectionView.bounds.size.height / 2;
+    CGFloat proposedContentOffsetCenterOrigin = proposedContentOffset.y + center;
     
     NSArray<UICollectionViewLayoutAttributes *> *sorted = [attributes sortedArrayUsingComparator:^NSComparisonResult(UICollectionViewLayoutAttributes *obj1, UICollectionViewLayoutAttributes *obj2) {
-        return fabs(obj1.center.x - proposedContentOffsetCenterOrigin) > fabs(obj2.center.x - proposedContentOffsetCenterOrigin);
+        return fabs(obj1.center.y - proposedContentOffsetCenterOrigin) > fabs(obj2.center.y - proposedContentOffsetCenterOrigin);
     }];
     
     UICollectionViewLayoutAttributes *closest = sorted.firstObject;
@@ -52,11 +51,11 @@ static CGFloat standartItemScale = 0.2;
 
 - (void)setupCollectionView {
     self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
-    
+
     CGSize collectionSize = self.collectionView.bounds.size;
     CGFloat xInset = (collectionSize.width - self.itemSize.width) / 2.0;
     CGFloat yInset = (collectionSize.height - self.itemSize.height) / 2.0;
-    
+
     self.sectionInset = UIEdgeInsetsMake(yInset, xInset, yInset, xInset);
 }
 

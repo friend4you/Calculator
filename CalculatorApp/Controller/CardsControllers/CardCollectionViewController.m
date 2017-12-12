@@ -31,34 +31,49 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self configureController];
+}
+
+- (void)configureController {
     [self.gridSwitcher addTarget:self action:@selector(changeCollectionLayout) forControlEvents:UIControlEventValueChanged];
-    
-    if ([self.collectionViewLayout isKindOfClass:[LineViewLayout class]]) {
-        LineViewLayout *layout = self.collectionViewLayout;
-        layout.minimumLineSpacing = - (layout.itemSize.width * 0.5);
-    } else if ([self.collectionViewLayout isKindOfClass:[GridViewLayout class]]) {
-        GridViewLayout *gridLayout = self.collectionViewLayout;
-        gridLayout.numberOfColums = 2;
-        gridLayout.delegate = self;
-        self.collectionView.contentInset = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
-        gridLayout.padding = 5.0;
-    }
+    GridViewLayout *gridLayout = [[GridViewLayout alloc] init];
+    gridLayout.numberOfColums = 2;
+    gridLayout.delegate = self;
+    self.collectionView.contentInset = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
+    gridLayout.padding = 5.0;
+    [self.collectionView.collectionViewLayout invalidateLayout];
+    [self.collectionView setCollectionViewLayout:gridLayout];
+    //    if ([self.collectionViewLayout isKindOfClass:[LineViewLayout class]]) {
+//        LineViewLayout *layout = self.collectionViewLayout;
+//        layout.itemSize = CGSizeMake(200, 300);
+//        layout.minimumLineSpacing = - (layout.itemSize.width);
+//    } else if ([self.collectionViewLayout isKindOfClass:[GridViewLayout class]]) {
+//        GridViewLayout *gridLayout = self.collectionViewLayout;
+//        gridLayout.numberOfColums = 2;
+//        gridLayout.delegate = self;
+//        self.collectionView.contentInset = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
+//        gridLayout.padding = 5.0;
+//    }
     
 }
 
 - (void)changeCollectionLayout {
-    if ([self.collectionViewLayout isKindOfClass:[LineViewLayout class]]) {
+    if ([self.gridSwitcher isOn]) {
         GridViewLayout *gridLayout = [[GridViewLayout alloc] init];
         gridLayout.numberOfColums = 2;
         gridLayout.delegate = self;
         self.collectionView.contentInset = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
         gridLayout.padding = 5.0;
-        [self.collectionView setCollectionViewLayout:gridLayout animated:YES];
+        [self.collectionView.collectionViewLayout invalidateLayout];
+        [self.collectionView setCollectionViewLayout:gridLayout];
+        //[self.collectionView reloadData];
     } else {
         LineViewLayout *lineLayout = [[LineViewLayout alloc] init];
+        lineLayout.itemSize = CGSizeMake(200, 300);
         lineLayout.minimumLineSpacing = - (lineLayout.itemSize.width * 0.5);
-        [self.collectionView setCollectionViewLayout:lineLayout animated:YES];
+        [self.collectionView.collectionViewLayout invalidateLayout];
+        [self.collectionView setCollectionViewLayout:lineLayout];
+        //[self.collectionView reloadData];
     }
 }
 
@@ -82,6 +97,12 @@
     return cell;
 }
 
+#pragma mark - Actions
+
+- (IBAction)backToMainButton:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Lazy Load
 
 - (NSMutableArray<Character *> *)characters {
@@ -91,31 +112,31 @@
     return _characters;
 }
 
-#pragma mark - CustomViewControllerDelegate
+#pragma mark - GridViewLayoutDelegate
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView heightForImageAtIndexPath:(NSIndexPath *)indexPath withWidth:(CGFloat)width {
-    
+
     Character *character = self.characters[indexPath.row];
     UIImage *image = [UIImage imageNamed:character.name];
     CGRect boundingRect = CGRectMake(0.0, 0.0, width, CGFLOAT_MAX);
     CGRect resultRect = AVMakeRectWithAspectRatioInsideRect(image.size, boundingRect);
-    
+
     return resultRect.size.height;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView heightForDescriptionAtIndexPath:(NSIndexPath *)indexPath withWidth:(CGFloat)width {
-    
+
     Character *character = self.characters[indexPath.row];
-    CGFloat descriptionHeight = [self heightForText:character.info withWidth:width-24];
+    CGFloat descriptionHeight = [self heightForText:character.info withWidth:width-12];
     CGFloat height = 30 + 20 + descriptionHeight;
-    
+
     return height;
 }
 
 - (CGFloat) heightForText:(NSString *)text withWidth: (CGFloat) width {
     UIFont *font = [UIFont systemFontOfSize:13];
     CGRect rect = [text boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil];
-    
+
     return rect.size.height;
 }
 
