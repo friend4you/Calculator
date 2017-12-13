@@ -16,7 +16,6 @@
 @property (nonatomic, copy) NSString *image;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *userId;
-@property (nonatomic, strong) NSSet<Tweet *> *tweets;
 
 - (instancetype)initWithCoreDataModel:(User *)model;
 - (instancetype)initWithTwitterModel: (TWTRUser *)model;

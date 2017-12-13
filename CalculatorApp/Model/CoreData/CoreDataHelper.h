@@ -18,12 +18,12 @@
 + (NSError *)saveTweetsData:(NSArray *)tweets;
 + (NSError *)saveTweetData:(TwitterTweet *)data;
 + (TwitterTweet *)getTweetWithId:(NSString *)tweetId;
-+ (void)deleteAllTweets;
++ (NSError *)deleteAllTweets;
 + (NSArray<TwitterTweet *> *)getAllTweets;
 
 
 + (NSError *)saveUserData:(TwitterUser *)data;
 + (User *)getUserWithId:(NSString *)userId;
-+ (void)deleteUserWithId:(NSString *)userId;
++ (NSError *)deleteUserWithId:(NSString *)userId;
 
 @end

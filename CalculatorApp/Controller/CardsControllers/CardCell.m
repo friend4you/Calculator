@@ -45,7 +45,12 @@
         CGFloat imageWidth = self.characterImageView.frame.size.width;
         self.imageHeightConstraint.constant = imageWidth;        
     }
-    
+}
+
+- (void)configureCellWithCharacter:(Character *)character {
+    self.characterNameLabel.text = character.name;
+    self.characterImageView.image = [UIImage imageNamed:character.name];
+    self.characterInfoLabel.text = character.info;
 }
 
 @end

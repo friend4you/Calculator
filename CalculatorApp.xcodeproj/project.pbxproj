@@ -268,8 +268,7 @@
 				93A4ABFD1FC5D28000C47C8D /* Galaxy */,
 				93F344441FCC37E9000A4EAF /* AppModel.h */,
 				93F344451FCC37E9000A4EAF /* AppModel.m */,
-				93EC0F911FD9852800C593A3 /* Reachability.h */,
-				93EC0F901FD9852700C593A3 /* Reachability.m */,
+				9350F1751FE16A7C0063AF0F /* Vendors */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,6 +284,15 @@
 				93F344521FCC7DCA000A4EAF /* TweetTableViewCell.m */,
 			);
 			path = TwitterControllers;
+			sourceTree = "<group>";
+		};
+		9350F1751FE16A7C0063AF0F /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				93EC0F911FD9852800C593A3 /* Reachability.h */,
+				93EC0F901FD9852700C593A3 /* Reachability.m */,
+			);
+			path = Vendors;
 			sourceTree = "<group>";
 		};
 		935664911FB5A1630037F4B3 /* View */ = {

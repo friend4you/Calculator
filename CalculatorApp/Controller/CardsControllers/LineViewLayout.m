@@ -30,22 +30,23 @@ static CGFloat standartItemScale = 0.3;
     
     attributes.alpha = alpha;
     attributes.transform3D = CATransform3DScale(CATransform3DIdentity, scale, scale, 1);
-    attributes.zIndex = alpha * 10;
+    attributes.zIndex = alpha * 100;
 }
 
 - (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
+    [self setupCollectionView];
     NSArray<UICollectionViewLayoutAttributes *> *attributes = [self layoutAttributesForElementsInRect:self.collectionView.bounds];
     
-    CGFloat center = self.collectionView.bounds.size.height / 2;
-    CGFloat proposedContentOffsetCenterOrigin = proposedContentOffset.y + center;
+    CGFloat frameCenter = self.collectionView.bounds.size.height / 2;
     
     NSArray<UICollectionViewLayoutAttributes *> *sorted = [attributes sortedArrayUsingComparator:^NSComparisonResult(UICollectionViewLayoutAttributes *obj1, UICollectionViewLayoutAttributes *obj2) {
-        return fabs(obj1.center.y - proposedContentOffsetCenterOrigin) > fabs(obj2.center.y - proposedContentOffsetCenterOrigin);
+        return (obj1.alpha) > (obj2.alpha);
     }];
     
-    UICollectionViewLayoutAttributes *closest = sorted.firstObject;
+    UICollectionViewLayoutAttributes *closest = sorted.lastObject;
     
-    CGPoint targetContentOffset = CGPointMake(floorf(closest.center.x - center), proposedContentOffset.y);
+    CGPoint targetContentOffset = CGPointMake(proposedContentOffset.x, floorf(closest.center.y - frameCenter));
+    
     return targetContentOffset;
 }
 
@@ -81,6 +82,5 @@ static CGFloat standartItemScale = 0.3;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
     return YES;
 }
-
 
 @end

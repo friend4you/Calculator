@@ -23,8 +23,7 @@
         _contentHeight = 0;
         _numberOfColums = 0;
         _cache = [NSMutableArray array];
-    }
-    
+    }    
     return self;
 }
 
@@ -85,10 +84,5 @@
     }
     return attributesArray;
 }
-
-- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
-    return YES;
-}
-
 
 @end

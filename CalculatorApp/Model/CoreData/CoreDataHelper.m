@@ -29,7 +29,10 @@ static NSString *userIdKey = @"userId";
 
 + (NSError *)saveTweetsData:(NSArray<TwitterTweet *> *)tweets {
     NSError *error = nil;
-    [self deleteAllTweets];
+    error = [self deleteAllTweets];
+    if (error) {
+        return error;
+    }
     for (TwitterTweet *tweet in tweets) {
         error = [self saveTweetData:tweet];
         if (error) {
@@ -57,9 +60,7 @@ static NSString *userIdKey = @"userId";
     [inputData setValue:user forKey:tweetUserKey];
     
     NSError *error = nil;
-    if(![context save:&error]) {
-        
-    }
+    [context save:&error];
     return error;
 }
 
@@ -100,16 +101,15 @@ static NSString *userIdKey = @"userId";
     return [tweets copy];
 }
 
-+ (void)deleteAllTweets {
++ (NSError *)deleteAllTweets {
     NSManagedObjectContext *context = [self getManagedObjectContext];
     NSError *error = nil;
     NSArray *requestResult = [self getTweetsFromContextWithPredicate:nil];
     for (NSManagedObject *object in requestResult) {
         [context deleteObject:object];
     }
-    if(![context save:&error]){
-        
-    }
+    [context save:&error];
+    return error;
 }
 
 #pragma mark - User CoreData Helper
@@ -122,9 +122,7 @@ static NSString *userIdKey = @"userId";
     [inputData setValue:data.userId forKey:userIdKey];
     
     NSError *error = nil;
-    if(![context save:&error]) {
-        
-    }
+    [context save:&error];
     return error;
 }
 
@@ -151,7 +149,7 @@ static NSString *userIdKey = @"userId";
     return nil;
 }
 
-+ (void)deleteUserWithId:(NSNumber *)userId {
++ (NSError *)deleteUserWithId:(NSNumber *)userId {
     NSManagedObjectContext *context = [self getManagedObjectContext];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@", userId];
     NSError *error = nil;
@@ -160,6 +158,7 @@ static NSString *userIdKey = @"userId";
         [context deleteObject:object];
     }
     [context save:&error];
+    return error;
 }
 
 + (NSManagedObjectContext *)getManagedObjectContext {

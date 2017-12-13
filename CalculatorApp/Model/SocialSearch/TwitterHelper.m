@@ -21,8 +21,6 @@ static NSString *countRequestKey = @"count";
 static NSString *queryRequestKey = @"q";
 static NSString *cursorRequestKey = @"cursor";
 
-
-
 @interface TwitterHelper ()
 
 @property (nonatomic, strong) NSDictionary *homeTimeLineParams;
@@ -85,14 +83,6 @@ static NSString *cursorRequestKey = @"cursor";
             }
         }];
     }
-}
-
-- (NSDictionary *)homeTimeLineParams {
-    if (!_homeTimeLineParams) {
-        _homeTimeLineParams = @{countRequestKey : @"30",
-                                };
-    }
-    return _homeTimeLineParams;
 }
 
 @end

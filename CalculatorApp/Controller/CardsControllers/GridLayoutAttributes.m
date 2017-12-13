@@ -23,8 +23,6 @@
     if ([attributes isKindOfClass:[GridLayoutAttributes class]]) {
         if (attributes.imageHeight == self.imageHeight) {
             return [super isEqual:object];
-        } else {
-            return NO;
         }
     }
     return NO;

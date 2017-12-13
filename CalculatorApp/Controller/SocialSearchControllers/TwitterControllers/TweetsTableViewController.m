@@ -80,11 +80,13 @@
         TwitterLoginViewController *login = [TwitterLoginViewController instantiateFromStoryboard];
         [self presentViewController:login animated:YES completion:nil];
     } else {
-        TwitterHelper *helper = [TwitterHelper new];
+        __weak typeof(self) weakSelf = self;
+        TwitterHelper *helper = [[TwitterHelper alloc] init];
         [helper fetchHomeTweetsFromTwitter];
         helper.getTweets = ^(NSArray *tweets) {
-            self.tweets = [NSMutableArray arrayWithArray:tweets];
-            [self.tableView reloadData];
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            strongSelf.tweets = [NSMutableArray arrayWithArray:tweets];
+            [strongSelf.tableView reloadData];
         };
         
     }

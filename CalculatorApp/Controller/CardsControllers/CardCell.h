@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *characterInfoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *characterNameLabel;
 
+- (void)configureCellWithCharacter:(Character *)character;
+
 @end
