@@ -8,16 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <TwitterKit/TwitterKit.h>
+#import <Mantle/Mantle.h>
 
 @class User, Tweet;
 
-@interface TwitterUser : NSObject
+@interface TwitterUser : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy) NSString *image;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *userId;
+@property (nonatomic, strong, readwrite) NSString *image;
+@property (nonatomic, strong, readwrite) NSString *name;
+@property (nonatomic, strong, readwrite) NSString *userId;
 
 - (instancetype)initWithCoreDataModel:(User *)model;
-- (instancetype)initWithTwitterModel: (TWTRUser *)model;
 
 @end

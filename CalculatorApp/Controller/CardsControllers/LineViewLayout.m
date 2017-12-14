@@ -18,10 +18,10 @@ static CGFloat standartItemScale = 0.3;
 @implementation LineViewLayout
 
 - (void)changeAttribute:(UICollectionViewLayoutAttributes *) attributes {
-    CGFloat center = self.collectionView.frame.size.height / 2.0;
-    CGFloat offset = self.collectionView.contentOffset.y;
-    CGFloat normalizedCenter = attributes.center.y - offset;
-    CGFloat maxDistance = self.itemSize.height + self.minimumLineSpacing;
+    CGFloat center = self.collectionView.frame.size.width / 2.0;
+    CGFloat offset = self.collectionView.contentOffset.x;
+    CGFloat normalizedCenter = attributes.center.x - offset;
+    CGFloat maxDistance = self.itemSize.width + self.minimumLineSpacing;
     CGFloat distance = MIN(fabs(center - normalizedCenter), maxDistance);
     
     CGFloat ratio = (maxDistance - distance) / maxDistance;
@@ -37,7 +37,7 @@ static CGFloat standartItemScale = 0.3;
     [self setupCollectionView];
     NSArray<UICollectionViewLayoutAttributes *> *attributes = [self layoutAttributesForElementsInRect:self.collectionView.bounds];
     
-    CGFloat frameCenter = self.collectionView.bounds.size.height / 2;
+    CGFloat frameCenter = self.collectionView.bounds.size.width / 2;
     
     NSArray<UICollectionViewLayoutAttributes *> *sorted = [attributes sortedArrayUsingComparator:^NSComparisonResult(UICollectionViewLayoutAttributes *obj1, UICollectionViewLayoutAttributes *obj2) {
         return (obj1.alpha) > (obj2.alpha);
@@ -45,7 +45,7 @@ static CGFloat standartItemScale = 0.3;
     
     UICollectionViewLayoutAttributes *closest = sorted.lastObject;
     
-    CGPoint targetContentOffset = CGPointMake(proposedContentOffset.x, floorf(closest.center.y - frameCenter));
+    CGPoint targetContentOffset = CGPointMake(floorf(closest.center.x - frameCenter), proposedContentOffset.y );
     
     return targetContentOffset;
 }
@@ -54,8 +54,8 @@ static CGFloat standartItemScale = 0.3;
     self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
 
     CGSize collectionSize = self.collectionView.bounds.size;
-    CGFloat xInset = (collectionSize.width - self.itemSize.width) / 2.0;
-    CGFloat yInset = (collectionSize.height - self.itemSize.height) / 2.0;
+    CGFloat xInset = ((collectionSize.width - self.itemSize.width) / 2.0);
+    CGFloat yInset = ((collectionSize.height - self.itemSize.height) / 2.0);
 
     self.sectionInset = UIEdgeInsetsMake(yInset, xInset, yInset, xInset);
 }

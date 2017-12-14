@@ -50,18 +50,18 @@
         gridLayout.numberOfColums = 2;
         gridLayout.delegate = self;
         self.collectionView.contentInset = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
-        gridLayout.padding = 5.0;
-        
+        gridLayout.padding = 5.0;        
         [self.collectionView.collectionViewLayout invalidateLayout];
         [self.collectionView setCollectionViewLayout:gridLayout];
+        [self.collectionView reloadData];
     } else {
         LineViewLayout *lineLayout = [[LineViewLayout alloc] init];
         lineLayout.minimumLineSpacing = - (lineLayout.itemSize.width * 0.5);
         lineLayout.itemSize = CGSizeMake(250.0, 340.0);
-        
+        lineLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         [self.collectionView.collectionViewLayout invalidateLayout];
         [self.collectionView setCollectionViewLayout:lineLayout];
-        
+        [self.collectionView reloadData];
     }
 }
 

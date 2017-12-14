@@ -10,6 +10,7 @@
 #import "Reachability.h"
 #import <TwitterKit/TwitterKit.h>
 #import "CoreDataHelper.h"
+#import <Mantle.h>
 
 static NSString *requestMethodGET = @"GET";
 static NSString *homeTimeLine = @"https://api.twitter.com/1.1/statuses/home_timeline.json";
@@ -48,8 +49,9 @@ static NSString *cursorRequestKey = @"cursor";
                 NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
                 NSMutableArray *tweets = [[NSMutableArray alloc] init];
                 for (int i = 0; i < json.count; i++) {
-                    TwitterTweet *obj = [[TwitterTweet alloc] initWithTwitterModel:json[i]];
-                    [tweets addObject:obj];
+                    TwitterTweet *obj = [MTLJSONAdapter modelOfClass:TwitterTweet.class fromJSONDictionary:json[i] error:&jsonError];
+                    
+                    [tweets addObject:obj];                    
                 }
                 self.getTweets([tweets copy]);
                 [CoreDataHelper saveTweetsData:[tweets copy]];
@@ -76,7 +78,7 @@ static NSString *cursorRequestKey = @"cursor";
                 NSArray *json = [searchJson objectForKey:statusesJsonKey];
                 NSMutableArray *tweets = [[NSMutableArray alloc] init];
                 for (int i = 0; i < json.count; i++) {
-                    TwitterTweet *obj = [[TwitterTweet alloc] initWithTwitterModel:json[i]];
+                    TwitterTweet *obj = [MTLJSONAdapter modelOfClass:TwitterTweet.class fromJSONDictionary:json[i] error:&jsonError];;
                     [tweets addObject:obj];
                 }
                 self.getTweets([tweets copy]);

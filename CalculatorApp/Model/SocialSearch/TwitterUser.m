@@ -15,6 +15,11 @@ static NSString *profileImageUrlJsonKey = @"profile_image_url_https";
 static NSString *userNameJsonKey = @"name";
 static NSString *userIdJsonKey = @"id_str";
 
+static NSString *imagePropertyKey = @"image";
+static NSString *userNamePropertyKey = @"name";
+static NSString *userIdPropertyKey = @"userId";
+
+
 @interface TwitterUser ()
 
 @end
@@ -31,21 +36,12 @@ static NSString *userIdJsonKey = @"id_str";
     return self;
 }
 
-- (instancetype)initWithTwitterModel: (TWTRUser *)model {
-    self = [super init];
-    if (self) {
-        self.image = [model valueForKey:profileImageUrlJsonKey];
-        self.name = [model valueForKey:userNameJsonKey];
-        self.userId = [model valueForKey:userIdJsonKey];
-    }
-    return self;
-}
-
-- (NSSet<Tweet *> *)tweets {
-    if (!_tweets) {
-        _tweets = [[NSSet alloc] init];
-    }
-    return _tweets;
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             imagePropertyKey : profileImageUrlJsonKey,
+             userNamePropertyKey : userNameJsonKey,
+             userIdPropertyKey : userIdJsonKey
+             };
 }
 
 @end

@@ -15,6 +15,7 @@
 #import <TwitterKit/TwitterKit.h>
 #import "Reachability.h"
 #import "TwitterHelper.h"
+#import <Mantle/Mantle.h>
 
 @interface TweetsTableViewController () <UISearchBarDelegate>
 
@@ -101,7 +102,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetTableViewCell *tweetCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TweetTableViewCell class]) forIndexPath:indexPath];
     TwitterTweet *tweet = self.tweets[indexPath.row];
-    
     [tweetCell configureCellWithData:tweet queue:self.queue];
     
     return tweetCell;

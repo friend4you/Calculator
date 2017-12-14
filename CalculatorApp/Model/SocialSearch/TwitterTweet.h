@@ -11,16 +11,16 @@
 #import "TwitterUser.h"
 #import "TwitterTweet.h"
 #import "Tweet+CoreDataProperties.h"
+#import <Mantle/Mantle.h>
 
-@interface TwitterTweet : NSObject
+@interface TwitterTweet : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy) NSString *likes;
-@property (nonatomic, copy) NSString *retweets;
-@property (nonatomic, copy) NSString *text;
-@property (nonatomic, copy) NSString *tweetId;
-@property (nonatomic, strong) TwitterUser *user;
+@property (nonatomic, copy, readwrite) NSNumber *likes;
+@property (nonatomic, copy, readwrite) NSNumber *retweets;
+@property (nonatomic, copy, readwrite) NSString *text;
+@property (nonatomic, copy, readwrite) NSString *tweetId;
+@property (nonatomic, strong, readwrite) TwitterUser *user;
 
 - (instancetype)initWithCoreDataModel:(Tweet *)model;
-- (instancetype)initWithTwitterModel: (TWTRTweet *)model;
 
 @end

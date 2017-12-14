@@ -2,7 +2,7 @@
 //  Tweet+CoreDataProperties.m
 //  CalculatorApp
 //
-//  Created by Vladyslav Arseniuk on 12/7/17.
+//  Created by Vladyslav Arseniuk on 12/14/17.
 //  Copyright © 2017 Vladyslav Arseniuk. All rights reserved.
 //
 //

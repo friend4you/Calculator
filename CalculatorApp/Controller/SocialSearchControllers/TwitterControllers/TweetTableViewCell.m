@@ -76,8 +76,8 @@
     __weak typeof(self) weakSelf = self;
     self.tweetText.text = tweet.text;
     self.userNameLabel.text = tweet.user.name;
-    self.retweetLabel.text = tweet.retweets;
-    self.likesLabel.text = tweet.likes;
+    self.retweetLabel.text = [tweet.retweets stringValue];
+    self.likesLabel.text = [tweet.likes stringValue];
     NSURL *imageUrl = [NSURL URLWithString:tweet.user.image];
     ImageLoadOperation *operation = [[ImageLoadOperation alloc] initWithUrl:imageUrl];
     operation.loadCompilation = ^(UIImage *image) {
