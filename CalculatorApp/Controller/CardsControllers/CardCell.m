@@ -12,6 +12,7 @@
 @interface CardCell ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeightConstraint;
+@property (assign, nonatomic) CGFloat defaultImageHeight;
 
 @end
 
@@ -37,13 +38,13 @@
 
 -(void)applyLayoutAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes {
     [super applyLayoutAttributes:layoutAttributes];
-    
+    CGFloat imageWidth = self.defaultImageHeight;
+
     GridLayoutAttributes *attributes = (GridLayoutAttributes *)layoutAttributes;
     if ([attributes isKindOfClass:[GridLayoutAttributes class]]) {
         self.imageHeightConstraint.constant = attributes.imageHeight;
     } else {
-        CGFloat imageWidth = self.characterImageView.frame.size.width;
-        self.imageHeightConstraint.constant = imageWidth;        
+        self.imageHeightConstraint.constant = imageWidth;
     }
 }
 
@@ -51,6 +52,13 @@
     self.characterNameLabel.text = character.name;
     self.characterImageView.image = [UIImage imageNamed:character.name];
     self.characterInfoLabel.text = character.info;
+}
+
+- (CGFloat)defaultImageHeight {
+    if (!_defaultImageHeight) {
+        _defaultImageHeight = self.characterImageView.frame.size.width;
+    }
+    return _defaultImageHeight;
 }
 
 @end

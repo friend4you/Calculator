@@ -34,7 +34,6 @@ static CGFloat standartItemScale = 0.3;
 }
 
 - (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
-    [self setupCollectionView];
     NSArray<UICollectionViewLayoutAttributes *> *attributes = [self layoutAttributesForElementsInRect:self.collectionView.bounds];
     
     CGFloat frameCenter = self.collectionView.bounds.size.width / 2;
@@ -69,6 +68,7 @@ static CGFloat standartItemScale = 0.3;
 }
 
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
+    
     NSArray *attributes = [super layoutAttributesForElementsInRect:rect];
     NSMutableArray *changedAttributes = [[NSMutableArray alloc] initWithCapacity:attributes.count];
     for (UICollectionViewLayoutAttributes *attribute in attributes) {
@@ -80,6 +80,7 @@ static CGFloat standartItemScale = 0.3;
 }
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
+    [self setupCollectionView];
     return YES;
 }
 
