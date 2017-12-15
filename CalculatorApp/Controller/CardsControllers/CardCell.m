@@ -25,6 +25,7 @@
         self.layer.cornerRadius = self.bounds.size.width * 0.05;
         self.layer.borderWidth = 3;
         self.layer.borderColor = [UIColor colorWithRed:0.5 green:0.47 blue:0.25 alpha:1.0].CGColor;
+        
     }
     return self;
 }

@@ -14,6 +14,8 @@
 #import "GridViewLayout.h"
 #import <AVFoundation/AVFoundation.h>
 
+static NSString* navigationViewIdentifier = @"CardNavigationView";
+
 @interface CardCollectionViewController () <GridViewLayoutDelegate>
 
 @property (nonatomic, strong) NSMutableArray<Character *> *characters;
@@ -25,7 +27,7 @@
 
 + (instancetype)instantiateFromStoryboard {
     UIStoryboard *card = [UIStoryboard storyboardWithName:@"Cards" bundle:nil];
-    CardCollectionViewController *controller = [card instantiateViewControllerWithIdentifier:@"CardNavigationView"];
+    CardCollectionViewController *controller = [card instantiateViewControllerWithIdentifier:navigationViewIdentifier];
     return controller;
 }
 
@@ -35,16 +37,12 @@
 }
 
 - (void)configureController {
-    [self.gridSwitcher addTarget:self action:@selector(changeCollectionLayout) forControlEvents:UIControlEventValueChanged];
-    GridViewLayout *gridLayout = [[GridViewLayout alloc] init];
-    gridLayout.numberOfColums = 2;
-    gridLayout.delegate = self;
-    self.collectionView.contentInset = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
-    gridLayout.padding = 5.0;
-    [self.collectionView setCollectionViewLayout:gridLayout];
+    [self.gridSwitcher addTarget:self action:@selector(setCollectionLayout) forControlEvents:UIControlEventValueChanged];
+    
+    [self setCollectionLayout];    
 }
 
-- (void)changeCollectionLayout {
+- (void)setCollectionLayout {
     if ([self.gridSwitcher isOn]) {
         GridViewLayout *gridLayout = [[GridViewLayout alloc] init];
         gridLayout.numberOfColums = 2;
